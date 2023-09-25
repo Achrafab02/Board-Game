@@ -1,0 +1,11 @@
+# User-specific stuff:
+.DS_Store
+*~
+
+# IntelliJ
+/out/
+/.idea/
+
+# Gradle.gitignore
+.gradle
+/build/
