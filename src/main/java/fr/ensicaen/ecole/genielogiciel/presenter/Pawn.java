@@ -19,4 +19,8 @@ public class Pawn {
         _x += numberOfTile * MOVE_X;
         //_y += numberOfTile * MOVE_Y;
     }
+
+    public int get_x() {
+        return _x;
+    }
 }
