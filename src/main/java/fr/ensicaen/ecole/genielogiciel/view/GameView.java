@@ -21,7 +21,7 @@ public final class GameView {
         Parent root = fxmlLoader.load();
         final GameView view = fxmlLoader.getController();
         fxmlLoader.setController(view);
-        Scene scene = new Scene(root, 1000, 1000);
+        Scene scene = new Scene(root, 844, 110);
         Stage stage = new Stage();
         stage.setScene(scene);
         view._stage = stage;
