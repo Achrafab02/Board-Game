@@ -1,16 +1,18 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import fr.ensicaen.ecole.genielogiciel.model.Pawn;
 
-public class PawnPresenter extends javafx.scene.Node {
-    public static Rectangle create() {
-        Rectangle pawn = new Rectangle();
-        pawn.setX(50.0f);
-        pawn.setY(50.0F);
-        pawn.setWidth(10.0f);
-        pawn.setHeight(10.0f);
-        pawn.setFill(Color.RED);
-        return pawn;
+public class PawnPresenter {
+    private static final int MOVE_X = 110;
+
+    private int _x = 0;
+    private final Pawn _pawn;
+
+    public PawnPresenter(Player player) {
+        _pawn = new Pawn();
+    }
+
+    public void move(int numberOfTile) {
+        _x += _pawn.calculateMove(numberOfTile);
     }
 }

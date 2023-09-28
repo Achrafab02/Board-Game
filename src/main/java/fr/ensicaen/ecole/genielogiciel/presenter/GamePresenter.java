@@ -2,8 +2,8 @@ package fr.ensicaen.ecole.genielogiciel.presenter;
 
 import fr.ensicaen.ecole.genielogiciel.model.Model;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
+import fr.ensicaen.ecole.genielogiciel.view.PawnView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 
@@ -23,7 +23,7 @@ public final class GamePresenter {
     }
 
     public void setPawn( AnchorPane board ) {
-        _pawn = PawnPresenter.create();
+        _pawn = PawnView.create();
         board.getChildren().add(_pawn);
     }
 
