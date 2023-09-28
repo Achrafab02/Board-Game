@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestDeterministicDice {
+class TestDeterministicDice {
     @Test
-    public void test_deterministic_dice() {
+    void test_deterministic_dice() {
         DeterministicDice d = new DeterministicDice();
         assertEquals(2, d.roll());
         assertNotEquals(3, d.roll());
