@@ -1,8 +1,8 @@
 package fr.ensicaen.ecole.genielogiciel.model;
 
-public class Brilliant extends SoftSkill {
+public class Brilliant implements SoftSkill {
     @Override
-    int modifyDiceRoll(int roll) {
+    public int modifyDiceRoll(int roll) {
         return roll * 2;
     }
 }

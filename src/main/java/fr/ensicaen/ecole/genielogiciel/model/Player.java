@@ -10,7 +10,10 @@ class Player {
         _softSkill = chooseSoftSkillAtRandom();
         _hardSkills = hardSkills;
     }
-
+    Player(ArrayList<HardSkill> hardSkills, SoftSkill softSkill) {
+        _softSkill = softSkill;
+        _hardSkills = hardSkills;
+    }
     private SoftSkill chooseSoftSkillAtRandom() {
         return switch ((int) (Math.random() * 3)) {
             case 0 -> new Dabbler();

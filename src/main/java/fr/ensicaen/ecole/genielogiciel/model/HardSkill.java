@@ -1,4 +1,6 @@
 package fr.ensicaen.ecole.genielogiciel.model;
 
-abstract class HardSkill {
+public interface HardSkill {
+    int getScore();
+    void setScore(int score);
 }

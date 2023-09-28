@@ -1,5 +1,5 @@
 package fr.ensicaen.ecole.genielogiciel.model;
 
-interface Schooling {
+public interface Schooling {
     Player createPlayer();
 }
