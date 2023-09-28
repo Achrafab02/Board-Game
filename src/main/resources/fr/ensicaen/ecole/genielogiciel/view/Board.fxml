@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox prefHeight="0.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ensicaen.ecole.genielogiciel.view.GameView">
-  <children>
-      <AnchorPane fx:id="Board" maxHeight="110.0" maxWidth="710.0" minHeight="110.0" minWidth="710.0" prefHeight="110.0" prefWidth="710.0" styleClass="board" stylesheets="@Board.css" />
-      <VBox>
-         <children>
-            <ListView fx:id="PlayerList" prefHeight="87.0" prefWidth="0.0" />
-            <HBox>
-               <children>
-                  <Button fx:id="NewGame" mnemonicParsing="false" text="New game" />
-                  <Button fx:id="Quit" mnemonicParsing="false" text="Quit" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-  </children>
+<HBox prefHeight="0.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="fr.ensicaen.ecole.genielogiciel.view.GameView">
+    <children>
+        <AnchorPane fx:id="board" maxHeight="110.0" maxWidth="710.0" minHeight="110.0" minWidth="710.0"
+                    prefHeight="110.0" prefWidth="710.0" styleClass="board" stylesheets="@Board.css"/>
+        <VBox>
+            <children>
+                <AnchorPane prefHeight="86.0" prefWidth="0.0"/>
+                <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="146.0" text="Roll dice"/>
+            </children>
+        </VBox>
+    </children>
 </HBox>
