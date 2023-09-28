@@ -1,4 +1,4 @@
-package fr.ensicaen.ecole.genielogiciel.presenter;
+package fr.ensicaen.ecole.genielogiciel.model;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,11 +13,10 @@ public class TestDeterministicDice {
     }
 
     @Test
-    public void test_init_deterministic_dice() {
+    void test_initiated_deterministic_dice() {
         int init_value = 12;
         DeterministicDice dice = new DeterministicDice(init_value);
         assertEquals(init_value, dice.roll());
         assertNotEquals(init_value + 1, dice.roll());
-
     }
 }

@@ -1,4 +1,4 @@
-package fr.ensicaen.ecole.genielogiciel.presenter;
+package fr.ensicaen.ecole.genielogiciel.model;
 
 import java.util.Random;
 

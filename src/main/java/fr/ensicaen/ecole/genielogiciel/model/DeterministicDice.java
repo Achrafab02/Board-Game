@@ -1,4 +1,4 @@
-package fr.ensicaen.ecole.genielogiciel.presenter;
+package fr.ensicaen.ecole.genielogiciel.model;
 
 public class DeterministicDice implements Rollable {
     private final int _fixedValue;
