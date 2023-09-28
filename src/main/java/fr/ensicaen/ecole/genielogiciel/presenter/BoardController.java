@@ -11,7 +11,7 @@ public class BoardController {
 
     void play(Player player) {
         int diceRoll = _dice.roll();
-        //Player modification
-        //Move
+        // Player modification
+        // Move
     }
 }

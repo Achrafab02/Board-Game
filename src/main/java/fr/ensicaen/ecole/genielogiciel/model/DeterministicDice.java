@@ -6,9 +6,11 @@ public class DeterministicDice implements Rollable {
     public DeterministicDice() {
         _fixedValue = 2;
     }
+
     public DeterministicDice(int value) {
         _fixedValue = value;
     }
+
     @Override
     public int roll() {
         return _fixedValue;
