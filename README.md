@@ -38,4 +38,10 @@ Le projet a la structure suivante :
             │      └── fr.ensicaen.genielogiciel.mvp/*.java
             └── resources
 
+# Note sur le deplacement du poin
+
+Position de la case "Start" : (x,y) = (55, 55)
+
+Equation du déplacement d'une case i a i+1 : (x,y) += (0, 110)
+
 # À vous de jouer !

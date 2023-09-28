@@ -7,11 +7,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public final class GameView {
+    public AnchorPane board;
     private GamePresenter _gamePresenter;
     private Stage _stage;
 
@@ -21,9 +23,10 @@ public final class GameView {
         Parent root = fxmlLoader.load();
         final GameView view = fxmlLoader.getController();
         fxmlLoader.setController(view);
-        Scene scene = new Scene(root, 1000, 1000);
+        Scene scene = new Scene(root, 844, 110);
         Stage stage = new Stage();
         stage.setScene(scene);
+        stage.setResizable(false);
         view._stage = stage;
         scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> view.onKeyPressed(event.getCode()));
         return view;
