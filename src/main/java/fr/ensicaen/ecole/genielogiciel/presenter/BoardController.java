@@ -3,9 +3,9 @@ package fr.ensicaen.ecole.genielogiciel.presenter;
 import fr.ensicaen.ecole.genielogiciel.model.Rollable;
 
 public class BoardController {
-    private final Rollable _dice;
+    private final DicePresenter _dice;
 
-    public BoardController(Rollable dice) {
+    public BoardController(DicePresenter dice) {
         _dice = dice;
     }
 

@@ -17,8 +17,8 @@ public class DicePresenter {
         _model = dice;
     }
 
-    public void roll() {
-        _model.roll();
+    public int roll() {
+        return _model.roll();
         //_view.display(_model.getValue());
     }
 }
