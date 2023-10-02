@@ -6,12 +6,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Random;
 
 public final class GameView {
     public AnchorPane _board;
@@ -51,6 +53,13 @@ public final class GameView {
 
     @FXML
     private void rollDice() {
-        _gamePresenter.movePawn(1);
+        Random random = new Random();
+        int nb;
+        nb = random.nextInt(6);
+        System.out.println(nb);
+        _gamePresenter.movePawn(nb);
+        _diceBoard.setBackground(new Background(new BackgroundImage(new Image("fr/ensicaen/ecole/genielogiciel/view/dice/dice-" + nb + ".png"),
+                BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+                new BackgroundSize(86, 86, false, false, false, false))));
     }
 }
