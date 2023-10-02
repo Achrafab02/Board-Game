@@ -28,8 +28,8 @@ public final class LoginMain extends Application {
         LoginPresenter presenter = new LoginPresenter();
         view.setPresenter(presenter);
         presenter.setView(view);
+        view.show();
 
-        //TODO : Setup
         /*DicePresenter dicePresenter = new DicePresenter();
         new BoardController(dicePresenter);
 
