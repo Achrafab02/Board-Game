@@ -1,5 +1,7 @@
 package fr.ensicaen.ecole.genielogiciel.view;
 
+import fr.ensicaen.ecole.genielogiciel.presenter.BoardController;
+import fr.ensicaen.ecole.genielogiciel.presenter.DicePresenter;
 import fr.ensicaen.ecole.genielogiciel.presenter.GamePresenter;
 
 import javafx.fxml.FXML;
@@ -39,6 +41,7 @@ public final class GameView {
     public void setPresenter( GamePresenter gamePresenter ) {
         _gamePresenter = gamePresenter;
         _gamePresenter.setPawn(_board);
+        _gamePresenter.setDiceBoard(_diceBoard);
     }
 
     public void show() {
@@ -53,13 +56,6 @@ public final class GameView {
 
     @FXML
     private void rollDice() {
-        Random random = new Random();
-        int nb;
-        nb = random.nextInt(6);
-        System.out.println(nb);
-        _gamePresenter.movePawn(nb);
-        _diceBoard.setBackground(new Background(new BackgroundImage(new Image("fr/ensicaen/ecole/genielogiciel/view/dice/dice-" + nb + ".png"),
-                BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
-                new BackgroundSize(86, 86, false, false, false, false))));
+        _gamePresenter.movePawn();
     }
 }

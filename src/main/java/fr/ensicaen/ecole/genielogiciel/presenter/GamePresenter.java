@@ -1,6 +1,7 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
 import fr.ensicaen.ecole.genielogiciel.model.Model;
+import fr.ensicaen.ecole.genielogiciel.model.RandomDice;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.PawnView;
 import javafx.scene.layout.AnchorPane;
@@ -10,12 +11,14 @@ import javafx.scene.shape.Rectangle;
 public final class GamePresenter {
     private final Model _model;
     private GameView _view;
-    private boolean _end = false;
+    private final boolean _end = false;
     private Rectangle _pawn;
+    private final DicePresenter _dicePresenter;
 
     public GamePresenter( String nickName ) {
         _model = new Model();
         _model.setNickname(nickName);
+        _dicePresenter = new DicePresenter(new RandomDice());
     }
 
     public void setView( GameView view ) {
@@ -27,8 +30,13 @@ public final class GamePresenter {
         board.getChildren().add(_pawn);
     }
 
-    public void movePawn( int nbTile) {
-        _pawn.setX(_pawn.getX() + 100 * nbTile);
+    public void setDiceBoard(AnchorPane diceBoard) {
+        _dicePresenter.setDiceBoard(diceBoard);
+    }
+
+    public void movePawn() {
+        int nb = _dicePresenter.roll();
+        _pawn.setX(_pawn.getX() + 100 * nb);
     }
 
     public void runGameLoop() {

@@ -7,6 +7,12 @@ public class RandomDice implements Rollable {
     private final int _lowerInterval;
     private final int _upperInterval;
 
+    public RandomDice() {
+        _randomGenerator = new Random();
+        _lowerInterval = 1;
+        _upperInterval = 6;
+    }
+
     public RandomDice(long seed) {
         _randomGenerator = new Random(seed);
         _lowerInterval = 1;
