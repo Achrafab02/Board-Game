@@ -1,8 +1,12 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
+import fr.ensicaen.ecole.genielogiciel.model.Schooling;
+
+import java.util.ArrayList;
+
 public class GooseGame {
 
-    public GooseGame(/*SCHOOLING*/) {
+    public GooseGame(ArrayList<Schooling> schoolings) {
         //NEED SCHOOLING
     }
 
