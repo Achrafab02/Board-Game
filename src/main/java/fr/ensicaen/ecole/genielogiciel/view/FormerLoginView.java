@@ -1,6 +1,6 @@
 package fr.ensicaen.ecole.genielogiciel.view;
 
-import fr.ensicaen.ecole.genielogiciel.presenter.LoginPresenter;
+import fr.ensicaen.ecole.genielogiciel.presenter.FormerLoginPresenter;
 import fr.ensicaen.ecole.genielogiciel.LoginMain;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,24 +12,24 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginView {
-    private LoginPresenter _presenter;
+public class FormerLoginView {
+    private FormerLoginPresenter _presenter;
     private Stage _stage;
     @FXML
     private TextField _nickName;
     @FXML
     private Label _errorLabel;
 
-    public void setPresenter( LoginPresenter presenter ) {
+    public void setPresenter( FormerLoginPresenter presenter ) {
         _presenter = presenter;
     }
 
-    public static LoginView createView( Stage primaryStage, String  resourceName) throws IOException {
-        FXMLLoader loader = new FXMLLoader(LoginView.class.getResource(resourceName), LoginMain.getMessageBundle());
+    public static FormerLoginView createView(Stage primaryStage, String  resourceName) throws IOException {
+        FXMLLoader loader = new FXMLLoader(FormerLoginView.class.getResource(resourceName), LoginMain.getMessageBundle());
         Parent root = loader.load();
         // getController() does not return a presenter but actually a class of the View
         // if we want the presenter independent of the API JavaFX.
-        LoginView view = loader.getController();
+        FormerLoginView view = loader.getController();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         view._stage = primaryStage;
