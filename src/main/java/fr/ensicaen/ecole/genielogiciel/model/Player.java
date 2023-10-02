@@ -2,7 +2,7 @@ package fr.ensicaen.ecole.genielogiciel.model;
 
 import java.util.ArrayList;
 
-class Player {
+public class Player {
     private final SoftSkill _softSkill;
     private ArrayList<HardSkill> _hardSkills;
 

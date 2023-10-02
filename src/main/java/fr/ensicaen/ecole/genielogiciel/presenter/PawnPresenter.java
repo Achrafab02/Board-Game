@@ -1,6 +1,7 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
 import fr.ensicaen.ecole.genielogiciel.model.Pawn;
+import fr.ensicaen.ecole.genielogiciel.model.Player;
 
 public class PawnPresenter {
     private static final int MOVE_X = 110;

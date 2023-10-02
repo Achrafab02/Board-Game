@@ -29,14 +29,14 @@ public final class LoginMain extends Application {
         view.setPresenter(presenter);
         presenter.setView(view);
 
-        //TODO : Misplaced
-        DicePresenter dicePresenter = new DicePresenter();
+        //TODO : Setup
+        /*DicePresenter dicePresenter = new DicePresenter();
         new BoardController(dicePresenter);
 
         Schooling playerSchooling = new NoTraining();
         ArrayList<Schooling> schoolings = new ArrayList<>();
         schoolings.add(playerSchooling);
         GooseGame gooseGame = new GooseGame(schoolings);
-        gooseGame.start();
+        gooseGame.start();*/
     }
 }

@@ -1,5 +1,6 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
+import fr.ensicaen.ecole.genielogiciel.model.Player;
 import fr.ensicaen.ecole.genielogiciel.model.Schooling;
 
 import java.util.ArrayList;
@@ -7,7 +8,10 @@ import java.util.ArrayList;
 public class GooseGame {
 
     public GooseGame(ArrayList<Schooling> schoolings) {
-        //NEED SCHOOLING
+        for (int i = 0; i < schoolings.size(); i++) {
+            Schooling schooling = schoolings.get(i);
+            Player player = schooling.createPlayer();
+        }
     }
 
     public void init() {

@@ -1,6 +1,5 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
-
-import fr.ensicaen.ecole.genielogiciel.model.Rollable;
+import fr.ensicaen.ecole.genielogiciel.model.Player;
 
 public class BoardController {
     private final DicePresenter _dice;
