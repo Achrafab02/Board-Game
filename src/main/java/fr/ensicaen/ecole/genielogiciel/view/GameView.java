@@ -2,6 +2,7 @@ package fr.ensicaen.ecole.genielogiciel.view;
 
 import fr.ensicaen.ecole.genielogiciel.presenter.GamePresenter;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,7 +14,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public final class GameView {
-    public AnchorPane board;
+    public AnchorPane _board;
+    public AnchorPane _diceBoard;
     private GamePresenter _gamePresenter;
     private Stage _stage;
 
@@ -34,6 +36,7 @@ public final class GameView {
 
     public void setPresenter( GamePresenter gamePresenter ) {
         _gamePresenter = gamePresenter;
+        _gamePresenter.setPawn(_board);
     }
 
     public void show() {
@@ -44,5 +47,10 @@ public final class GameView {
         if (code == KeyCode.SPACE) {
             _gamePresenter.runGameLoop();
         }
+    }
+
+    @FXML
+    private void rollDice() {
+        _gamePresenter.movePawn(1);
     }
 }
