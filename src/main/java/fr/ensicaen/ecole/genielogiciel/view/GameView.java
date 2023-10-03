@@ -33,7 +33,7 @@ public final class GameView {
 
     public void setPresenter( BoardController gamePresenter ) {
         _boardController = gamePresenter;
-        _boardController.create_pawn();
+        _boardController.create_pawn(4);
     }
 
     public void show() {
