@@ -2,9 +2,11 @@ package fr.ensicaen.ecole.genielogiciel.presenter;
 
 import fr.ensicaen.ecole.genielogiciel.model.DeterministicDice;
 import fr.ensicaen.ecole.genielogiciel.model.Rollable;
+import fr.ensicaen.ecole.genielogiciel.view.DiceView;
+import javafx.scene.layout.AnchorPane;
 
 public class DicePresenter {
-    //private final DiceView _view;
+    private DiceView _view;
     private final Rollable _model;
 
     public DicePresenter() {
@@ -17,8 +19,13 @@ public class DicePresenter {
         _model = dice;
     }
 
+    public void setDiceBoard(AnchorPane diceBoard) {
+        _view = new DiceView(diceBoard);
+    }
+
     public int roll() {
-        return _model.roll();
-        //_view.display(_model.getValue());
+        int nb = _model.roll();
+        _view.display(nb);
+        return nb;
     }
 }

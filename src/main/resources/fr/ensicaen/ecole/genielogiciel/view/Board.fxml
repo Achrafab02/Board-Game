@@ -10,7 +10,7 @@
     <AnchorPane fx:id="_board" maxHeight="110.0" maxWidth="710.0" minHeight="110.0" minWidth="710.0" prefHeight="110.0"
                 prefWidth="710.0" styleClass="board" stylesheets="@Board.css"/>
     <VBox>
-        <AnchorPane fx:id="_diceBoard" prefHeight="86.0" prefWidth="0.0"/>
+        <AnchorPane fx:id="_diceBoard" prefHeight="86.0" prefWidth="0.0" styleClass="diceBoard" stylesheets="@Board.css"/>
         <Button onAction="#rollDice" mnemonicParsing="false" prefHeight="24.0" prefWidth="146.0" text="Roll dice"/>
 
     </VBox>
