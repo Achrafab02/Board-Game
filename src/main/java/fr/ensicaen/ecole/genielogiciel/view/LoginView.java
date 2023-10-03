@@ -34,6 +34,7 @@ public class LoginView {
         primaryStage.setScene(scene);
         view._stage = primaryStage;
         return view;
+
     }
 
     public void show() {
