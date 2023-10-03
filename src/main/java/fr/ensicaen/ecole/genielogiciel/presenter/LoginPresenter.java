@@ -2,14 +2,14 @@ package fr.ensicaen.ecole.genielogiciel.presenter;
 
 import fr.ensicaen.ecole.genielogiciel.LoginMain;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
-import fr.ensicaen.ecole.genielogiciel.view.FormerLoginView;
+import fr.ensicaen.ecole.genielogiciel.view.LoginView;
 
 import java.io.IOException;
 
-public final class FormerLoginPresenter {
-    private FormerLoginView _view;
+public final class LoginPresenter {
+    private LoginView _view;
 
-    public void setView( FormerLoginView view ) {
+    public void setView( LoginView view ) {
         _view = view;
     }
 

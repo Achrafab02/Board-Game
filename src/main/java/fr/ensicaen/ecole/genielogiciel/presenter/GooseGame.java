@@ -6,6 +6,7 @@ import fr.ensicaen.ecole.genielogiciel.model.Schooling;
 import java.util.ArrayList;
 
 public class GooseGame {
+    private final ArrayList<Player> _players;
 
     public GooseGame(ArrayList<Player> players) {
         _players = players;

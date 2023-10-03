@@ -7,12 +7,14 @@ public class Player {
     private final SoftSkill _softSkill;
     private ArrayList<HardSkill> _hardSkills;
 
-    Player(ArrayList<HardSkill> hardSkills) {
+    Player(String name, ArrayList<HardSkill> hardSkills) {
+        _name = name;
         _softSkill = chooseSoftSkillAtRandom();
         _hardSkills = hardSkills;
     }
 
-    Player(ArrayList<HardSkill> hardSkills, SoftSkill softSkill) {
+    Player(String name, ArrayList<HardSkill> hardSkills, SoftSkill softSkill) {
+        _name = name;
         _softSkill = softSkill;
         _hardSkills = hardSkills;
     }

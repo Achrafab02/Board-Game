@@ -1,7 +1,7 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
 import fr.ensicaen.ecole.genielogiciel.LoginMain;
-import fr.ensicaen.ecole.genielogiciel.view.FormerLoginView;
+import fr.ensicaen.ecole.genielogiciel.view.LoginView;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,7 +14,7 @@ import static org.mockito.Mockito.verify;
 public class LoginPresenterTest {
 
     @Mock
-    private FormerLoginView _view;
+    private LoginView _view;
     private AutoCloseable closeable;
 
     @BeforeEach
@@ -32,7 +32,7 @@ public class LoginPresenterTest {
         // TODO Interest of this test holds on the use of Mockito
 
         // given
-        FormerLoginPresenter presenter = new FormerLoginPresenter();
+        LoginPresenter presenter = new LoginPresenter();
         presenter.setView(_view);
 
         // when
