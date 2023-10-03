@@ -78,6 +78,10 @@ public class SetupView {
         setSchoolingChoiceBox();
     }
 
+    public void getPlayerParameters() {
+        _presenter.createPlayer();
+    }
+
 
 
     public static SetupView createView( Stage primaryStage, String  resourceName) throws IOException {

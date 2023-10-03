@@ -32,4 +32,6 @@ public class SetupPresenter {
         view.show();
     }
 
+    public void createPlayer() {
+    }
 }
