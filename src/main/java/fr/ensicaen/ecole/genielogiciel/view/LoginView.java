@@ -24,7 +24,7 @@ public class LoginView {
         _presenter = presenter;
     }
 
-    public static LoginView createView( Stage primaryStage, String  resourceName) throws IOException {
+    public static LoginView createView(Stage primaryStage, String  resourceName) throws IOException {
         FXMLLoader loader = new FXMLLoader(LoginView.class.getResource(resourceName), LoginMain.getMessageBundle());
         Parent root = loader.load();
         // getController() does not return a presenter but actually a class of the View

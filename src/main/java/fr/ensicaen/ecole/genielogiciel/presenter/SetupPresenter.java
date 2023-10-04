@@ -1,21 +1,27 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
-import fr.ensicaen.ecole.genielogiciel.LoginMain;
+import fr.ensicaen.ecole.genielogiciel.model.Player;
+import fr.ensicaen.ecole.genielogiciel.model.Schooling;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
-import fr.ensicaen.ecole.genielogiciel.view.LoginView;
 import fr.ensicaen.ecole.genielogiciel.view.SetupView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class SetupPresenter {
-
     private SetupView _view;
+    private final ArrayList<Player> _players = new ArrayList<>();
 
-    public void setView( SetupView view ) {
+    public void setView(SetupView view) {
         _view = view;
     }
 
-    public void launchGame( String nickName ) {
+    public void createPlayer(String name, Schooling schooling) {
+        Player newPlayer = schooling.createPlayer(name);
+        _players.add(newPlayer);
+    }
+
+    public void launchGame() {
         try {
             createAndDisplayGameView(nickName);
         } catch (IOException e) {
@@ -30,8 +36,5 @@ public class SetupPresenter {
         gamePresenter.setView(view);
         _view.close();
         view.show();
-    }
-
-    public void createPlayer() {
     }
 }

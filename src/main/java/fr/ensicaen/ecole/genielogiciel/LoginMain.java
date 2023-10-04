@@ -4,19 +4,19 @@ import fr.ensicaen.ecole.genielogiciel.model.DeterministicDice;
 import fr.ensicaen.ecole.genielogiciel.model.NoTraining;
 import fr.ensicaen.ecole.genielogiciel.model.Schooling;
 import fr.ensicaen.ecole.genielogiciel.presenter.*;
+import fr.ensicaen.ecole.genielogiciel.view.SetupView;
 import fr.ensicaen.ecole.genielogiciel.view.LoginView;
 import fr.ensicaen.ecole.genielogiciel.view.SetupView;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public final class LoginMain extends Application {
     private static final Object NUMBER_OF_PLAYERS = 1;
 
-    public static void main(String[] args ) {
+    public static void main(String[] args) {
         launch(args);
     }
 
