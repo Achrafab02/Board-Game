@@ -20,7 +20,7 @@ public final class LoginMain extends Application {
 
     @Override
     public void start(final Stage primaryStage) throws Exception {
-        SetupView view = SetupView.createView(primaryStage, "menu_setup_v0.fxml");
+        SetupView view = SetupView.createView(primaryStage, "menu_setup.fxml");
         SetupPresenter presenter = new SetupPresenter();
         view.setPresenter(presenter);
         presenter.setView(view);
