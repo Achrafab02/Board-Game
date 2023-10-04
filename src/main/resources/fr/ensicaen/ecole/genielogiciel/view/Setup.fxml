@@ -21,6 +21,8 @@
                         <Font size="20.0" />
                     </font>
                 </Text>
+                <TextField fx:id="_playerName" layoutX="123.0" layoutY="27.0" />
+                <ChoiceBox fx:id="_schoolingChoiceBox" layoutX="133.0" layoutY="94.0" prefWidth="150.0" />
             </children>
         </Pane>
         <Pane prefHeight="71.0" prefWidth="600.0" style="-fx-background-color: white; -fx-border-width: 2px; -fx-border-color: black;">
@@ -32,14 +34,12 @@
                 </Text>
             </children>
         </Pane>
-        <TextField fx:id="_playerName" layoutX="136.0" layoutY="105.0" />
-        <ChoiceBox fx:id="_schoolingChoiceBox" layoutX="137.0" layoutY="174.0" prefWidth="150.0" />
         <Text layoutX="23.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Formation">
             <font>
                 <Font size="20.0" />
             </font>
         </Text>
-        <Button id="add_player_btn" onAction="#getPlayerParameters" layoutX="110.0" layoutY="259.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: green; -fx-background-radius: 5%;" text="Ajouter joueur" textFill="WHITE" />
+        <Button id="add_player_btn" layoutX="110.0" layoutY="257.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: green; -fx-background-radius: 5%;" text="Ajouter joueur" textFill="WHITE" />
         <Pane layoutX="379.0" layoutY="82.0" prefHeight="214.0" prefWidth="199.0" style="-fx-background-color: white; -fx-border-width: 2px; -fx-border-color: black;">
             <children>
                 <TableView id="player_table_view" layoutX="2.0" layoutY="2.0" prefHeight="210.0" prefWidth="195.0">
@@ -50,12 +50,6 @@
                 </TableView>
             </children>
         </Pane>
-        <Button id="start_game_btn" onAction="#launchGame" layoutX="398.0" layoutY="310.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="162.0" style="-fx-background-color: green; -fx-background-radius: 5%;" text="Commencer partie" textFill="WHITE" />
-        <ImageView fitHeight="52.0" fitWidth="93.0" layoutX="22.0" layoutY="325.0">
-            <image>
-                <Image url="@lang.png" />
-            </image>
-        </ImageView>
-        <ChoiceBox id="language_choicebox" layoutX="127.0" layoutY="338.0" prefWidth="150.0" />
+        <Button id="start_game_btn" layoutX="398.0" layoutY="310.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="162.0" style="-fx-background-color: green; -fx-background-radius: 5%;" text="Commencer partie" textFill="WHITE" />
     </children>
 </AnchorPane>
