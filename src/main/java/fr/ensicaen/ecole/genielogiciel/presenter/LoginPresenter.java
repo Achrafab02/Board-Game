@@ -5,6 +5,7 @@ import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.LoginView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public final class LoginPresenter {
     private LoginView _view;
@@ -28,7 +29,7 @@ public final class LoginPresenter {
 
     private void createAndDisplayGameView( String nickName ) throws IOException {
         GameView view = GameView.createView();
-        GamePresenter gamePresenter = new GamePresenter(nickName);
+        GamePresenter gamePresenter = new GamePresenter(new ArrayList<>());
         view.setPresenter(gamePresenter);
         gamePresenter.setView(view);
         view.show();

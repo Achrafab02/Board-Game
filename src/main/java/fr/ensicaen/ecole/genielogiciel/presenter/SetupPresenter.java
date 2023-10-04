@@ -2,6 +2,7 @@ package fr.ensicaen.ecole.genielogiciel.presenter;
 
 import fr.ensicaen.ecole.genielogiciel.model.Player;
 import fr.ensicaen.ecole.genielogiciel.model.Schooling;
+import fr.ensicaen.ecole.genielogiciel.model.SchoolingBuilder;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.SetupView;
 
@@ -16,22 +17,24 @@ public class SetupPresenter {
         _view = view;
     }
 
-    public void createPlayer(String name, Schooling schooling) {
+    public void createPlayer(String name, String schoolingName) {
+        Schooling schooling = SchoolingBuilder.createSchooling(schoolingName); // TODO : catch exception
         Player newPlayer = schooling.createPlayer(name);
         _players.add(newPlayer);
+        _view.addPlayerToTableView(newPlayer);
     }
 
     public void launchGame() {
         try {
-            createAndDisplayGameView(nickName);
+            createAndDisplayGameView(_players);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private void createAndDisplayGameView( String nickName ) throws IOException {
+    private void createAndDisplayGameView(ArrayList<Player> players) throws IOException {
         GameView view = GameView.createView();
-        GamePresenter gamePresenter = new GamePresenter(nickName);
+        GamePresenter gamePresenter = new GamePresenter(players);
         view.setPresenter(gamePresenter);
         gamePresenter.setView(view);
         _view.close();

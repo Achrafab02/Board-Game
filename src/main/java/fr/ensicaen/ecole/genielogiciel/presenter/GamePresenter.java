@@ -1,10 +1,13 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
 import fr.ensicaen.ecole.genielogiciel.model.Model;
+import fr.ensicaen.ecole.genielogiciel.model.Player;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.PawnView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
+
+import java.util.ArrayList;
 
 
 public final class GamePresenter {
@@ -13,9 +16,8 @@ public final class GamePresenter {
     private boolean _end = false;
     private Rectangle _pawn;
 
-    public GamePresenter( String nickName ) {
+    public GamePresenter(ArrayList<Player> players) {
         _model = new Model();
-        _model.setNickname(nickName);
     }
 
     public void setView( GameView view ) {
@@ -27,7 +29,7 @@ public final class GamePresenter {
         board.getChildren().add(_pawn);
     }
 
-    public void movePawn( int nbTile) {
+    public void movePawn(int nbTile) {
         _pawn.setX(_pawn.getX() + 100 * nbTile);
     }
 

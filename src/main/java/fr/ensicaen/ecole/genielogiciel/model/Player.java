@@ -6,6 +6,7 @@ public class Player {
     private String _name;
     private final SoftSkill _softSkill;
     private ArrayList<HardSkill> _hardSkills;
+    private String _schooling;
 
     Player(String name, ArrayList<HardSkill> hardSkills) {
         _name = name;
@@ -25,5 +26,13 @@ public class Player {
             case 1 -> new Rigorous();
             default -> new Brilliant();
         };
+    }
+
+    public String getSchooling() {
+        return _schooling;
+    }
+
+    public String getName() {
+        return _name;
     }
 }
