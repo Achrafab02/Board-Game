@@ -1,6 +1,7 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
 import fr.ensicaen.ecole.genielogiciel.view.LanguageView;
+import fr.ensicaen.ecole.genielogiciel.view.SetupView;
 
 import java.io.IOException;
 
@@ -20,10 +21,10 @@ public class LanguagePresenter {
     }
 
     private void createAndDisplayGameView() throws IOException {
-        LanguageView view = LanguageView.createView();
-        LanguagePresenter languagePresenter = new LanguagePresenter();
-        view.setPresenter(languagePresenter);
-        languagePresenter.setView(view);
+        SetupView view = SetupView.createView();
+        SetupPresenter setupPresenter = new SetupPresenter();
+        view.setPresenter(setupPresenter);
+        setupPresenter.setView(view);
         _view.close();
         view.show();
     }

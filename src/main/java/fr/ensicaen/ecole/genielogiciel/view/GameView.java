@@ -31,8 +31,8 @@ public final class GameView {
         return view;
     }
 
-    public void setPresenter( BoardController gamePresenter ) {
-        _boardController = gamePresenter;
+    public void setPresenter(BoardController boardController) {
+        _boardController = boardController;
         _boardController.create_pawn(4);
     }
 
