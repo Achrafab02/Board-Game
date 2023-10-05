@@ -28,9 +28,9 @@ public final class LoginPresenter {
 
     private void createAndDisplayGameView( String nickName ) throws IOException {
         GameView view = GameView.createView();
-        BoardController boardController = new BoardController(nickName);
-        boardController.setView(view);
-        view.setPresenter(boardController);
+        GamePresenter gamePresenter = new GamePresenter(new ArrayList<>());
+        view.setPresenter(gamePresenter);
+        gamePresenter.setView(view);
         view.show();
     }
 }

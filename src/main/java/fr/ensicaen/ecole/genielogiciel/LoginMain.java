@@ -4,7 +4,9 @@ import fr.ensicaen.ecole.genielogiciel.model.DeterministicDice;
 import fr.ensicaen.ecole.genielogiciel.model.NoTraining;
 import fr.ensicaen.ecole.genielogiciel.model.Schooling;
 import fr.ensicaen.ecole.genielogiciel.presenter.*;
+import fr.ensicaen.ecole.genielogiciel.view.SetupView;
 import fr.ensicaen.ecole.genielogiciel.view.LoginView;
+import fr.ensicaen.ecole.genielogiciel.view.SetupView;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -14,7 +16,7 @@ import java.util.ResourceBundle;
 public final class LoginMain extends Application {
     private static final Object NUMBER_OF_PLAYERS = 1;
 
-    public static void main(String[] args ) {
+    public static void main(String[] args) {
         launch(args);
     }
 
@@ -24,11 +26,13 @@ public final class LoginMain extends Application {
 
     @Override
     public void start( final Stage primaryStage ) throws Exception {
-        LoginView view = LoginView.createView(primaryStage, "LoginDialog.fxml");
-        LoginPresenter presenter = new LoginPresenter();
+        SetupView view = SetupView.createView(primaryStage, "Setup.fxml");
+        SetupPresenter presenter = new SetupPresenter();
         view.setPresenter(presenter);
         presenter.setView(view);
         view.show();
+
+        view.initView();
 
         /*DicePresenter dicePresenter = new DicePresenter();
         new BoardController(dicePresenter);
