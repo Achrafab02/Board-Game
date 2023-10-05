@@ -16,27 +16,31 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class SetupView {
-
     private SetupPresenter _presenter;
     private Stage _stage;
-    @FXML
-    private TextField _playerName;
-    @FXML
-    private TableView<Player> _playerListPresenter;
-    @FXML
-    private TableColumn<Player, String> _nameColumn;
-    @FXML
-    private TableColumn<Player, String> _schoolingColumn;
-    private final ObservableList<Player> _playersList = FXCollections.observableArrayList();
+    @FXML private TableView<Player> _playerListPresenter;
+    @FXML private TableColumn<Player, String> _nameColumn;
+    @FXML private TableColumn<Player, String> _schoolingColumn;
+    private ObservableList<Player> _playersList;
 
-    @FXML
-    private ChoiceBox<String> _schoolingChoiceBox;
+    @FXML private TextField _playerName;
+    @FXML private ChoiceBox<String> _schoolingChoiceBox;
 
     public void initTableView() {
-        _playerListPresenter = new TableView<>();
-        _nameColumn = new TableColumn<>("Nom");
-        _schoolingColumn = new TableColumn<>("Schooling");
+        _playersList = FXCollections.observableArrayList();
+        _playerListPresenter.setItems(_playersList);
+        _nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        _schoolingColumn.setCellValueFactory(new PropertyValueFactory<>("schooling"));
         _playerListPresenter.getColumns().addAll(_nameColumn, _schoolingColumn);
+        _playersList.add(new Player("test", null, "test"));
+    }
+
+    private void printList() {
+        for (Player player : _playersList) {
+            System.out.println("Player name : " + player.getName());
+            System.out.println("Player schooling : " + player.getSchooling());
+        }
+        System.out.println("---");
     }
 
     public void displayError( String message ) {
@@ -59,9 +63,8 @@ public class SetupView {
 
     public void addPlayerToTableView(Player player) {
         _playersList.add(player);
-        _nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        _schoolingColumn.setCellValueFactory(new PropertyValueFactory<>("schooling"));
         _playerListPresenter.setItems(_playersList);
+        printList();
     }
 
     public void show() {

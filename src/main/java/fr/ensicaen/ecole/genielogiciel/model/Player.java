@@ -6,18 +6,20 @@ public class Player {
     private String _name;
     private final SoftSkill _softSkill;
     private ArrayList<HardSkill> _hardSkills;
-    private String _schooling;
+    private String _schoolingName;
 
-    Player(String name, ArrayList<HardSkill> hardSkills) {
+    public Player(String name, ArrayList<HardSkill> hardSkills, String schoolingName) {
         _name = name;
         _softSkill = chooseSoftSkillAtRandom();
         _hardSkills = hardSkills;
+        _schoolingName = schoolingName;
     }
 
-    Player(String name, ArrayList<HardSkill> hardSkills, SoftSkill softSkill) {
+    Player(String name, ArrayList<HardSkill> hardSkills, SoftSkill softSkill, String schoolingName) {
         _name = name;
         _softSkill = softSkill;
         _hardSkills = hardSkills;
+        _schoolingName = schoolingName;
     }
 
     private SoftSkill chooseSoftSkillAtRandom() {
@@ -29,7 +31,7 @@ public class Player {
     }
 
     public String getSchooling() {
-        return _schooling;
+        return _schoolingName;
     }
 
     public String getName() {
