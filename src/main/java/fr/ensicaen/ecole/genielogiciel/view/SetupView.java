@@ -31,8 +31,6 @@ public class SetupView {
         _playerListPresenter.setItems(_playersList);
         _nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         _schoolingColumn.setCellValueFactory(new PropertyValueFactory<>("schooling"));
-        _playerListPresenter.getColumns().addAll(_nameColumn, _schoolingColumn);
-        _playersList.add(new Player("test", null, "test"));
     }
 
     private void printList() {
@@ -77,7 +75,6 @@ public class SetupView {
 
     @FXML
     private void launchGame() {
-        displayError("CLICK DETECTED");
         _presenter.launchGame();
     }
 
