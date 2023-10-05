@@ -1,18 +1,18 @@
 package fr.ensicaen.ecole.genielogiciel;
 
-import fr.ensicaen.ecole.genielogiciel.model.DeterministicDice;
-import fr.ensicaen.ecole.genielogiciel.model.NoTraining;
-import fr.ensicaen.ecole.genielogiciel.model.Schooling;
+import fr.ensicaen.ecole.genielogiciel.model.DeterministicDice; // FIXME ne pas laisser des imports non utilisés (voir menu Refactor::Optimize import) dans IntelliJ)
+import fr.ensicaen.ecole.genielogiciel.model.NoTraining; // FIXME ne pas laisser des imports non utilisés
+import fr.ensicaen.ecole.genielogiciel.model.Schooling; // FIXME ne pas laisser des imports non utilisés
 import fr.ensicaen.ecole.genielogiciel.presenter.*;
 import fr.ensicaen.ecole.genielogiciel.view.LoginView;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
+import java.util.ArrayList; // FIXME ne pas laisser des imports non utilisés
 import java.util.ResourceBundle;
 
 public final class LoginMain extends Application {
-    private static final Object NUMBER_OF_PLAYERS = 1;
+    private static final Object NUMBER_OF_PLAYERS = 1; // FIXME jamais utilisé
 
     public static void main(String[] args ) {
         launch(args);
@@ -30,6 +30,7 @@ public final class LoginMain extends Application {
         presenter.setView(view);
         view.show();
 
+        // FIXME ne pas laisser de commentaire en production
         /*DicePresenter dicePresenter = new DicePresenter();
         new BoardController(dicePresenter);
 

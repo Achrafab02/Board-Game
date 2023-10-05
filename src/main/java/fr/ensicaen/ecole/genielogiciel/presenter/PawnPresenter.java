@@ -3,7 +3,7 @@ package fr.ensicaen.ecole.genielogiciel.presenter;
 import fr.ensicaen.ecole.genielogiciel.model.Pawn;
 import fr.ensicaen.ecole.genielogiciel.model.Player;
 
-public class PawnPresenter {
+public class PawnPresenter {     // FIXME ne pas mettre de code non utilisé dans la version en production
     private static final int MOVE_X = 110;
 
     private int _x = 0;

@@ -12,8 +12,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public final class GameView {
-    public AnchorPane _board;
-    public AnchorPane _diceBoard;
+    public AnchorPane _board; // FIXME mettre en final
+    public AnchorPane _diceBoard; // FIXME mettre en final
     private BoardController _boardController;
     private Stage _stage;
 

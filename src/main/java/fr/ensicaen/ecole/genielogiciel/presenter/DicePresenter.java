@@ -7,9 +7,9 @@ import javafx.scene.layout.AnchorPane;
 
 public class DicePresenter {
     private DiceView _view;
-    private final Rollable _model;
+    private final Rollable _model; // FIXME pas très bien nommé : _model preférer dice ?
 
-    public DicePresenter() {
+    public DicePresenter() {     // FIXME ne pas mettre de code non utilisé dans la version en production
         //_view = view;
         _model = new DeterministicDice();
     }

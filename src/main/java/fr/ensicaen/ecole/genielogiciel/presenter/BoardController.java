@@ -13,8 +13,9 @@ import javafx.scene.shape.Rectangle;
 public final class BoardController {
     private final Model _model;
     private GameView _view;
-    private final boolean _end = false;
-    private Rectangle[] _pawn;
+    private final boolean _end = false;     // FIXME ne pas mettre de code non utilisé dans la version en production
+    private Rectangle[] _pawn; // FIXME est-ce un élément de la vue et donc dépendnant de la bibliothèque graphique ?
+
     private final DicePresenter _dice;
     private int _nbPlayers;
     private int _playerTurn;
@@ -31,11 +32,11 @@ public final class BoardController {
         _dice.setDiceBoard(view.getDiceBoard());
     }
 
-    public void create_pawn(int nbPlayers) {
-        _nbPlayers = nbPlayers;
+    public void create_pawn(int nbPlayers) { // FIXME ne respecte pas la casse
+         _nbPlayers = nbPlayers;
         _playerPos = new int[nbPlayers];
 
-        Point[] coordonee = {new Point(40, 40), new Point(60, 40), new Point(40, 60), new Point(60, 60)};
+        Point[] coordonee = {new Point(40, 40), new Point(60, 40), new Point(40, 60), new Point(60, 60)}; // FIXME coordonnée -> en anglais
         Color[] color = {Color.RED, Color.BLUE, Color.GREEN, Color.PURPLE};
 
         _pawn = new Rectangle[nbPlayers];
@@ -47,7 +48,7 @@ public final class BoardController {
 
     public void play() {        // public void play(Player player)
         int pos = _playerPos[_playerTurn] + _dice.roll();
-        double newX = _pawn[_playerTurn].getX() + 100 * pos;
+        double newX = _pawn[_playerTurn].getX() + 100 * pos; // FIXME jamais utilisée
         if(pos > 6) {
             pos = 6 - (pos - 6);
         }
@@ -67,18 +68,18 @@ public final class BoardController {
         _playerTurn = (_playerTurn + 1) % _nbPlayers;
     }
 
-    private void update() {
+    private void update() {     // FIXME ne pas mettre de code non utilisé dans la version en production
         // Update the model
     }
 
-    private void render() {
+    private void render() {     // FIXME ne pas mettre de code non utilisé dans la version en production
         // Display the result on the view
         //_view.toto();
     }
 }
 
 class Point {
-    public int x;
+    public int x; // FIXME mettre en final si la valeur n'est jamais changée
     public int y;
 
     public Point(int x, int y) {

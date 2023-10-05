@@ -3,7 +3,7 @@ package fr.ensicaen.ecole.genielogiciel.view;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class PawnView {
+public class PawnView { // FIXME mettre la classe en final
     public static Rectangle create(double x, double y, Color color) {
 
         Rectangle pawn = new Rectangle();

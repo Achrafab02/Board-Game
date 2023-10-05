@@ -6,6 +6,7 @@ public class ComputerScience implements HardSkill {
     public ComputerScience() {
     }
 
+    // FIXME ne pas mettre de code non utilisé dans la version en production
     public ComputerScience(int score) {
         _score = score;
     }

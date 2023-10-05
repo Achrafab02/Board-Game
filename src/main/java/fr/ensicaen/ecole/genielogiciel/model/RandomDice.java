@@ -7,7 +7,7 @@ public class RandomDice implements Rollable {
     private final int _lowerInterval;
     private final int _upperInterval;
 
-    public RandomDice() {
+    public RandomDice() {     // FIXME ne pas mettre de code non utilisé dans la version en production
         _randomGenerator = new Random();
         _lowerInterval = 1;
         _upperInterval = 6;
@@ -25,7 +25,7 @@ public class RandomDice implements Rollable {
         _upperInterval = upperInterval;
     }
 
-    public RandomDice(long seed, int lowerInterval, int upperInterval) {
+    public RandomDice(long seed, int lowerInterval, int upperInterval) {     // FIXME ne pas mettre de code non utilisé dans la version en production
         _randomGenerator = new Random(seed);
         _lowerInterval = lowerInterval;
         _upperInterval = upperInterval;

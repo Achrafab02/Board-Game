@@ -3,8 +3,8 @@ package fr.ensicaen.ecole.genielogiciel.view;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
-public class DiceView {
-    public AnchorPane _diceBoard;
+public class DiceView { // FIXME mettre la classe en final
+    public AnchorPane _diceBoard; // FIXME mettre en final
 
     public DiceView(AnchorPane diceBoard) {
         _diceBoard = diceBoard;
