@@ -9,18 +9,24 @@ class ActionTest {
     @Test
     void idle() {
         Action action = new Action();
-        assertEquals(0, action._moveCount);
+        assertEquals(0, action.getMoveCount());
     }
 
     @Test
     void forward() {
         Action action = new Action(3);
-        assertEquals(3, action._moveCount);
+        assertEquals(3, action.getMoveCount());
     }
 
     @Test
     void backward() {
         Action action = new Action(-2);
-        assertEquals(-2, action._moveCount);
+        assertEquals(-2, action.getMoveCount());
+    }
+    @Test
+    void testSetMethod(){
+        Action action = new Action(-2);
+        action.setMoveCount(5);
+        assertEquals(5,action.getMoveCount());
     }
 }

@@ -28,4 +28,7 @@ public class DicePresenter {
         _view.display(nb);
         return nb;
     }
+    public int getmModelRoll(){
+        return _model.roll();
+    }
 }
