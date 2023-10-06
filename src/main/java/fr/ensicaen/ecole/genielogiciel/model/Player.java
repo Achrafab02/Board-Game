@@ -14,6 +14,7 @@ public class Player {
         _hardSkills = hardSkills;
         _schoolingName = schoolingName;
     }
+
     Player() {
         _softSkill = chooseSoftSkillAtRandom();
     }
