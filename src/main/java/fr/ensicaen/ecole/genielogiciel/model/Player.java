@@ -19,7 +19,7 @@ public class Player {
         _hardSkills = hardSkills;
     }
 
-    private SoftSkill chooseSoftSkillAtRandom() {
+    public SoftSkill chooseSoftSkillAtRandom() {
         return switch ((int) (Math.random() * 3)) {
             case 0 -> new Dabbler();
             case 1 -> new Rigorous();
