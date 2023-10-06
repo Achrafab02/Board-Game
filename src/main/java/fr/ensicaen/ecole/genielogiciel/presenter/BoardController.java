@@ -1,5 +1,6 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
+import fr.ensicaen.ecole.genielogiciel.LoginMain;
 import fr.ensicaen.ecole.genielogiciel.model.Player;
 import fr.ensicaen.ecole.genielogiciel.model.RandomDice;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
@@ -53,8 +54,8 @@ public final class BoardController {
 
         if (newPlayerPosition == NUMBER_OF_TILE) {
             //TODO : This javaFX should be in the view
-            Alert alert = new Alert(Alert.AlertType.NONE, "Player " + (_players.get(_playerTurn).getName()) + " win the game.", ButtonType.OK);
-            alert.setTitle("Winner");
+            Alert alert = new Alert(Alert.AlertType.NONE, (_players.get(_playerTurn).getName()) + " " + LoginMain.getMessageBundle().getString("winning.sentence"), ButtonType.OK);
+            alert.setTitle(LoginMain.getMessageBundle().getString("title.winner"));
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
                     System.out.println("Pressed OK.");
