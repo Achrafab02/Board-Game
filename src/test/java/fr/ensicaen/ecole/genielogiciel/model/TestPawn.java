@@ -3,7 +3,7 @@ package fr.ensicaen.ecole.genielogiciel.model;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PawnTest {
+public class TestPawn {
 
     @Test
     public void test_move_pawn_without_starting_tile() {

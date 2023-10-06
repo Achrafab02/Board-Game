@@ -3,6 +3,9 @@ package fr.ensicaen.ecole.genielogiciel.model;
 public class ComputerScience implements HardSkill {
     private int _level = 0;
 
+    public ComputerScience() {
+    }
+
     public ComputerScience(int score) {
         _level = score;
     }
