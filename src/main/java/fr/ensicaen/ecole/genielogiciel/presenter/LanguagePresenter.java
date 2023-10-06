@@ -8,6 +8,16 @@ import java.io.IOException;
 public class LanguagePresenter {
     private LanguageView _view;
 
+    private static String _language = "en";
+
+    public void setLanguage(String language) {
+        _language = language;
+    }
+
+    public static String getLanguage() {
+        return _language ;
+    }
+
     public void setView(LanguageView view) {
         _view = view;
     }
@@ -30,6 +40,7 @@ public class LanguagePresenter {
 
     public void launchFrenchSetup() {
         try {
+            setLanguage("fr");
             createAndDisplaySetupView();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -39,6 +50,7 @@ public class LanguagePresenter {
 
     public void launchEnglishSetup() {
         try {
+            setLanguage("en");
             createAndDisplaySetupView();
         } catch (IOException e) {
             throw new RuntimeException(e);

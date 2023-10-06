@@ -1,12 +1,15 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
+import fr.ensicaen.ecole.genielogiciel.LoginMain;
 import fr.ensicaen.ecole.genielogiciel.model_merge_problems.Player;
 import fr.ensicaen.ecole.genielogiciel.model_merge_problems.Schooling;
 import fr.ensicaen.ecole.genielogiciel.model_merge_problems.SchoolingBuilder;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.SetupView;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,16 +24,16 @@ public class SetupPresenter {
 
     public void createPlayer(String name, String schoolingName) {
         if(_players.size() >= 4) {
-            Alert alert = new Alert(Alert.AlertType.NONE, "[ERROR] Max number players reach", ButtonType.OK);
-            alert.setTitle("Players number");
+            Alert alert = new Alert(Alert.AlertType.NONE, LoginMain.getMessageBundle().getString("error.maxPlayer"), ButtonType.OK);
+            alert.setTitle(LoginMain.getMessageBundle().getString("error.title.maxPlayer"));
             alert.showAndWait().ifPresent(rs -> {});
         } else if(name.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.NONE, "[ERROR] Enter name", ButtonType.OK);
-            alert.setTitle("Players name");
+            Alert alert = new Alert(Alert.AlertType.NONE, LoginMain.getMessageBundle().getString("error.empty.player"), ButtonType.OK);
+            alert.setTitle(LoginMain.getMessageBundle().getString("error.title.empty.player"));
             alert.showAndWait().ifPresent(rs -> {});
         } else if (schoolingName == null) {
-            Alert alert = new Alert(Alert.AlertType.NONE, "[ERROR] Enter formation", ButtonType.OK);
-            alert.setTitle("Players formation");
+            Alert alert = new Alert(Alert.AlertType.NONE, LoginMain.getMessageBundle().getString("error.empty.training"), ButtonType.OK);
+            alert.setTitle(LoginMain.getMessageBundle().getString("error.title.empty.training"));
             alert.showAndWait().ifPresent(rs -> {});
         } else {
             Schooling schooling = SchoolingBuilder.createSchooling(schoolingName); // TODO : catch exception
@@ -42,8 +45,8 @@ public class SetupPresenter {
 
     public void launchGame() {
         if(_players.size() == 0) {
-            Alert alert = new Alert(Alert.AlertType.NONE, "[ERROR] Cant start the game with 0 players.", ButtonType.OK);
-            alert.setTitle("Players number");
+            Alert alert = new Alert(Alert.AlertType.NONE, LoginMain.getMessageBundle().getString("error.zero.player"), ButtonType.OK);
+            alert.setTitle(LoginMain.getMessageBundle().getString("error.title.zero.player"));
             alert.showAndWait().ifPresent(rs -> {});
         } else {
             try {
