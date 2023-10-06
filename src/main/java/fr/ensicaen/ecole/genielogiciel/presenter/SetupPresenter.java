@@ -1,9 +1,9 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
 import fr.ensicaen.ecole.genielogiciel.LoginMain;
-import fr.ensicaen.ecole.genielogiciel.model.Player;
-import fr.ensicaen.ecole.genielogiciel.model.Schooling;
-import fr.ensicaen.ecole.genielogiciel.model.SchoolingBuilder;
+import fr.ensicaen.ecole.genielogiciel.model_merge_problems.Player;
+import fr.ensicaen.ecole.genielogiciel.model_merge_problems.Schooling;
+import fr.ensicaen.ecole.genielogiciel.model_merge_problems.SchoolingBuilder;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.SetupView;
 import javafx.collections.ObservableList;
