@@ -19,4 +19,9 @@ public class ComputerScience implements HardSkill {
     public void setScore(int score) {
         _score = score;
     }
+
+    @Override
+    public void addToScore(int scoreToAdd) {
+        _score = Math.max(_score + scoreToAdd, 0);
+    }
 }
