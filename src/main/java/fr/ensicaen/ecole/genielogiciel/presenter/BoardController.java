@@ -40,7 +40,7 @@ public final class BoardController {
 
         _pawn = new Rectangle[nbPlayers];
         for (int i = 0; i < nbPlayers; i++) {
-            _pawn[i] = PawnView.create(coordonee[i].x, coordonee[i].y, color[i]);
+            _pawn[i] = PawnView.create();
             _view.getBoard().getChildren().add(_pawn[i]);
         }
     }

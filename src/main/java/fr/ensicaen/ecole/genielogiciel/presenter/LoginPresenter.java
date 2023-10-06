@@ -5,6 +5,7 @@ import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.LoginView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public final class LoginPresenter {
     private LoginView _view;

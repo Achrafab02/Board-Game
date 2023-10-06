@@ -37,12 +37,21 @@ public class LanguageView {
         // if we want the presenter independent of the API JavaFX.
         LanguageView view = loader.getController();
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(LanguageView.class.getResource("ButtonStyles.css").toExternalForm());
         primaryStage.setScene(scene);
         view._stage = primaryStage;
         return view;
     }
 
+    @FXML
+    private void launchFrenchSetup() {
+        _presenter.launchFrenchSetup();
+    }
 
+    @FXML
+    private void launchEnglishSetup() {
+        _presenter.launchEnglishSetup();
+    }
 
     public void setPresenter(LanguagePresenter presenter) {
         _presenter = presenter;

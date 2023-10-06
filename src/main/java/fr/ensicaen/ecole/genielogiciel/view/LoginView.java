@@ -31,6 +31,7 @@ public class LoginView {
         // if we want the presenter independent of the API JavaFX.
         LoginView view = loader.getController();
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(LoginView.class.getResource("ButtonStyles.css").toExternalForm());
         primaryStage.setScene(scene);
         view._stage = primaryStage;
         return view;

@@ -4,6 +4,7 @@ import fr.ensicaen.ecole.genielogiciel.model.DeterministicDice;
 import fr.ensicaen.ecole.genielogiciel.model.NoTraining;
 import fr.ensicaen.ecole.genielogiciel.model.Schooling;
 import fr.ensicaen.ecole.genielogiciel.presenter.*;
+import fr.ensicaen.ecole.genielogiciel.view.LanguageView;
 import fr.ensicaen.ecole.genielogiciel.view.SetupView;
 import fr.ensicaen.ecole.genielogiciel.view.LoginView;
 import fr.ensicaen.ecole.genielogiciel.view.SetupView;
@@ -26,8 +27,8 @@ public final class LoginMain extends Application {
 
     @Override
     public void start( final Stage primaryStage ) throws Exception {
-        SetupView view = SetupView.createView(primaryStage, "Setup.fxml");
-        SetupPresenter presenter = new SetupPresenter();
+        LanguageView view = LanguageView.createView(primaryStage, "Language.fxml");
+        LanguagePresenter presenter = new LanguagePresenter();
         view.setPresenter(presenter);
         presenter.setView(view);
         view.show();
