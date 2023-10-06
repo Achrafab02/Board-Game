@@ -4,22 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class PlayerTest {
 
-
     @Test
-    void TestChooseSoftSkillsAtRandom() {
-        Player player = new Player();
-        SoftSkill skill = player.chooseSoftSkillAtRandom();
-        //System.out.println();
-        assertTrue(skill instanceof SoftSkill);
-
-    }
-
-    @Test
-    void test_constructor_hardskills() {
+    void test_constructor_hardkills() {
         int level = 3;
         ArrayList<HardSkill> hardSkillsList = new ArrayList<>();
         hardSkillsList.add(new ComputerScience(level));
