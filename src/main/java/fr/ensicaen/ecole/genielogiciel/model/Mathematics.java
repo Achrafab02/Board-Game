@@ -1,24 +1,24 @@
 package fr.ensicaen.ecole.genielogiciel.model;
 
 public class Mathematics implements HardSkill {
-    private int _level = 0;
+    private int _score = 0;
 
     public Mathematics() {
 
     }
 
     public Mathematics(int score) {
-        _level = score;
+        _score = score;
     }
 
     @Override
-    public int getLevel() {
-        return _level;
+    public int getScore() {
+        return _score;
     }
 
     @Override
-    public void increaseLevel(int score) {
-        _level = score;
+    public void setScore(int score) {
+        _score = score;
     }
 
 

@@ -6,6 +6,6 @@ public class NoTraining implements Schooling {
 
     @Override
     public Player createPlayer(String name) {
-        return new Player(name, new ArrayList<>(), "noTraining");
+        return new Player(name, new ArrayList<HardSkill>(), "noTraining");
     }
 }

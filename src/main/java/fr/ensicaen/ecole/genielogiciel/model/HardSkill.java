@@ -1,7 +1,7 @@
 package fr.ensicaen.ecole.genielogiciel.model;
 
 public interface HardSkill {
-    int getLevel();
+    int getScore();
 
-    void increaseLevel(int score);
+    void setScore(int score);
 }
