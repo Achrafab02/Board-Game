@@ -1,5 +1,6 @@
 package fr.ensicaen.ecole.genielogiciel.view;
 
+import fr.ensicaen.ecole.genielogiciel.LoginMain;
 import fr.ensicaen.ecole.genielogiciel.presenter.BoardController;
 
 import javafx.fxml.FXML;
@@ -18,7 +19,7 @@ public final class GameView {
     private Stage _stage;
 
     public static GameView createView() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader();
+        FXMLLoader fxmlLoader = new FXMLLoader(SetupView.class.getResource("Board.fxml"), LoginMain.getMessageBundle());
         fxmlLoader.setLocation(GameView.class.getResource("Board.fxml"));
         Parent root = fxmlLoader.load();
         final GameView view = fxmlLoader.getController();

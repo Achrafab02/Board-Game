@@ -1,5 +1,6 @@
 package fr.ensicaen.ecole.genielogiciel.view;
 
+import fr.ensicaen.ecole.genielogiciel.LoginMain;
 import fr.ensicaen.ecole.genielogiciel.model_merge_problems.Player;
 import fr.ensicaen.ecole.genielogiciel.presenter.SetupPresenter;
 import javafx.collections.FXCollections;
@@ -91,7 +92,7 @@ public class SetupView {
     }
 
     public static SetupView createView() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader();
+        FXMLLoader fxmlLoader = new FXMLLoader(SetupView.class.getResource("Setup.fxml"), LoginMain.getMessageBundle());
         fxmlLoader.setLocation(SetupView.class.getResource("Setup.fxml"));
         Parent root = fxmlLoader.load();
         final SetupView view = fxmlLoader.getController();

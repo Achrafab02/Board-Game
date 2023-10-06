@@ -16,14 +16,14 @@
     <children>
         <Pane layoutX="18.0" layoutY="116.0" prefHeight="158.0" prefWidth="342.0" style="-fx-background-color: white; -fx-border-width: 2px; -fx-border-color: black;">
             <children>
-                <Text layoutX="36.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom">
+                <Text layoutX="36.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%setup.player.name">
                     <font>
                         <Font size="20.0" />
                     </font>
                 </Text>
                 <TextField fx:id="_playerName" layoutX="123.0" layoutY="27.0" />
                 <ChoiceBox fx:id="_schoolingChoiceBox" layoutX="133.0" layoutY="94.0" prefWidth="150.0" />
-                <Text layoutX="8.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Formation">
+                <Text layoutX="8.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%setup.player.formation">
                     <font>
                         <Font size="20.0" />
                     </font>
@@ -37,24 +37,24 @@
                         <Image url="@Logo_oie.png" />
                     </image>
                 </ImageView>
-                <Text layoutX="129.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jeu de l'oie">
+                <Text layoutX="129.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%setup.title.game">
                     <font>
                         <Font size="46.0" />
                     </font>
                 </Text>
             </children>
         </Pane>
-        <Button id="add_player_btn" onAction="#getPlayerParameters" layoutX="109.0" layoutY="285.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Ajouter joueur" textFill="WHITE" />
+        <Button id="add_player_btn" onAction="#getPlayerParameters" layoutX="109.0" layoutY="285.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="%setup.add.player" textFill="WHITE" />
         <Pane layoutX="380.0" layoutY="114.0" prefHeight="214.0" prefWidth="199.0" style="-fx-background-color: white; -fx-border-width: 2px; -fx-border-color: black;">
             <children>
                 <TableView fx:id="_playerListPresenter" id="player_table_view" layoutX="2.0" layoutY="2.0" prefHeight="210.0" prefWidth="195.0">
                     <columns>
-                        <TableColumn fx:id="_nameColumn" prefWidth="97.0" text="Name" />
-                        <TableColumn fx:id="_schoolingColumn" prefWidth="97.0" text="Schooling" />
+                        <TableColumn fx:id="_nameColumn" prefWidth="97.0" text="%setup.table.name" />
+                        <TableColumn fx:id="_schoolingColumn" prefWidth="97.0" text="%setup.table.formation" />
                     </columns>
                 </TableView>
             </children>
         </Pane>
-        <Button id="start_game_btn" onAction="#launchGame" layoutX="398.0" layoutY="340.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="162.0" text="Commencer partie" textFill="WHITE" />
+        <Button id="start_game_btn" onAction="#launchGame" layoutX="398.0" layoutY="340.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="162.0" text="%setup.button.launch" textFill="WHITE" />
     </children>
 </AnchorPane>
