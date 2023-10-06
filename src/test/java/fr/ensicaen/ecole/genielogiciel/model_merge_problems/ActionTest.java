@@ -1,4 +1,4 @@
-package fr.ensicaen.ecole.genielogiciel.model;
+package fr.ensicaen.ecole.genielogiciel.model_merge_problems;
 
 import org.junit.jupiter.api.Test;
 
@@ -22,5 +22,11 @@ class ActionTest {
     void backward() {
         Action action = new Action(-2);
         assertEquals(-2, action._moveCount);
+    }
+    @Test
+    void testSetMethod(){
+        Action action = new Action(-2);
+        action._moveCount = 5;
+        assertEquals(5,action._moveCount);
     }
 }

@@ -1,13 +1,12 @@
-package fr.ensicaen.ecole.genielogiciel.model;
+package fr.ensicaen.ecole.genielogiciel.model_merge_problems;
 
-public class Mathematics implements HardSkill {
+public class ComputerScience implements HardSkill {
     private int _score = 0;
 
-    public Mathematics() {
-
+    public ComputerScience() {
     }
 
-    public Mathematics(int score) {
+    public ComputerScience(int score) {
         _score = score;
     }
 
@@ -25,6 +24,4 @@ public class Mathematics implements HardSkill {
     public void addToScore(int scoreToAdd) {
         _score = Math.max(_score + scoreToAdd, 0);
     }
-
-
 }

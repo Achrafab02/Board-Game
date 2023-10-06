@@ -1,4 +1,4 @@
-package fr.ensicaen.ecole.genielogiciel.model;
+package fr.ensicaen.ecole.genielogiciel.model_merge_problems;
 
 public class SchoolingBuilder {
     public static Schooling createSchooling(String schooling) {

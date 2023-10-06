@@ -1,14 +1,12 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
-import fr.ensicaen.ecole.genielogiciel.model.Player;
-import fr.ensicaen.ecole.genielogiciel.model.Schooling;
-import fr.ensicaen.ecole.genielogiciel.model.SchoolingBuilder;
+import fr.ensicaen.ecole.genielogiciel.model_merge_problems.Player;
+import fr.ensicaen.ecole.genielogiciel.model_merge_problems.Schooling;
+import fr.ensicaen.ecole.genielogiciel.model_merge_problems.SchoolingBuilder;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.SetupView;
-import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableView;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package fr.ensicaen.ecole.genielogiciel.model;
+package fr.ensicaen.ecole.genielogiciel.model_merge_problems;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
