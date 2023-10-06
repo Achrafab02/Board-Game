@@ -1,12 +1,12 @@
-package fr.ensicaen.ecole.genielogiciel.model;
+package fr.ensicaen.ecole.genielogiciel.model_merge_problems;
 
 import java.util.ArrayList;
 
 public class Player {
-    private final String _name;
+    private String _name;
     private final SoftSkill _softSkill;
-    private final ArrayList<HardSkill> _hardSkills;
-    private final String _schoolingName;
+    private ArrayList<HardSkill> _hardSkills;
+    private String _schoolingName;
 
     public Player(String name, ArrayList<HardSkill> hardSkills, String schoolingName) {
         _name = name;

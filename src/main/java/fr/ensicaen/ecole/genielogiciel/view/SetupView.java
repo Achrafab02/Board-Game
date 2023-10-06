@@ -1,7 +1,6 @@
 package fr.ensicaen.ecole.genielogiciel.view;
 
-import fr.ensicaen.ecole.genielogiciel.LoginMain;
-import fr.ensicaen.ecole.genielogiciel.model.Player;
+import fr.ensicaen.ecole.genielogiciel.model_merge_problems.Player;
 import fr.ensicaen.ecole.genielogiciel.presenter.SetupPresenter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
