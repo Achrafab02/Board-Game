@@ -21,5 +21,10 @@ public class Mathematics implements HardSkill {
         _score = score;
     }
 
+    @Override
+    public void addToScore(int scoreToAdd) {
+        _score += scoreToAdd;
+    }
+
 
 }

@@ -4,4 +4,6 @@ public interface HardSkill {
     int getScore();
 
     void setScore(int score);
+
+    void addToScore(int scoreToAdd);
 }
