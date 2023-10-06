@@ -41,6 +41,12 @@ public class SetupView {
         System.out.println("---");
     }
 
+    public void popUpAlert(String key) {
+        Alert alert = new Alert(Alert.AlertType.NONE, LoginMain.getMessageBundle().getString(key), ButtonType.OK);
+        alert.setTitle(LoginMain.getMessageBundle().getString(key));
+        alert.showAndWait().ifPresent(rs -> {});
+    }
+
     public void displayError( String message ) {
         _playerName.setText(message);
     }
@@ -55,7 +61,9 @@ public class SetupView {
 
     public void setSchoolingChoiceBox() {
         String noTraining = "noTraining";
-        ObservableList<String> choiceList = FXCollections.observableArrayList(noTraining);
+        String prepa = "prepa";
+        String ast = "ast";
+        ObservableList<String> choiceList = FXCollections.observableArrayList(noTraining, prepa, ast);
         _schoolingChoiceBox.setItems(choiceList);
     }
 

@@ -4,6 +4,7 @@ import fr.ensicaen.ecole.genielogiciel.LoginMain;
 import fr.ensicaen.ecole.genielogiciel.model_merge_problems.Player;
 import fr.ensicaen.ecole.genielogiciel.model_merge_problems.Point;
 import fr.ensicaen.ecole.genielogiciel.model_merge_problems.RandomDice;
+import fr.ensicaen.ecole.genielogiciel.view.DiceView;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.PawnView;
 import fr.ensicaen.ecole.genielogiciel.view.RankingView;
@@ -32,7 +33,8 @@ public final class GamePresenter {
 
     public void setView( GameView view ) {
         _view = view;
-        _dice.setDiceBoard(view.getDiceBoard());
+        //_dice.setDiceBoard(view.getDiceBoard());
+        _dice.setView(new DiceView(view.getDiceBoard()));
 
         _playerPos = new int[_players.size()];
         Point[] coordonee = {new Point(40, 40), new Point(60, 40), new Point(40, 60), new Point(60, 60)};
@@ -45,7 +47,7 @@ public final class GamePresenter {
         }
     }
 
-    public void play() {        // public void play(Player player)
+    public void play() {
         int pos = _playerPos[_playerTurn] + _dice.roll();
         double newX = _pawn[_playerTurn].getX() + 100 * pos;
         if(pos > 6) {
