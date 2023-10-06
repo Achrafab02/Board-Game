@@ -16,7 +16,10 @@ public final class LoginMain extends Application {
     }
 
     public static ResourceBundle getMessageBundle() {
-        return ResourceBundle.getBundle("fr.ensicaen.ecole.genielogiciel.MessageBundle");
+        if (LanguagePresenter.getLanguage().equals("fr")) {
+            return ResourceBundle.getBundle("fr.ensicaen.ecole.genielogiciel.MessageBundle");
+        }
+        return ResourceBundle.getBundle("fr.ensicaen.ecole.genielogiciel.MessageBundle_en_US");
     }
 
     @Override

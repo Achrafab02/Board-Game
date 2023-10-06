@@ -11,7 +11,7 @@
                 prefWidth="710.0" styleClass="board" stylesheets="@Board.css"/>
     <VBox>
         <AnchorPane fx:id="_diceBoard" prefHeight="86.0" prefWidth="0.0" styleClass="diceBoard" stylesheets="@Board.css"/>
-        <Button onAction="#rollDice" mnemonicParsing="false" prefHeight="24.0" prefWidth="146.0" text="Roll dice"/>
+        <Button onAction="#rollDice" mnemonicParsing="false" prefHeight="24.0" prefWidth="146.0" text="%board.button.rollDice"/>
 
     </VBox>
 </HBox>

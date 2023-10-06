@@ -92,7 +92,7 @@ public class SetupView {
     }
 
     public static SetupView createView() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader();
+        FXMLLoader fxmlLoader = new FXMLLoader(SetupView.class.getResource("Setup.fxml"), LoginMain.getMessageBundle());
         fxmlLoader.setLocation(SetupView.class.getResource("Setup.fxml"));
         Parent root = fxmlLoader.load();
         final SetupView view = fxmlLoader.getController();

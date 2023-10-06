@@ -1,5 +1,6 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
+import fr.ensicaen.ecole.genielogiciel.LoginMain;
 import fr.ensicaen.ecole.genielogiciel.model.Model;
 import fr.ensicaen.ecole.genielogiciel.model.Player;
 import fr.ensicaen.ecole.genielogiciel.model.RandomDice;
@@ -51,8 +52,8 @@ public final class BoardController {
         _pawn[_playerTurn].setX(_pawn[_playerTurn].getX() + 100 * (pos - _playerPos[_playerTurn]));
 
         if(pos == 6) {
-            Alert alert = new Alert(Alert.AlertType.NONE, "Player " + (_players.get(_playerTurn).getName()) + " win the game.", ButtonType.OK);
-            alert.setTitle("Winner");
+            Alert alert = new Alert(Alert.AlertType.NONE, (_players.get(_playerTurn).getName()) + " " + LoginMain.getMessageBundle().getString("winning.sentence"), ButtonType.OK);
+            alert.setTitle(LoginMain.getMessageBundle().getString("title.winner"));
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
                     System.out.println("Pressed OK.");
