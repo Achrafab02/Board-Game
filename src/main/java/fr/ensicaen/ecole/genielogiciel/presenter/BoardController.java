@@ -1,9 +1,7 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
 import fr.ensicaen.ecole.genielogiciel.LoginMain;
-import fr.ensicaen.ecole.genielogiciel.model_merge_problems.Player;
-import fr.ensicaen.ecole.genielogiciel.model_merge_problems.RandomDice;
-import fr.ensicaen.ecole.genielogiciel.model_merge_problems.Rollable;
+import fr.ensicaen.ecole.genielogiciel.model_merge_problems.*;
 import fr.ensicaen.ecole.genielogiciel.view.DiceView;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.PawnView;
@@ -23,13 +21,14 @@ public final class BoardController {
     ArrayList<Player> _players;
     private int _playerTurn;
     private int[] _playerPos;
+    private Tile[] _tiles;
 
     public BoardController(ArrayList<Player> players) {
         _players = players;
         Rollable dice = new RandomDice(1, 2);
         _dicePresenter = new DicePresenter(dice);
 
-
+        _tiles = new Tile[]{new TileNeutral(), new TileNeutral(), new TileMathClass(), new TileNeutral(), new TileNeutral(), new TileMathExam(), new TileNeutral()};
     }
 
     public void setView(GameView view) {
@@ -51,10 +50,15 @@ public final class BoardController {
 
     public void play() {        // public void play(Player player)
         int pos = _playerPos[_playerTurn] + _dicePresenter.roll();
-        double newX = _pawn[_playerTurn].getX() + 100 * pos;
         if (pos > 6) {
             pos = 6 - (pos - 6);
         }
+
+        pos += _tiles[pos].getMoveInstruction(_players.get(_playerTurn))._moveCount;
+        if (pos > 6) {
+            pos = 6 - (pos - 6);
+        }
+
         _pawn[_playerTurn].setX(_pawn[_playerTurn].getX() + 100 * (pos - _playerPos[_playerTurn]));
 
         if (pos == 6) {
