@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestMathematics {
+public class MathematicsTest {
     @Test
     void testMathematics(){
         Mathematics math = new Mathematics(3);

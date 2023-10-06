@@ -10,6 +10,9 @@ public class Player {
         _softSkill = chooseSoftSkillAtRandom();
         _hardSkills = hardSkills;
     }
+    Player() {
+        _softSkill = chooseSoftSkillAtRandom();
+    }
 
     Player(ArrayList<HardSkill> hardSkills, SoftSkill softSkill) {
         _softSkill = softSkill;

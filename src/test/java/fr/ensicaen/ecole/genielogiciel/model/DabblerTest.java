@@ -2,11 +2,9 @@ package fr.ensicaen.ecole.genielogiciel.model;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Random;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestDabbler {
+public class DabblerTest {
     private final int number_of_test = 10;
     @Test
     void test_modify_dice_roll() {

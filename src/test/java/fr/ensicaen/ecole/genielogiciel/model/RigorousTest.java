@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestRigorous {
+public class RigorousTest {
     @Test
     void test_rigorous(){
         int value = 5;

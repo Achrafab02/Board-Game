@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class TestBrilliant {
+public class BrilliantTest {
     @Test
     public void test_brilliant(){
         int value = 5;
