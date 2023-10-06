@@ -47,9 +47,9 @@ public class SetupPresenter {
 
     private void createAndDisplayGameView(ArrayList<Player> players) throws IOException {
         GameView view = GameView.createView();
-        BoardController boardController = new BoardController(players);
-        boardController.setView(view);
-        view.setPresenter(boardController);
+        GamePresenter gamePresenter = new GamePresenter(players);
+        gamePresenter.setView(view);
+        view.setPresenter(gamePresenter);
         view.show();
     }
 }

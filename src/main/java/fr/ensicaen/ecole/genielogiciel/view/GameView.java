@@ -1,7 +1,7 @@
 package fr.ensicaen.ecole.genielogiciel.view;
 
 import fr.ensicaen.ecole.genielogiciel.LoginMain;
-import fr.ensicaen.ecole.genielogiciel.presenter.BoardController;
+import fr.ensicaen.ecole.genielogiciel.presenter.GamePresenter;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,13 +13,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public final class GameView {
+    private GamePresenter _presenter;
     public AnchorPane _board;
     public AnchorPane _diceBoard;
-    private BoardController _boardController;
+    private GamePresenter _boardController;
     private Stage _stage;
 
     public static GameView createView() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SetupView.class.getResource("Board.fxml"), LoginMain.getMessageBundle());
+        FXMLLoader fxmlLoader = new FXMLLoader(GameView.class.getResource("Board.fxml"), LoginMain.getMessageBundle());
         fxmlLoader.setLocation(GameView.class.getResource("Board.fxml"));
         Parent root = fxmlLoader.load();
         final GameView view = fxmlLoader.getController();
@@ -32,7 +33,12 @@ public final class GameView {
         return view;
     }
 
-    public void setPresenter(BoardController boardController) {
+    @FXML
+    private void launchRanking() {
+        _presenter.launchRanking();
+    }
+
+    public void setPresenter(GamePresenter boardController) {
         _boardController = boardController;
     }
 
@@ -51,5 +57,9 @@ public final class GameView {
 
     public AnchorPane getDiceBoard() {
         return _diceBoard;
+    }
+
+    public void close() {
+        _stage.close();
     }
 }
