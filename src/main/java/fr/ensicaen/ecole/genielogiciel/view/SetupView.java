@@ -55,7 +55,9 @@ public class SetupView {
 
     public void setSchoolingChoiceBox() {
         String noTraining = "noTraining";
-        ObservableList<String> choiceList = FXCollections.observableArrayList(noTraining);
+        String prepa = "prepa";
+        String ast = "ast";
+        ObservableList<String> choiceList = FXCollections.observableArrayList(noTraining, prepa, ast);
         _schoolingChoiceBox.setItems(choiceList);
     }
 
