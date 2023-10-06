@@ -18,9 +18,9 @@ import java.io.IOException;
 public class SetupView {
     private SetupPresenter _presenter;
     private Stage _stage;
-    @FXML private TableView<Player> _playerListPresenter;
-    @FXML private TableColumn<Player, String> _nameColumn;
-    @FXML private TableColumn<Player, String> _schoolingColumn;
+    @FXML private TableView<Player> _playerSetupTableView;
+    @FXML private TableColumn<Player, String> _nameColumnSetup;
+    @FXML private TableColumn<Player, String> _schoolingColumnSetup;
     private ObservableList<Player> _playersList;
 
     @FXML private TextField _playerName;
@@ -28,9 +28,9 @@ public class SetupView {
 
     public void initTableView() {
         _playersList = FXCollections.observableArrayList();
-        _playerListPresenter.setItems(_playersList);
-        _nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        _schoolingColumn.setCellValueFactory(new PropertyValueFactory<>("schooling"));
+        _playerSetupTableView.setItems(_playersList);
+        _nameColumnSetup.setCellValueFactory(new PropertyValueFactory<>("name"));
+        _schoolingColumnSetup.setCellValueFactory(new PropertyValueFactory<>("schooling"));
     }
 
     private void printList() {
@@ -61,8 +61,7 @@ public class SetupView {
 
     public void addPlayerToTableView(Player player) {
         _playersList.add(player);
-        _playerListPresenter.setItems(_playersList);
-        printList();
+        _playerSetupTableView.setItems(_playersList);
     }
 
     public void show() {
