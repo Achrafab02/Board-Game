@@ -23,7 +23,7 @@ public class Mathematics implements HardSkill {
 
     @Override
     public void addToScore(int scoreToAdd) {
-        _score += scoreToAdd;
+        _score = Math.max(_score + scoreToAdd, 0);
     }
 
 
