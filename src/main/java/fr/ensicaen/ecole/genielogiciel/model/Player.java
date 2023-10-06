@@ -14,6 +14,9 @@ public class Player {
         _hardSkills = hardSkills;
         _schoolingName = schoolingName;
     }
+    Player() {
+        _softSkill = chooseSoftSkillAtRandom();
+    }
 
     Player(String name, ArrayList<HardSkill> hardSkills, SoftSkill softSkill, String schoolingName) {
         _name = name;
@@ -22,7 +25,7 @@ public class Player {
         _schoolingName = schoolingName;
     }
 
-    private SoftSkill chooseSoftSkillAtRandom() {
+    public SoftSkill chooseSoftSkillAtRandom() {
         return switch ((int) (Math.random() * 3)) {
             case 0 -> new Dabbler();
             case 1 -> new Rigorous();

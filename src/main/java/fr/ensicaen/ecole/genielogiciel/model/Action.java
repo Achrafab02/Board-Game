@@ -11,4 +11,11 @@ public class Action {
     public Action(int n) {
         _moveCount = n;
     }
+
+    public int  getMoveCount (){
+        return _moveCount;
+    }
+    public void  setMoveCount (int n){
+        _moveCount = n;
+    }
 }

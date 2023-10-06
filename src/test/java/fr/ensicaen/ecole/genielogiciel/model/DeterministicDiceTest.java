@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TestDeterministicDice {
+class DeterministicDiceTest {
     @Test
     void test_deterministic_dice() {
         DeterministicDice d = new DeterministicDice();
