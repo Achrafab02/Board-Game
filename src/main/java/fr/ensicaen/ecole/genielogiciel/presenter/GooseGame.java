@@ -1,7 +1,6 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
-import fr.ensicaen.ecole.genielogiciel.model.Player;
-import fr.ensicaen.ecole.genielogiciel.model.Schooling;
+import fr.ensicaen.ecole.genielogiciel.model_merge_problems.Player;
 
 import java.util.ArrayList;
 

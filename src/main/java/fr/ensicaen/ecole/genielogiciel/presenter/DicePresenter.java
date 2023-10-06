@@ -1,7 +1,7 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
-import fr.ensicaen.ecole.genielogiciel.model.DeterministicDice;
-import fr.ensicaen.ecole.genielogiciel.model.Rollable;
+import fr.ensicaen.ecole.genielogiciel.model_merge_problems.DeterministicDice;
+import fr.ensicaen.ecole.genielogiciel.model_merge_problems.Rollable;
 import fr.ensicaen.ecole.genielogiciel.view.DiceView;
 import javafx.scene.layout.AnchorPane;
 

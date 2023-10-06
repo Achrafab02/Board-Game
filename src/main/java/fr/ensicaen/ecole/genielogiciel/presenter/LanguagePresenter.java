@@ -1,12 +1,9 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
-import fr.ensicaen.ecole.genielogiciel.model.Player;
-import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.LanguageView;
 import fr.ensicaen.ecole.genielogiciel.view.SetupView;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class LanguagePresenter {
     private LanguageView _view;

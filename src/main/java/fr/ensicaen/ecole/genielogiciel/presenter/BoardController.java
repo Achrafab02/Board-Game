@@ -1,8 +1,7 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
-import fr.ensicaen.ecole.genielogiciel.model.Model;
-import fr.ensicaen.ecole.genielogiciel.model.Player;
-import fr.ensicaen.ecole.genielogiciel.model.RandomDice;
+import fr.ensicaen.ecole.genielogiciel.model_merge_problems.Player;
+import fr.ensicaen.ecole.genielogiciel.model_merge_problems.RandomDice;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.PawnView;
 import javafx.scene.control.Alert;
