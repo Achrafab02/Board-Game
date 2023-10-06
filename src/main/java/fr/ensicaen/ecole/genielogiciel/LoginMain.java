@@ -1,17 +1,11 @@
 package fr.ensicaen.ecole.genielogiciel;
 
-import fr.ensicaen.ecole.genielogiciel.model.DeterministicDice;
-import fr.ensicaen.ecole.genielogiciel.model.NoTraining;
-import fr.ensicaen.ecole.genielogiciel.model.Schooling;
 import fr.ensicaen.ecole.genielogiciel.presenter.*;
 import fr.ensicaen.ecole.genielogiciel.view.LanguageView;
-import fr.ensicaen.ecole.genielogiciel.view.SetupView;
-import fr.ensicaen.ecole.genielogiciel.view.LoginView;
 import fr.ensicaen.ecole.genielogiciel.view.SetupView;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public final class LoginMain extends Application {

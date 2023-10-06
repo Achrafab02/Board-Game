@@ -2,8 +2,6 @@ package fr.ensicaen.ecole.genielogiciel.view;
 
 import fr.ensicaen.ecole.genielogiciel.presenter.BoardController;
 
-import fr.ensicaen.ecole.genielogiciel.presenter.GamePresenter;
-import fr.ensicaen.ecole.genielogiciel.presenter.SetupPresenter;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +14,7 @@ import java.io.IOException;
 public final class GameView {
     public AnchorPane _board;
     public AnchorPane _diceBoard;
-    private GamePresenter _gamePresenter;
+    private BoardController _boardController;
     private Stage _stage;
 
     public static GameView createView() throws IOException {
@@ -33,9 +31,8 @@ public final class GameView {
         return view;
     }
 
-    public void setPresenter(GamePresenter gamePresenter) {
-        _gamePresenter = gamePresenter;
-        _gamePresenter.setPawn(_board);
+    public void setPresenter(BoardController boardController) {
+        _boardController = boardController;
     }
 
     public void show() {
@@ -44,7 +41,7 @@ public final class GameView {
 
     @FXML
     private void rollDice() {
-        _gamePresenter.movePawn(1);
+        _boardController.play();
     }
 
     public AnchorPane getBoard() {

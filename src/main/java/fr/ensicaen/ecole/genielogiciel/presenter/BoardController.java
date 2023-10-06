@@ -1,6 +1,7 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
 import fr.ensicaen.ecole.genielogiciel.model.Model;
+import fr.ensicaen.ecole.genielogiciel.model.Player;
 import fr.ensicaen.ecole.genielogiciel.model.RandomDice;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.PawnView;
@@ -9,38 +10,34 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.util.ArrayList;
+
 
 public final class BoardController {
-    private final Model _model;
     private GameView _view;
     private final boolean _end = false;
     private Rectangle[] _pawn;
     private final DicePresenter _dice;
-    private int _nbPlayers;
+    ArrayList<Player> _players;
     private int _playerTurn;
     private int[] _playerPos;
 
-    public BoardController( String nickName ) {
-        _model = new Model();
-        _model.setNickname(nickName);
+    public BoardController(ArrayList<Player> players) {
+        _players = players;
         _dice = new DicePresenter(new RandomDice(1, 2));
     }
 
     public void setView( GameView view ) {
         _view = view;
         _dice.setDiceBoard(view.getDiceBoard());
-    }
 
-    public void create_pawn(int nbPlayers) {
-        _nbPlayers = nbPlayers;
-        _playerPos = new int[nbPlayers];
-
+        _playerPos = new int[_players.size()];
         Point[] coordonee = {new Point(40, 40), new Point(60, 40), new Point(40, 60), new Point(60, 60)};
         Color[] color = {Color.RED, Color.BLUE, Color.GREEN, Color.PURPLE};
 
-        _pawn = new Rectangle[nbPlayers];
-        for (int i = 0; i < nbPlayers; i++) {
-            _pawn[i] = PawnView.create();
+        _pawn = new Rectangle[_players.size()];
+        for (int i = 0; i < _players.size(); i++) {
+            _pawn[i] = PawnView.create(coordonee[i].x, coordonee[i].y, color[i]);
             _view.getBoard().getChildren().add(_pawn[i]);
         }
     }
@@ -54,7 +51,7 @@ public final class BoardController {
         _pawn[_playerTurn].setX(_pawn[_playerTurn].getX() + 100 * (pos - _playerPos[_playerTurn]));
 
         if(pos == 6) {
-            Alert alert = new Alert(Alert.AlertType.NONE, "Player " + (_playerTurn+1) + " win the game.", ButtonType.OK);
+            Alert alert = new Alert(Alert.AlertType.NONE, "Player " + (_players.get(_playerTurn).getName()) + " win the game.", ButtonType.OK);
             alert.setTitle("Winner");
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
@@ -64,7 +61,7 @@ public final class BoardController {
         }
 
         _playerPos[_playerTurn] = pos;
-        _playerTurn = (_playerTurn + 1) % _nbPlayers;
+        _playerTurn = (_playerTurn + 1) % _players.size();
     }
 
     private void update() {
