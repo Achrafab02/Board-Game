@@ -1,6 +1,7 @@
 package fr.ensicaen.ecole.genielogiciel;
 
 import fr.ensicaen.ecole.genielogiciel.presenter.*;
+import fr.ensicaen.ecole.genielogiciel.view.LanguageView;
 import fr.ensicaen.ecole.genielogiciel.view.SetupView;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -20,8 +21,8 @@ public final class LoginMain extends Application {
 
     @Override
     public void start( final Stage primaryStage ) throws Exception {
-        SetupView view = SetupView.createView(primaryStage, "Setup.fxml");
-        SetupPresenter presenter = new SetupPresenter();
+        LanguageView view = LanguageView.createView(primaryStage, "Language.fxml");
+        LanguagePresenter presenter = new LanguagePresenter();
         view.setPresenter(presenter);
         presenter.setView(view);
         view.show();

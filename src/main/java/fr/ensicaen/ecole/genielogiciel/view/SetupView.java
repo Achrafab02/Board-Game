@@ -87,21 +87,23 @@ public class SetupView {
         _presenter.createPlayer(getName(), getSchooling());
     }
 
-    public static SetupView createView( Stage primaryStage, String  resourceName) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SetupView.class.getResource(resourceName), LoginMain.getMessageBundle());
-        Parent root = loader.load();
-        // getController() does not return a presenter but actually a class of the View
-        // if we want the presenter independent of the API JavaFX.
-        SetupView view = loader.getController();
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        view._stage = primaryStage;
-        return view;
-    }
-
-
-
     public void setPresenter(SetupPresenter presenter) {
         _presenter = presenter;
+    }
+
+    public static SetupView createView() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(SetupView.class.getResource("Setup.fxml"));
+        Parent root = fxmlLoader.load();
+        final SetupView view = fxmlLoader.getController();
+        fxmlLoader.setController(view);
+        Scene scene = new Scene(root, 600, 400);
+        scene.getStylesheets().add(SetupView.class.getResource("ButtonStyles.css").toExternalForm());
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setResizable(false);
+        view._stage = stage;
+        view.initView();
+        return view;
     }
 }
