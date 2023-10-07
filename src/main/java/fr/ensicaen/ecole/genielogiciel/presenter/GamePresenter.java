@@ -4,7 +4,6 @@ import fr.ensicaen.ecole.genielogiciel.LoginMain;
 import fr.ensicaen.ecole.genielogiciel.model.Board;
 import fr.ensicaen.ecole.genielogiciel.model.Player;
 import fr.ensicaen.ecole.genielogiciel.model.Point;
-import fr.ensicaen.ecole.genielogiciel.model.dices.RandomDice;
 import fr.ensicaen.ecole.genielogiciel.view.DiceView;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.PawnView;
@@ -15,7 +14,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 public final class GamePresenter {
@@ -23,10 +21,10 @@ public final class GamePresenter {
     private Board _board;
     private final boolean _end = false;
     private Rectangle[] _pawns;
-    private final DicePresenter _dice;
+    private final DicePresenter _dicePresenter;
 
     public GamePresenter() {
-        _dice = new DicePresenter(Board.getDice());
+        _dicePresenter = new DicePresenter();
     }
 
     public void setBoard(Board board) {
@@ -35,7 +33,7 @@ public final class GamePresenter {
 
     public void setView(GameView view) {
         _view = view;
-        _dice.setView(new DiceView(view.getDiceBoard()));
+        _dicePresenter.setView(new DiceView(view.getDiceBoard()));
 
         Point[] coordinates = {new Point(40, 40), new Point(60, 40), new Point(40, 60), new Point(60, 60)};
         Color[] colors = {Color.RED, Color.BLUE, Color.GREEN, Color.PURPLE};
@@ -48,9 +46,10 @@ public final class GamePresenter {
     }
 
     public void play() {
+        _board.rollDice();
         int newPosition = _board.getNewPositionOfCurrentPlayer();
+        _dicePresenter.displayDiceImage(_board.getDiceResult());
 
-        _board.updateCurrentPlayerId();
         _board.updateCurrentPlayerPosition(newPosition);
 
         double newX = _board.getCurrentPlayerPosition() * 100 + (_board.getCurrentPlayerId() % 2 == 0 ? 1 : 0) * 40 + (_board.getCurrentPlayerId() % 2 == 1 ? 1 : 0)*60;
@@ -63,6 +62,7 @@ public final class GamePresenter {
             launchRanking();
         }
 
+        _board.updateCurrentPlayerId();
     }
 
     public void launchRanking() {

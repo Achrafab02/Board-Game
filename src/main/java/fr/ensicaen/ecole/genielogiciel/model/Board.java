@@ -12,6 +12,7 @@ public class Board {
     private final int[] _playersPositions;
     private int _currentPlayerId;
     private static Rollable _dice;
+    private int _currentDiceResult = 0;
 
     public Board(ArrayList<Player> players, int numberOfPlayers) {
         _players = players;
@@ -23,6 +24,14 @@ public class Board {
 
     public static Rollable getDice() {
         return _dice;
+    }
+
+    public void rollDice() {
+        _currentDiceResult = _dice.roll();
+    }
+
+    public int getDiceResult() {
+        return _currentDiceResult;
     }
 
     public int getNumberOfPlayers() {
@@ -46,7 +55,7 @@ public class Board {
     }
 
     public int getNewPositionOfCurrentPlayer() {
-        int numberOfMoves = _dice.roll();
+        int numberOfMoves = _currentDiceResult;
         int positionOfPlayer = _playersPositions[_currentPlayerId];
         int newPosition = positionOfPlayer + numberOfMoves;
 

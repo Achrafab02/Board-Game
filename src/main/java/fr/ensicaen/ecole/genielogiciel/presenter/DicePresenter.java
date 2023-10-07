@@ -5,16 +5,9 @@ import fr.ensicaen.ecole.genielogiciel.view.DiceView;
 
 public class DicePresenter {
     private DiceView _diceView;
-    private final Rollable _dice;
 
-    public DicePresenter(Rollable dice) {
-        _dice = dice;
-    }
-
-    public int roll() {
-        int nb = _dice.roll();
-        _diceView.display(nb);
-        return nb;
+    public void displayDiceImage(int diceResult) {
+        _diceView.display(diceResult);
     }
 
     public void setView(DiceView diceView) {
