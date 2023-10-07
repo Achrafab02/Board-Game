@@ -2,11 +2,13 @@ package fr.ensicaen.ecole.genielogiciel.model;
 
 import fr.ensicaen.ecole.genielogiciel.model.dices.RandomDice;
 import fr.ensicaen.ecole.genielogiciel.model.dices.Rollable;
+import fr.ensicaen.ecole.genielogiciel.model.tiles.Tile;
 
 import java.util.ArrayList;
 
 public class Board {
     private static final int NB_TILES = 6;
+    private Tile[] _tiles;
     private ArrayList<Player> _players;
     private final int _numberOfPlayers;
     private final int[] _playersPositions;
@@ -15,6 +17,7 @@ public class Board {
     private int _currentDiceResult = 0;
 
     public Board(ArrayList<Player> players, int numberOfPlayers) {
+        _tiles = new Tile[NB_TILES];
         _players = players;
         _numberOfPlayers = numberOfPlayers;
         _playersPositions = new int[numberOfPlayers];
@@ -58,6 +61,7 @@ public class Board {
         int numberOfMoves = _currentDiceResult;
         int positionOfPlayer = _playersPositions[_currentPlayerId];
         int newPosition = positionOfPlayer + numberOfMoves;
+        // newPosition += _tiles[pos].getMoveInstruction(_players.get(_playerTurn))._moveCount;
 
         if (newPosition > NB_TILES) {
             newPosition = NB_TILES - (newPosition - NB_TILES);
