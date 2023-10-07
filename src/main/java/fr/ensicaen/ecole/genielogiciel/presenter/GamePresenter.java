@@ -1,9 +1,9 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
 import fr.ensicaen.ecole.genielogiciel.LoginMain;
-import fr.ensicaen.ecole.genielogiciel.model_merge_problems.Player;
-import fr.ensicaen.ecole.genielogiciel.model_merge_problems.Point;
-import fr.ensicaen.ecole.genielogiciel.model_merge_problems.RandomDice;
+import fr.ensicaen.ecole.genielogiciel.model.Player;
+import fr.ensicaen.ecole.genielogiciel.model.Point;
+import fr.ensicaen.ecole.genielogiciel.model.RandomDice;
 import fr.ensicaen.ecole.genielogiciel.view.DiceView;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.PawnView;
