@@ -1,4 +1,4 @@
-package fr.ensicaen.ecole.genielogiciel.model;
+package fr.ensicaen.ecole.genielogiciel.model.softskills;
 
 public class Rigorous implements SoftSkill {
     @Override

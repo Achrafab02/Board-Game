@@ -1,4 +1,4 @@
-package fr.ensicaen.ecole.genielogiciel.model;
+package fr.ensicaen.ecole.genielogiciel.model.softskills;
 
 public class Brilliant implements SoftSkill {
     @Override

@@ -1,9 +1,0 @@
-/* ButtonStyles.css */
-.button {
-    -fx-background-color: dodgerblue; /* Couleur de base */
-    -fx-background-radius: 5%;
-}
-
-.button:hover {
-    -fx-background-color: #026cd4; /* Couleur au survol */
-}

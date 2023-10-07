@@ -1,4 +1,8 @@
-package fr.ensicaen.ecole.genielogiciel.model;
+package fr.ensicaen.ecole.genielogiciel.model.schooling;
+
+import fr.ensicaen.ecole.genielogiciel.model.Player;
+import fr.ensicaen.ecole.genielogiciel.model.hardskills.HardSkill;
+import fr.ensicaen.ecole.genielogiciel.model.hardskills.Mathematics;
 
 import java.util.ArrayList;
 

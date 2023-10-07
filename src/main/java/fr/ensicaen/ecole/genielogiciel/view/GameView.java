@@ -11,6 +11,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public final class GameView {
     private GamePresenter _presenter;
@@ -27,6 +28,7 @@ public final class GameView {
         fxmlLoader.setController(view);
         Scene scene = new Scene(root, 844, 110);
         Stage stage = new Stage();
+        scene.getStylesheets().add(Objects.requireNonNull(SetupView.class.getResource("styles.css")).toExternalForm());
         stage.setScene(scene);
         stage.setResizable(false);
         view._stage = stage;

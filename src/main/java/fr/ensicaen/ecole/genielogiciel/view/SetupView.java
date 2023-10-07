@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class SetupView {
     private SetupPresenter _presenter;
@@ -105,7 +106,7 @@ public class SetupView {
         final SetupView view = fxmlLoader.getController();
         fxmlLoader.setController(view);
         Scene scene = new Scene(root, 600, 400);
-        scene.getStylesheets().add(SetupView.class.getResource("ButtonStyles.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(SetupView.class.getResource("styles.css")).toExternalForm());
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setResizable(false);

@@ -1,5 +1,11 @@
 package fr.ensicaen.ecole.genielogiciel.model;
 
+import fr.ensicaen.ecole.genielogiciel.model.hardskills.HardSkill;
+import fr.ensicaen.ecole.genielogiciel.model.softskills.Brilliant;
+import fr.ensicaen.ecole.genielogiciel.model.softskills.Dabbler;
+import fr.ensicaen.ecole.genielogiciel.model.softskills.Rigorous;
+import fr.ensicaen.ecole.genielogiciel.model.softskills.SoftSkill;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 

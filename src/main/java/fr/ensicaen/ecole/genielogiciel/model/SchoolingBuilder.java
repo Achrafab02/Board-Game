@@ -1,5 +1,10 @@
 package fr.ensicaen.ecole.genielogiciel.model;
 
+import fr.ensicaen.ecole.genielogiciel.model.schooling.AST;
+import fr.ensicaen.ecole.genielogiciel.model.schooling.NoTraining;
+import fr.ensicaen.ecole.genielogiciel.model.schooling.Prepa;
+import fr.ensicaen.ecole.genielogiciel.model.schooling.Schooling;
+
 public class SchoolingBuilder {
     public static Schooling createSchooling(String schooling) {
         return switch (schooling) {

@@ -1,5 +1,8 @@
 package fr.ensicaen.ecole.genielogiciel.model;
 
+import fr.ensicaen.ecole.genielogiciel.model.hardskills.HardSkill;
+import fr.ensicaen.ecole.genielogiciel.model.hardskills.Mathematics;
+import fr.ensicaen.ecole.genielogiciel.model.tiles.TileMathExam;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
