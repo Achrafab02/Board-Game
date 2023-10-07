@@ -1,6 +1,6 @@
 package fr.ensicaen.ecole.genielogiciel.model;
 
-import fr.ensicaen.ecole.genielogiciel.model.softskills.Rigorous;
+import fr.ensicaen.ecole.genielogiciel.model.player.softskills.Rigorous;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

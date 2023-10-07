@@ -1,5 +1,6 @@
 package fr.ensicaen.ecole.genielogiciel.model;
 
+import fr.ensicaen.ecole.genielogiciel.model.board.Pawn;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

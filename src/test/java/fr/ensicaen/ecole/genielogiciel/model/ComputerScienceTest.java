@@ -1,6 +1,6 @@
 package fr.ensicaen.ecole.genielogiciel.model;
 
-import fr.ensicaen.ecole.genielogiciel.model.hardskills.ComputerScience;
+import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.ComputerScience;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

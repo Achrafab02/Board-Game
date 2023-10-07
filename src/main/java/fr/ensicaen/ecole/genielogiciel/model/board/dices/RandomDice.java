@@ -1,4 +1,4 @@
-package fr.ensicaen.ecole.genielogiciel.model.dices;
+package fr.ensicaen.ecole.genielogiciel.model.board.dices;
 
 import java.util.Random;
 

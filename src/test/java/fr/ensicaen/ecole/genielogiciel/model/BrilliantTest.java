@@ -1,6 +1,6 @@
 package fr.ensicaen.ecole.genielogiciel.model;
 
-import fr.ensicaen.ecole.genielogiciel.model.softskills.Brilliant;
+import fr.ensicaen.ecole.genielogiciel.model.player.softskills.Brilliant;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

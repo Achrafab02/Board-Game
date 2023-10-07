@@ -1,9 +1,8 @@
 package fr.ensicaen.ecole.genielogiciel.view;
 
 import fr.ensicaen.ecole.genielogiciel.LoginMain;
-import fr.ensicaen.ecole.genielogiciel.model.Player;
+import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 import fr.ensicaen.ecole.genielogiciel.presenter.GamePresenter;
-import fr.ensicaen.ecole.genielogiciel.presenter.RankingPresenter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

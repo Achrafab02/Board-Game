@@ -1,8 +1,9 @@
-package fr.ensicaen.ecole.genielogiciel.model;
+package fr.ensicaen.ecole.genielogiciel.model.board;
 
-import fr.ensicaen.ecole.genielogiciel.model.dices.RandomDice;
-import fr.ensicaen.ecole.genielogiciel.model.dices.Rollable;
-import fr.ensicaen.ecole.genielogiciel.model.tiles.Tile;
+import fr.ensicaen.ecole.genielogiciel.model.player.Player;
+import fr.ensicaen.ecole.genielogiciel.model.board.dices.RandomDice;
+import fr.ensicaen.ecole.genielogiciel.model.board.dices.Rollable;
+import fr.ensicaen.ecole.genielogiciel.model.board.tiles.Tile;
 
 import java.util.ArrayList;
 

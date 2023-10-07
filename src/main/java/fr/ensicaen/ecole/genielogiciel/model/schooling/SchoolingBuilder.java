@@ -1,4 +1,4 @@
-package fr.ensicaen.ecole.genielogiciel.model;
+package fr.ensicaen.ecole.genielogiciel.model.schooling;
 
 import fr.ensicaen.ecole.genielogiciel.model.schooling.AST;
 import fr.ensicaen.ecole.genielogiciel.model.schooling.NoTraining;

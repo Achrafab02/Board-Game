@@ -1,4 +1,4 @@
-package fr.ensicaen.ecole.genielogiciel.model.softskills;
+package fr.ensicaen.ecole.genielogiciel.model.player.softskills;
 
 public class Dabbler implements SoftSkill {
 

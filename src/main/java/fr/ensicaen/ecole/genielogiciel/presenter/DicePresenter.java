@@ -1,6 +1,5 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
-import fr.ensicaen.ecole.genielogiciel.model.dices.Rollable;
 import fr.ensicaen.ecole.genielogiciel.view.DiceView;
 
 public class DicePresenter {

@@ -1,8 +1,8 @@
-package fr.ensicaen.ecole.genielogiciel.model.tiles;
+package fr.ensicaen.ecole.genielogiciel.model.board.tiles;
 
-import fr.ensicaen.ecole.genielogiciel.model.Action;
-import fr.ensicaen.ecole.genielogiciel.model.hardskills.Mathematics;
-import fr.ensicaen.ecole.genielogiciel.model.Player;
+import fr.ensicaen.ecole.genielogiciel.model.board.Action;
+import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.Mathematics;
+import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 
 public class TileMathExam implements Tile {
     public Action getMoveInstruction(Player player) {

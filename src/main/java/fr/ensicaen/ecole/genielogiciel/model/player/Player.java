@@ -1,10 +1,10 @@
-package fr.ensicaen.ecole.genielogiciel.model;
+package fr.ensicaen.ecole.genielogiciel.model.player;
 
-import fr.ensicaen.ecole.genielogiciel.model.hardskills.HardSkill;
-import fr.ensicaen.ecole.genielogiciel.model.softskills.Brilliant;
-import fr.ensicaen.ecole.genielogiciel.model.softskills.Dabbler;
-import fr.ensicaen.ecole.genielogiciel.model.softskills.Rigorous;
-import fr.ensicaen.ecole.genielogiciel.model.softskills.SoftSkill;
+import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.HardSkill;
+import fr.ensicaen.ecole.genielogiciel.model.player.softskills.Brilliant;
+import fr.ensicaen.ecole.genielogiciel.model.player.softskills.Dabbler;
+import fr.ensicaen.ecole.genielogiciel.model.player.softskills.Rigorous;
+import fr.ensicaen.ecole.genielogiciel.model.player.softskills.SoftSkill;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;

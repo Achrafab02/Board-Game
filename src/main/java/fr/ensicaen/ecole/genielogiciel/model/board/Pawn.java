@@ -1,4 +1,4 @@
-package fr.ensicaen.ecole.genielogiciel.model;
+package fr.ensicaen.ecole.genielogiciel.model.board;
 
 public class Pawn {
     private static final int MOVE_X = 110;
