@@ -4,13 +4,16 @@ import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 import fr.ensicaen.ecole.genielogiciel.model.board.dices.RandomDice;
 import fr.ensicaen.ecole.genielogiciel.model.board.dices.Rollable;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.Tile;
+import fr.ensicaen.ecole.genielogiciel.model.board.tiles.TileMathClass;
+import fr.ensicaen.ecole.genielogiciel.model.board.tiles.TileMathExam;
+import fr.ensicaen.ecole.genielogiciel.model.board.tiles.TileNeutral;
 
 import java.util.ArrayList;
 
 public class Board {
     private static final int NB_TILES = 6;
-    private Tile[] _tiles;
-    private ArrayList<Player> _players;
+    private final Tile[] _tiles;
+    private final ArrayList<Player> _players;
     private final int _numberOfPlayers;
     private final int[] _playersPositions;
     private int _currentPlayerId;
@@ -18,7 +21,7 @@ public class Board {
     private int _currentDiceResult = 0;
 
     public Board(ArrayList<Player> players, int numberOfPlayers) {
-        _tiles = new Tile[NB_TILES];
+        _tiles = new Tile[]{new TileNeutral(), new TileNeutral(), new TileMathClass(), new TileNeutral(), new TileNeutral(), new TileMathExam(), new TileNeutral()};
         _players = players;
         _numberOfPlayers = numberOfPlayers;
         _playersPositions = new int[numberOfPlayers];
@@ -62,11 +65,15 @@ public class Board {
         int numberOfMoves = _currentDiceResult;
         int positionOfPlayer = _playersPositions[_currentPlayerId];
         int newPosition = positionOfPlayer + numberOfMoves;
-        // newPosition += _tiles[pos].getMoveInstruction(_players.get(_playerTurn))._moveCount;
+
+        newPosition += _tiles[newPosition].getMoveInstruction(_players.get(_currentPlayerId))._moveCount;
 
         if (newPosition > NB_TILES) {
             newPosition = NB_TILES - (newPosition - NB_TILES);
         }
+
+        newPosition += _tiles[newPosition].getMoveInstruction(_players.get(_currentPlayerId))._moveCount;
+
         return newPosition;
     }
 
