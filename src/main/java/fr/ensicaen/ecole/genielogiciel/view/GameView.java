@@ -35,11 +35,6 @@ public final class GameView {
         return view;
     }
 
-    @FXML
-    private void launchRanking() {
-        _presenter.launchRanking();
-    }
-
     public void setPresenter(GamePresenter boardController) {
         _boardController = boardController;
     }

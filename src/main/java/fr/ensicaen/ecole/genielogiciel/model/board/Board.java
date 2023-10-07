@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class Board {
     private static final int NB_TILES = 6;
     private final Tile[] _tiles;
+    private static final int NB_MAX_PLAYERS = 4;
     private final ArrayList<Player> _players;
     private final int _numberOfPlayers;
     private final int[] _playersPositions;
@@ -29,8 +30,8 @@ public class Board {
         _dice = new RandomDice(1, 2);
     }
 
-    public static Rollable getDice() {
-        return _dice;
+    public static int getNumberMaxOfPlayers() {
+        return NB_MAX_PLAYERS;
     }
 
     public void rollDice() {

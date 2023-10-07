@@ -51,10 +51,6 @@ public class RankingView {
         _stage.show();
     }
 
-    public void close() {
-        _stage.close();
-    }
-
     public void initView() {
         initTableView();
     }

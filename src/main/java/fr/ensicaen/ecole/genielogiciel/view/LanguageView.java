@@ -23,11 +23,6 @@ public class LanguageView {
         _stage.close();
     }
 
-    @FXML
-    private void launchSetup() {
-        _presenter.launchSetup();
-    }
-
     public void initView() {
     }
 

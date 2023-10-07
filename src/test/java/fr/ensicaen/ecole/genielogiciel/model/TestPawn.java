@@ -9,7 +9,6 @@ public class TestPawn {
     @Test
     public void test_move_pawn_without_starting_tile() {
         Pawn pawn = new Pawn();
-        int numberOfTile = 2;
         assertEquals(220, pawn.calculateMove(2));
     }
 }

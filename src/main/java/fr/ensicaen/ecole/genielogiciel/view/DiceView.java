@@ -5,8 +5,8 @@ import javafx.scene.layout.*;
 
 public class DiceView {
     private final AnchorPane _diceBoard;
-    private final String IMAGE_LOCATION = "fr/ensicaen/ecole/genielogiciel/view/dice/dice-";
-    private final String IMAGE_TYPE = ".png";
+    private static final String IMAGE_LOCATION = "fr/ensicaen/ecole/genielogiciel/view/dice/dice-";
+    private static final String IMAGE_TYPE = ".png";
 
     public DiceView(AnchorPane diceBoard) {
         _diceBoard = diceBoard;

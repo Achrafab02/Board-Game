@@ -2,14 +2,12 @@ package fr.ensicaen.ecole.genielogiciel;
 
 import fr.ensicaen.ecole.genielogiciel.presenter.*;
 import fr.ensicaen.ecole.genielogiciel.view.LanguageView;
-import fr.ensicaen.ecole.genielogiciel.view.SetupView;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.util.ResourceBundle;
 
 public final class LoginMain extends Application {
-    private static final Object NUMBER_OF_PLAYERS = 1;
 
     public static void main(String[] args) {
         launch(args);
@@ -32,13 +30,5 @@ public final class LoginMain extends Application {
 
         view.initView();
 
-        /*DicePresenter dicePresenter = new DicePresenter();
-        new BoardController(dicePresenter);
-
-        Schooling playerSchooling = new NoTraining();
-        ArrayList<Schooling> schoolings = new ArrayList<>();
-        schoolings.add(playerSchooling);
-        GooseGame gooseGame = new GooseGame(schoolings);
-        gooseGame.start();*/
     }
 }

@@ -19,7 +19,6 @@ import java.io.IOException;
 public final class GamePresenter {
     private GameView _view;
     private Board _board;
-    private final boolean _end = false;
     private Rectangle[] _pawns;
     private final DicePresenter _dicePresenter;
 
@@ -80,8 +79,6 @@ public final class GamePresenter {
 
     private void createAndDisplayRankingView() throws IOException {
         RankingView view = RankingView.createView(this);
-        RankingPresenter rankingPresenter = new RankingPresenter();
-        rankingPresenter.setView(view);
         view.show();
     }
 }

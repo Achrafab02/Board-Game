@@ -32,24 +32,13 @@ public class SetupView {
         _playerSetupTableView.setItems(_playersList);
         _nameColumnSetup.setCellValueFactory(new PropertyValueFactory<>("name"));
         _schoolingColumnSetup.setCellValueFactory(new PropertyValueFactory<>("schooling"));
-    }
-
-    private void printList() {
-        for (Player player : _playersList) {
-            System.out.println("Player name : " + player.getName());
-            System.out.println("Player schooling : " + player.getSchooling());
-        }
-        System.out.println("---");
+        addPlayerToTableView(new Player("", "")); // TO HIDE TEMPORARILY "empty table message"
     }
 
     public void popUpAlert(String key) {
         Alert alert = new Alert(Alert.AlertType.NONE, LoginMain.getMessageBundle().getString(key), ButtonType.OK);
         alert.setTitle(LoginMain.getMessageBundle().getString(key));
         alert.showAndWait().ifPresent(rs -> {});
-    }
-
-    public void displayError( String message ) {
-        _playerName.setText(message);
     }
 
     public String getName() {
@@ -92,6 +81,10 @@ public class SetupView {
     }
 
     public void getPlayerParameters() {
+        // REMOVE PLAYER PREVENTING FROM "empty table message"
+        if (_playersList.size() == 1 && _playersList.get(0).getName().isEmpty()) {
+            _playersList.remove(0);
+        }
         _presenter.createPlayer(getName(), getSchooling());
     }
 

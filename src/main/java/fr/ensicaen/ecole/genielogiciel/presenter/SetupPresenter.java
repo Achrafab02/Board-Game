@@ -19,7 +19,7 @@ public class SetupPresenter {
     }
 
     public void createPlayer(String name, String schoolingName) {
-        if (_players.size() >= 4) {
+        if (_players.size() >= Board.getNumberMaxOfPlayers()) {
             _setupView.popUpAlert("error.title.maxPlayer");
         } else if (name.isEmpty()) {
             _setupView.popUpAlert("error.title.empty.player");
@@ -34,11 +34,11 @@ public class SetupPresenter {
     }
 
     public void launchGame() {
-        if (_players.size() == 0) {
+        if (_players.isEmpty()) {
             _setupView.popUpAlert("error.title.zero.player");
         } else {
             try {
-                createAndDisplayGameView(_players);
+                createAndDisplayGameView();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -46,7 +46,7 @@ public class SetupPresenter {
         }
     }
 
-    private void createAndDisplayGameView(ArrayList<Player> players) throws IOException {
+    private void createAndDisplayGameView() throws IOException {
         GameView view = GameView.createView();
         GamePresenter gamePresenter = new GamePresenter();
         Board board = new Board(_players, _players.size());

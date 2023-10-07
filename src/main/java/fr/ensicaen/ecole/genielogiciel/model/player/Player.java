@@ -10,21 +10,21 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class Player {
-    private String _name;
+    private final String _name;
     private final SoftSkill _softSkill;
     private ArrayList<HardSkill> _hardSkills;
-    private String _schoolingName;
+    private final String _schoolingName;
+
+    public Player(String name, String schoolingName) {
+        _name = name;
+        _softSkill = chooseSoftSkillAtRandom();
+        _hardSkills = new ArrayList<>();
+        _schoolingName = schoolingName;
+    }
 
     public Player(String name, ArrayList<HardSkill> hardSkills, String schoolingName) {
         _name = name;
         _softSkill = chooseSoftSkillAtRandom();
-        _hardSkills = hardSkills;
-        _schoolingName = schoolingName;
-    }
-
-    Player(String name, ArrayList<HardSkill> hardSkills, SoftSkill softSkill, String schoolingName) {
-        _name = name;
-        _softSkill = softSkill;
         _hardSkills = hardSkills;
         _schoolingName = schoolingName;
     }
