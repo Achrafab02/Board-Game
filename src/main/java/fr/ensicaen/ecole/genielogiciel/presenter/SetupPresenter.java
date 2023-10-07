@@ -1,5 +1,6 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
+import fr.ensicaen.ecole.genielogiciel.model.Board;
 import fr.ensicaen.ecole.genielogiciel.model.Player;
 import fr.ensicaen.ecole.genielogiciel.model.schooling.Schooling;
 import fr.ensicaen.ecole.genielogiciel.model.SchoolingBuilder;
@@ -47,7 +48,10 @@ public class SetupPresenter {
 
     private void createAndDisplayGameView(ArrayList<Player> players) throws IOException {
         GameView view = GameView.createView();
-        GamePresenter gamePresenter = new GamePresenter(players);
+        GamePresenter gamePresenter = new GamePresenter();
+        Board board = new Board(_players, _players.size());
+
+        gamePresenter.setBoard(board);
         gamePresenter.setView(view);
         view.setPresenter(gamePresenter);
         view.show();

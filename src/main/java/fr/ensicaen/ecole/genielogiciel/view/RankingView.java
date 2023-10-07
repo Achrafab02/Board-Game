@@ -20,6 +20,7 @@ import java.util.Objects;
 
 public class RankingView {
     private Stage _stage;
+    private GamePresenter _gamePresenter;
     @FXML
     private TableView<Player> _playerRankingTableView;
     @FXML private TableColumn<Player, String> _nameColumnRanking;
@@ -32,7 +33,7 @@ public class RankingView {
         _playerRankingTableView.setItems(_playersRankingList);
         _nameColumnRanking.setCellValueFactory(new PropertyValueFactory<>("name"));
         _schoolingColumnRanking.setCellValueFactory(new PropertyValueFactory<>("schooling"));
-        Player[] positions = GamePresenter.getRanking();
+        Player[] positions = _gamePresenter.getRanking();
         for (Player position : positions) {
             addPlayerToTableView(position);
         }
@@ -41,6 +42,10 @@ public class RankingView {
     public void addPlayerToTableView(Player player) {
         _playersRankingList.add(player);
         _playerRankingTableView.setItems(_playersRankingList);
+    }
+
+    public void setGamePresenter(GamePresenter gamePresenter) {
+        _gamePresenter = gamePresenter;
     }
 
     public void show() {
@@ -55,11 +60,12 @@ public class RankingView {
         initTableView();
     }
 
-    public static RankingView createView() throws IOException {
+    public static RankingView createView(GamePresenter gamePresenter) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RankingView.class.getResource("Ranking.fxml"), LoginMain.getMessageBundle());
         fxmlLoader.setLocation(RankingView.class.getResource("Ranking.fxml"));
         Parent root = fxmlLoader.load();
-        final RankingView view = fxmlLoader.getController();
+        RankingView view = fxmlLoader.getController();
+        view.setGamePresenter(gamePresenter);
         fxmlLoader.setController(view);
         Scene scene = new Scene(root, 387.0, 287.0);
         Stage stage = new Stage();

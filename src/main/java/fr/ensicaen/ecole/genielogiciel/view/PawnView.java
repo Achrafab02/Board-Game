@@ -5,7 +5,6 @@ import javafx.scene.shape.Rectangle;
 
 public class PawnView {
     public static Rectangle create(double x, double y, Color color) {
-
         Rectangle pawn = new Rectangle();
         pawn.setX(x);
         pawn.setY(y);
