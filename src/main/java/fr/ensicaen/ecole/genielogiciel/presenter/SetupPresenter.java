@@ -19,7 +19,7 @@ public class SetupPresenter {
     }
 
     public void createPlayer(String name, String schoolingName) {
-        if (_players.size() >= Board.getNumberMaxOfPlayers()) {
+        if (_players.size() >= Board.getMaxNumberOfPlayers()) {
             _setupView.popUpAlert("error.title.maxPlayer");
         } else if (name.isEmpty()) {
             _setupView.popUpAlert("error.title.empty.player");

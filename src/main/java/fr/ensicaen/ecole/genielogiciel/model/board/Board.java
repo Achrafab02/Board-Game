@@ -7,46 +7,37 @@ import fr.ensicaen.ecole.genielogiciel.model.board.tiles.Tile;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.TileMathClass;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.TileMathExam;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.TileNeutral;
+import fr.ensicaen.ecole.genielogiciel.presenter.DicePresenter;
 
 import java.util.ArrayList;
 
 public class Board {
     private static final int NB_TILES = 6;
+    private static final Tile[] HARD_CODED_BOARD = new Tile[]{new TileNeutral(), new TileNeutral(), new TileMathClass(), new TileNeutral(), new TileNeutral(), new TileMathExam(), new TileNeutral()};
     private final Tile[] _tiles;
     private static final int NB_MAX_PLAYERS = 4;
     private final ArrayList<Player> _players;
     private final int _numberOfPlayers;
     private final int[] _playersPositions;
     private int _currentPlayerId;
-    private static Rollable _dice;
-    private int _currentDiceResult = 0;
 
     public Board(ArrayList<Player> players, int numberOfPlayers) {
-        _tiles = new Tile[]{new TileNeutral(), new TileNeutral(), new TileMathClass(), new TileNeutral(), new TileNeutral(), new TileMathExam(), new TileNeutral()};
         _players = players;
         _numberOfPlayers = numberOfPlayers;
         _playersPositions = new int[numberOfPlayers];
         _currentPlayerId = 0;
-        _dice = new RandomDice(1, 2);
+        _tiles = HARD_CODED_BOARD;
     }
 
-    public static int getNumberMaxOfPlayers() {
+    public static int getMaxNumberOfPlayers() {
         return NB_MAX_PLAYERS;
-    }
-
-    public void rollDice() {
-        _currentDiceResult = _dice.roll();
-    }
-
-    public int getDiceResult() {
-        return _currentDiceResult;
     }
 
     public int getNumberOfPlayers() {
         return _numberOfPlayers;
     }
 
-    public void updateCurrentPlayerId() {
+    public void updateIdToNextPlayer() {
         _currentPlayerId = (_currentPlayerId + 1) % _numberOfPlayers;
     }
 
@@ -62,27 +53,37 @@ public class Board {
         return _players.get(_currentPlayerId).getName();
     }
 
-    public int getNewPositionOfCurrentPlayer() {
-        int numberOfMoves = _currentDiceResult;
+    public int getNewPositionOfCurrentPlayer(DicePresenter dicePresenter) {
+        int numberOfMoves = dicePresenter.getDiceResult();
         int positionOfPlayer = _playersPositions[_currentPlayerId];
-        int newPosition = positionOfPlayer + numberOfMoves;
+        Player currentPlayer = _players.get(_currentPlayerId);
+        int newPosition;
 
-        newPosition += _tiles[newPosition].getMoveInstruction(_players.get(_currentPlayerId))._moveCount;
+        newPosition = backwardMovementIfPlayerOversteppedGoal(positionOfPlayer + numberOfMoves);
 
-        if (newPosition > NB_TILES) {
-            newPosition = NB_TILES - (newPosition - NB_TILES);
-        }
-
-        newPosition += _tiles[newPosition].getMoveInstruction(_players.get(_currentPlayerId))._moveCount;
+        newPosition += moveDueToTileEffect(newPosition, currentPlayer);
 
         return newPosition;
+    }
+
+    private int moveDueToTileEffect(int position, Player player) {
+        Tile newTile = _tiles[position];
+        Player currentPlayer = _players.get(_currentPlayerId);
+        return newTile.getMoveInstruction(currentPlayer)._moveCount;
+    }
+
+    private int backwardMovementIfPlayerOversteppedGoal(int position) {
+        if (position > NB_TILES) {
+            return NB_TILES - (position - NB_TILES);
+        }
+        return position;
     }
 
     public void updateCurrentPlayerPosition(int newPosition) {
         _playersPositions[_currentPlayerId] = newPosition;
     }
 
-    public boolean isWinningPosition() {
+    public boolean isInWinningPosition() {
         return _playersPositions[_currentPlayerId] == NB_TILES;
     }
 
@@ -91,16 +92,16 @@ public class Board {
         int[] playersPosition = _playersPositions.clone();
 
         for (int i = 0; i < _numberOfPlayers; i++) {
-            int indexMax = 0;
-            int valeurMax = -1;
+            int maxIndex = 0;
+            int maxValue = -1;
             for (int playerId = 0; playerId < _numberOfPlayers; playerId++) {
-                if (playersPosition[playerId] > valeurMax) {
-                    valeurMax = playersPosition[playerId];
-                    indexMax = playerId;
+                if (playersPosition[playerId] > maxValue) {
+                    maxValue = playersPosition[playerId];
+                    maxIndex = playerId;
                 }
             }
-            playersPosition[indexMax] = -1;
-            players[i] = _players.get(indexMax);
+            playersPosition[maxIndex] = -1;
+            players[i] = _players.get(maxIndex);
         }
         return players;
     }

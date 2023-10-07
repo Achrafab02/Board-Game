@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="287.0" prefWidth="387.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ensicaen.ecole.genielogiciel.view.RankingView">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="287.0" prefWidth="387.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ensicaen.ecole.genielogiciel.view.RankingView">
         <TableView fx:id="_playerRankingTableView" layoutX="40.0" layoutY="67.0" prefHeight="206.0" prefWidth="308.0">
             <columns>
                 <TableColumn fx:id="_nameColumnRanking" prefWidth="121.0" styleClass="tableColumn" text="%ranking.table.name" />

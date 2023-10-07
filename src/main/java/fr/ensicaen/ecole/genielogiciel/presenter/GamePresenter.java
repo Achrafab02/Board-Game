@@ -45,23 +45,23 @@ public final class GamePresenter {
     }
 
     public void play() {
-        _board.rollDice();
-        int newPosition = _board.getNewPositionOfCurrentPlayer();
-        _dicePresenter.displayDiceImage(_board.getDiceResult());
+        _dicePresenter.rollDice();
+        int newPosition = _board.getNewPositionOfCurrentPlayer(_dicePresenter);
+        _dicePresenter.displayDiceImage();
 
         _board.updateCurrentPlayerPosition(newPosition);
 
         double newX = _board.getCurrentPlayerPosition() * 100 + (_board.getCurrentPlayerId() % 2 == 0 ? 1 : 0) * 40 + (_board.getCurrentPlayerId() % 2 == 1 ? 1 : 0)*60;
         _pawns[_board.getCurrentPlayerId()].setX(newX);
 
-        if(_board.isWinningPosition()) {
+        if(_board.isInWinningPosition()) {
             Alert alert = new Alert(Alert.AlertType.NONE,  (_board.getCurrentPlayerName()) + " " + LoginMain.getMessageBundle().getString("winning.sentence"), ButtonType.OK);
             alert.setTitle(LoginMain.getMessageBundle().getString("title.winner"));
             alert.showAndWait().ifPresent(rs -> {});
             launchRanking();
         }
 
-        _board.updateCurrentPlayerId();
+        _board.updateIdToNextPlayer();
     }
 
     public void launchRanking() {
