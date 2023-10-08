@@ -60,13 +60,22 @@ public class Board {
     public int getNewPositionOfCurrentPlayer(int diceResult) {
         int positionOfPlayer = _playersPositions[_currentPlayerId];
         Player currentPlayer = _players.get(_currentPlayerId);
-        int newPosition;
-
-        newPosition = backwardMovementIfPlayerOversteppedGoal(positionOfPlayer + diceResult);
+        int newPosition = move(positionOfPlayer + diceResult);
 
         newPosition += moveDueToTileEffect(newPosition, currentPlayer);
 
         return newPosition;
+    }
+
+    private int move(int newPosition) {
+        if (goalOverstepped(newPosition)) {
+            return moveBackwards(newPosition);
+        }
+        return newPosition;
+    }
+
+    private int moveBackwards(int position) {
+        return (NB_TILES - (position - NB_TILES));
     }
 
     private int moveDueToTileEffect(int position, Player player) {
@@ -75,11 +84,8 @@ public class Board {
         return newTile.getMoveInstruction(currentPlayer)._moveCount;
     }
 
-    private int backwardMovementIfPlayerOversteppedGoal(int position) {
-        if (position > NB_TILES) {
-            return NB_TILES - (position - NB_TILES);
-        }
-        return position;
+    private boolean goalOverstepped(int position) {
+        return (position > NB_TILES);
     }
 
     public void updateCurrentPlayerPosition(int newPosition) {
