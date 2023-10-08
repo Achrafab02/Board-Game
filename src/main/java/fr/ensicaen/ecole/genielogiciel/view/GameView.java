@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -33,6 +35,12 @@ public final class GameView {
         stage.setResizable(false);
         view._stage = stage;
         return view;
+    }
+
+    public static void alert(String message, String title) {
+        Alert alert = new Alert(Alert.AlertType.NONE, message, ButtonType.OK);
+        alert.setTitle(title);
+        alert.showAndWait().ifPresent(rs -> {});
     }
 
     public void setPresenter(GamePresenter boardController) {

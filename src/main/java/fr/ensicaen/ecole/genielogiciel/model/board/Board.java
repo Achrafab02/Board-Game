@@ -57,13 +57,12 @@ public class Board {
         return _players.get(_currentPlayerId).getName();
     }
 
-    public int getNewPositionOfCurrentPlayer(DicePresenter dicePresenter) {
-        int numberOfMoves = dicePresenter.getDiceResult();
+    public int getNewPositionOfCurrentPlayer(int diceResult) {
         int positionOfPlayer = _playersPositions[_currentPlayerId];
         Player currentPlayer = _players.get(_currentPlayerId);
         int newPosition;
 
-        newPosition = backwardMovementIfPlayerOversteppedGoal(positionOfPlayer + numberOfMoves);
+        newPosition = backwardMovementIfPlayerOversteppedGoal(positionOfPlayer + diceResult);
 
         newPosition += moveDueToTileEffect(newPosition, currentPlayer);
 

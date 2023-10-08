@@ -8,8 +8,6 @@ import fr.ensicaen.ecole.genielogiciel.view.DiceView;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.PawnView;
 import fr.ensicaen.ecole.genielogiciel.view.RankingView;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -57,7 +55,7 @@ public final class GamePresenter {
 
     public void play(){
         _dicePresenter.rollDice();
-        int newPosition = _board.getNewPositionOfCurrentPlayer(_dicePresenter);
+        int newPosition = _board.getNewPositionOfCurrentPlayer(_dicePresenter.getDiceResult());
         _dicePresenter.displayDiceImage();
 
         _board.updateCurrentPlayerPosition(newPosition);
@@ -67,9 +65,7 @@ public final class GamePresenter {
         _pawns[_board.getCurrentPlayerId()].setY(newCoordinates[1]);
 
         if(_board.isInWinningPosition()) {
-            Alert alert = new Alert(Alert.AlertType.NONE,  (_board.getCurrentPlayerName()) + " " + LoginMain.getMessageBundle().getString("winning.sentence"), ButtonType.OK);
-            alert.setTitle(LoginMain.getMessageBundle().getString("title.winner"));
-            alert.showAndWait().ifPresent(rs -> {});
+            GameView.alert(_board.getCurrentPlayerName() + " " + LoginMain.getMessageBundle().getString("winning.sentence"), LoginMain.getMessageBundle().getString("title.winner"));
             launchRanking();
         }
 
