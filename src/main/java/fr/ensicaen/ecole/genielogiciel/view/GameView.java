@@ -7,16 +7,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public final class GameView {
     private GamePresenter _presenter;
     public AnchorPane _board;
     public AnchorPane _diceBoard;
-    private GamePresenter _boardController;
+    private GamePresenter _gamePresenter;
     private Stage _stage;
 
     public static GameView createView() throws IOException {
@@ -25,21 +28,23 @@ public final class GameView {
         Parent root = fxmlLoader.load();
         final GameView view = fxmlLoader.getController();
         fxmlLoader.setController(view);
-        Scene scene = new Scene(root, 844, 110);
+        Scene scene = new Scene(root, 1466, 768);
         Stage stage = new Stage();
+        scene.getStylesheets().add(Objects.requireNonNull(SetupView.class.getResource("styles.css")).toExternalForm());
         stage.setScene(scene);
         stage.setResizable(false);
         view._stage = stage;
         return view;
     }
 
-    @FXML
-    private void launchRanking() {
-        _presenter.launchRanking();
+    public static void alert(String message, String title) {
+        Alert alert = new Alert(Alert.AlertType.NONE, message, ButtonType.OK);
+        alert.setTitle(title);
+        alert.showAndWait().ifPresent(rs -> {});
     }
 
     public void setPresenter(GamePresenter boardController) {
-        _boardController = boardController;
+        _gamePresenter = boardController;
     }
 
     public void show() {
@@ -48,7 +53,7 @@ public final class GameView {
 
     @FXML
     private void rollDice() {
-        _boardController.play();
+        _gamePresenter.play();
     }
 
     public AnchorPane getBoard() {

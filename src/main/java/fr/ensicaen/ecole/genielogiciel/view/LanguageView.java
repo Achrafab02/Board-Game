@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class LanguageView {
     private LanguagePresenter _presenter;
@@ -22,11 +23,6 @@ public class LanguageView {
         _stage.close();
     }
 
-    @FXML
-    private void launchSetup() {
-        _presenter.launchSetup();
-    }
-
     public void initView() {
     }
 
@@ -37,7 +33,7 @@ public class LanguageView {
         // if we want the presenter independent of the API JavaFX.
         LanguageView view = loader.getController();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(LanguageView.class.getResource("ButtonStyles.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(LanguageView.class.getResource("styles.css")).toExternalForm());
         primaryStage.setScene(scene);
         view._stage = primaryStage;
         return view;

@@ -1,69 +1,79 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
 import fr.ensicaen.ecole.genielogiciel.LoginMain;
-import fr.ensicaen.ecole.genielogiciel.model.Player;
+import fr.ensicaen.ecole.genielogiciel.model.board.Board;
+import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 import fr.ensicaen.ecole.genielogiciel.model.Point;
-import fr.ensicaen.ecole.genielogiciel.model.RandomDice;
 import fr.ensicaen.ecole.genielogiciel.view.DiceView;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.PawnView;
 import fr.ensicaen.ecole.genielogiciel.view.RankingView;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 public final class GamePresenter {
     private GameView _view;
-    private final boolean _end = false;
-    private Rectangle[] _pawn;
-    private final DicePresenter _dice;
-    ArrayList<Player> _players;
-    private int _playerTurn;
-    private int[] _playerPos;
+    private Board _board;
+    private Rectangle[] _pawns;
+    private final DicePresenter _dicePresenter;
+    private static final int SPACE_BETWEEN_PAWNS = 40;
+    private static final Point[] FIRST_PLAYER_POSITION_IN_EACH_TILE = {new Point(365, 220), new Point(290, 370), new Point(315, 580), new Point(480, 665), new Point(680, 550), new Point(730, 390), new Point(810, 200), new Point(1040, 170), new Point(1190, 270), new Point(1170, 520), new Point(1040, 605)};
+    private final Point[][] _coordinatesOfPawnsOnTiles = new Point[Board.getNumberOfTiles()][Board.getMaxNumberOfPlayers()];
+    private static final Color[] PLAYERS_COLORS = {Color.RED, Color.BLUE, Color.GREEN, Color.PURPLE};
 
-    public GamePresenter(ArrayList<Player> players) {
-        _players = players;
-        _dice = new DicePresenter(new RandomDice(1, 2));
+    public GamePresenter() {
+        _dicePresenter = new DicePresenter();
     }
 
-    public void setView( GameView view ) {
+    public void setBoard(Board board) {
+        _board = board;
+    }
+
+    private void initCoordinatesOfPawnOnTiles() {
+        for (int i = 0; i < Board.getNumberOfTiles(); i++) {
+            _coordinatesOfPawnsOnTiles[i][0] = new Point(FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getX(), FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getY());
+            _coordinatesOfPawnsOnTiles[i][1] = new Point(FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getX() + SPACE_BETWEEN_PAWNS, FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getY());
+            _coordinatesOfPawnsOnTiles[i][2] = new Point(FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getX(), FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getY() + SPACE_BETWEEN_PAWNS);
+            _coordinatesOfPawnsOnTiles[i][3] = new Point(FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getX() + SPACE_BETWEEN_PAWNS, FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getY() + SPACE_BETWEEN_PAWNS);
+        }
+    }
+
+    public void setView(GameView view) {
+        initCoordinatesOfPawnOnTiles();
         _view = view;
-        //_dice.setDiceBoard(view.getDiceBoard());
-        _dice.setView(new DiceView(view.getDiceBoard()));
+        _dicePresenter.setView(new DiceView(view.getDiceBoard()));
 
-        _playerPos = new int[_players.size()];
-        Point[] coordonee = {new Point(40, 40), new Point(60, 40), new Point(40, 60), new Point(60, 60)};
-        Color[] color = {Color.RED, Color.BLUE, Color.GREEN, Color.PURPLE};
-
-        _pawn = new Rectangle[_players.size()];
-        for (int i = 0; i < _players.size(); i++) {
-            _pawn[i] = PawnView.create(coordonee[i].getX(), coordonee[i].getY(), color[i]);
-            _view.getBoard().getChildren().add(_pawn[i]);
+        _pawns = new Rectangle[_board.getNumberOfPlayers()];
+        for (int i = 0; i < _board.getNumberOfPlayers(); i++) {
+            _pawns[i] = PawnView.create(_coordinatesOfPawnsOnTiles[0][i].getX(), _coordinatesOfPawnsOnTiles[0][i].getY(), PLAYERS_COLORS[i]);
+            _view.getBoard().getChildren().add(_pawns[i]);
         }
     }
 
-    public void play() {
-        int pos = _playerPos[_playerTurn] + _dice.roll();
-        double newX = _pawn[_playerTurn].getX() + 100 * pos;
-        if(pos > 6) {
-            pos = 6 - (pos - 6);
-        }
-        _pawn[_playerTurn].setX(_pawn[_playerTurn].getX() + 100 * (pos - _playerPos[_playerTurn]));
+    public void play(){
+        _dicePresenter.rollDice();
+        int newPosition = _board.getNewPositionOfCurrentPlayer(_dicePresenter.getDiceResult());
+        _dicePresenter.displayDiceImage();
 
-        if(pos == 6) {
-            Alert alert = new Alert(Alert.AlertType.NONE,  (_players.get(_playerTurn).getName()) + " " + LoginMain.getMessageBundle().getString("winning.sentence"), ButtonType.OK);
-            alert.setTitle(LoginMain.getMessageBundle().getString("title.winner"));
-            alert.showAndWait().ifPresent(rs -> {});
+        _board.updateCurrentPlayerPosition(newPosition);
+
+        double[] newCoordinates = getCoordinatesOfPawnOnTile(_board.getCurrentPlayerPosition(), _board.getCurrentPlayerId());
+        _pawns[_board.getCurrentPlayerId()].setX(newCoordinates[0]);
+        _pawns[_board.getCurrentPlayerId()].setY(newCoordinates[1]);
+
+        if(_board.isInWinningPosition()) {
+            GameView.alert(_board.getCurrentPlayerName() + " " + LoginMain.getMessageBundle().getString("winning.sentence"), LoginMain.getMessageBundle().getString("title.winner"));
             launchRanking();
         }
 
-        _playerPos[_playerTurn] = pos;
-        _playerTurn = (_playerTurn + 1) % _players.size();
+        _board.updateIdToNextPlayer();
+    }
+
+    private double[] getCoordinatesOfPawnOnTile(int position, int playerId) {
+        return new double[]{_coordinatesOfPawnsOnTiles[position][playerId].getX(), _coordinatesOfPawnsOnTiles[position][playerId].getY()};
     }
 
     public void launchRanking() {
@@ -75,20 +85,12 @@ public final class GamePresenter {
         _view.close();
     }
 
-    private void update() {
-        // Update the model
-    }
-
-    private void render() {
-        // Display the result on the view
-        //_view.toto();
+    public Player[] getRanking() {
+        return _board.createRanking();
     }
 
     private void createAndDisplayRankingView() throws IOException {
-        RankingView view = RankingView.createView();
-        RankingPresenter rankingPresenter = new RankingPresenter();
-        view.setPresenter(rankingPresenter);
-        rankingPresenter.setView(view);
+        RankingView view = RankingView.createView(this);
         view.show();
     }
 }

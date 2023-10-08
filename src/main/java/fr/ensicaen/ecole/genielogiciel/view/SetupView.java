@@ -1,7 +1,7 @@
 package fr.ensicaen.ecole.genielogiciel.view;
 
 import fr.ensicaen.ecole.genielogiciel.LoginMain;
-import fr.ensicaen.ecole.genielogiciel.model.Player;
+import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 import fr.ensicaen.ecole.genielogiciel.presenter.SetupPresenter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class SetupView {
     private SetupPresenter _presenter;
@@ -31,24 +32,13 @@ public class SetupView {
         _playerSetupTableView.setItems(_playersList);
         _nameColumnSetup.setCellValueFactory(new PropertyValueFactory<>("name"));
         _schoolingColumnSetup.setCellValueFactory(new PropertyValueFactory<>("schooling"));
-    }
-
-    private void printList() {
-        for (Player player : _playersList) {
-            System.out.println("Player name : " + player.getName());
-            System.out.println("Player schooling : " + player.getSchooling());
-        }
-        System.out.println("---");
+        addPlayerToTableView(new Player("", "")); // TO HIDE TEMPORARILY "empty table message"
     }
 
     public void popUpAlert(String key) {
         Alert alert = new Alert(Alert.AlertType.NONE, LoginMain.getMessageBundle().getString(key), ButtonType.OK);
         alert.setTitle(LoginMain.getMessageBundle().getString(key));
         alert.showAndWait().ifPresent(rs -> {});
-    }
-
-    public void displayError( String message ) {
-        _playerName.setText(message);
     }
 
     public String getName() {
@@ -91,6 +81,10 @@ public class SetupView {
     }
 
     public void getPlayerParameters() {
+        // REMOVE PLAYER PREVENTING FROM "empty table message"
+        if (_playersList.size() == 1 && _playersList.get(0).getName().isEmpty()) {
+            _playersList.remove(0);
+        }
         _presenter.createPlayer(getName(), getSchooling());
     }
 
@@ -105,7 +99,7 @@ public class SetupView {
         final SetupView view = fxmlLoader.getController();
         fxmlLoader.setController(view);
         Scene scene = new Scene(root, 600, 400);
-        scene.getStylesheets().add(SetupView.class.getResource("ButtonStyles.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(SetupView.class.getResource("styles.css")).toExternalForm());
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setResizable(false);

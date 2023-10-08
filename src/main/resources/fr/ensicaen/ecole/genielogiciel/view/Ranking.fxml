@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="287.0" prefWidth="387.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ensicaen.ecole.genielogiciel.view.RankingView">
-    <children>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="287.0" prefWidth="387.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ensicaen.ecole.genielogiciel.view.RankingView">
         <TableView fx:id="_playerRankingTableView" layoutX="40.0" layoutY="67.0" prefHeight="206.0" prefWidth="308.0">
             <columns>
-                <TableColumn fx:id="_nameColumnRanking" prefWidth="121.0" text="Name" />
-                <TableColumn fx:id="_schoolingColumnRanking" prefWidth="186.0" text="Schooling" />
+                <TableColumn fx:id="_nameColumnRanking" prefWidth="121.0" styleClass="tableColumn" text="%ranking.table.name" />
+                <TableColumn fx:id="_schoolingColumnRanking" prefWidth="186.0" styleClass="tableColumn" text="%ranking.table.formation" />
             </columns>
         </TableView>
-        <Text layoutX="94.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Classement">
+        <Text layoutX="40.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%ranking.title">
             <font>
                 <Font size="34.0" />
             </font>
         </Text>
-    </children>
 </Pane>

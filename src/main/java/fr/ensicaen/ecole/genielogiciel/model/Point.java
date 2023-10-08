@@ -1,8 +1,8 @@
 package fr.ensicaen.ecole.genielogiciel.model;
 
 public class Point {
-    private int _x;
-    private int _y;
+    private final int _x;
+    private final int _y;
 
     public Point(int x, int y) {
         _x = x;

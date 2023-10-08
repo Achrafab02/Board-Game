@@ -1,8 +1,9 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
-import fr.ensicaen.ecole.genielogiciel.model.Player;
-import fr.ensicaen.ecole.genielogiciel.model.Schooling;
-import fr.ensicaen.ecole.genielogiciel.model.SchoolingBuilder;
+import fr.ensicaen.ecole.genielogiciel.model.board.Board;
+import fr.ensicaen.ecole.genielogiciel.model.player.Player;
+import fr.ensicaen.ecole.genielogiciel.model.schooling.Schooling;
+import fr.ensicaen.ecole.genielogiciel.model.schooling.SchoolingBuilder;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.SetupView;
 
@@ -18,7 +19,7 @@ public class SetupPresenter {
     }
 
     public void createPlayer(String name, String schoolingName) {
-        if (_players.size() >= 4) {
+        if (_players.size() >= Board.getMaxNumberOfPlayers()) {
             _setupView.popUpAlert("error.title.maxPlayer");
         } else if (name.isEmpty()) {
             _setupView.popUpAlert("error.title.empty.player");
@@ -33,11 +34,11 @@ public class SetupPresenter {
     }
 
     public void launchGame() {
-        if (_players.size() == 0) {
+        if (_players.isEmpty()) {
             _setupView.popUpAlert("error.title.zero.player");
         } else {
             try {
-                createAndDisplayGameView(_players);
+                createAndDisplayGameView();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -45,9 +46,12 @@ public class SetupPresenter {
         }
     }
 
-    private void createAndDisplayGameView(ArrayList<Player> players) throws IOException {
+    private void createAndDisplayGameView() throws IOException {
         GameView view = GameView.createView();
-        GamePresenter gamePresenter = new GamePresenter(players);
+        GamePresenter gamePresenter = new GamePresenter();
+        Board board = new Board(_players, _players.size());
+
+        gamePresenter.setBoard(board);
         gamePresenter.setView(view);
         view.setPresenter(gamePresenter);
         view.show();

@@ -1,20 +1,28 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
-import fr.ensicaen.ecole.genielogiciel.model.Rollable;
+import fr.ensicaen.ecole.genielogiciel.model.board.dices.RandomDice;
+import fr.ensicaen.ecole.genielogiciel.model.board.dices.Rollable;
 import fr.ensicaen.ecole.genielogiciel.view.DiceView;
 
 public class DicePresenter {
     private DiceView _diceView;
-    private final Rollable _dice;
+    private Rollable _dice;
+    private int _currentDiceResult;
 
-    public DicePresenter(Rollable dice) {
-        _dice = dice;
+    public DicePresenter() {
+        _dice = new RandomDice(1, 2);
     }
 
-    public int roll() {
-        int nb = _dice.roll();
-        _diceView.display(nb);
-        return nb;
+    public void rollDice() {
+        _currentDiceResult = _dice.roll();
+    }
+
+    public int getDiceResult() {
+        return _currentDiceResult;
+    }
+
+    public void displayDiceImage() {
+        _diceView.display(_currentDiceResult);
     }
 
     public void setView(DiceView diceView) {
