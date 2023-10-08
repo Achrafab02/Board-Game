@@ -17,7 +17,7 @@ public final class GameView {
     private GamePresenter _presenter;
     public AnchorPane _board;
     public AnchorPane _diceBoard;
-    private GamePresenter _boardController;
+    private GamePresenter gamePresenter;
     private Stage _stage;
 
     public static GameView createView() throws IOException {
@@ -36,7 +36,7 @@ public final class GameView {
     }
 
     public void setPresenter(GamePresenter boardController) {
-        _boardController = boardController;
+        gamePresenter = boardController;
     }
 
     public void show() {
@@ -45,7 +45,7 @@ public final class GameView {
 
     @FXML
     private void rollDice() {
-        _boardController.play();
+        gamePresenter.play();
     }
 
     public AnchorPane getBoard() {

@@ -23,7 +23,7 @@ public final class GamePresenter {
     private final DicePresenter _dicePresenter;
     private static final int SPACE_BETWEEN_PAWNS = 40;
     private static final Point[] FIRST_PLAYER_POSITION_IN_EACH_TILE = {new Point(365, 220), new Point(290, 370), new Point(315, 580), new Point(480, 665), new Point(680, 550), new Point(730, 390), new Point(810, 200), new Point(1040, 170), new Point(1190, 270), new Point(1170, 520), new Point(1040, 605)};
-    private Point[][] _coordinatesOfPawnsOnTiles = new Point[Board.getNumberOfTiles()][Board.getMaxNumberOfPlayers()];
+    private final Point[][] _coordinatesOfPawnsOnTiles = new Point[Board.getNumberOfTiles()][Board.getMaxNumberOfPlayers()];
     private static final Color[] PLAYERS_COLORS = {Color.RED, Color.BLUE, Color.GREEN, Color.PURPLE};
 
     public GamePresenter() {
@@ -34,14 +34,17 @@ public final class GamePresenter {
         _board = board;
     }
 
-    public void setView(GameView view) {
+    private void initCoordinatesOfPawnOnTiles() {
         for (int i = 0; i < Board.getNumberOfTiles(); i++) {
             _coordinatesOfPawnsOnTiles[i][0] = new Point(FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getX(), FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getY());
             _coordinatesOfPawnsOnTiles[i][1] = new Point(FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getX() + SPACE_BETWEEN_PAWNS, FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getY());
             _coordinatesOfPawnsOnTiles[i][2] = new Point(FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getX(), FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getY() + SPACE_BETWEEN_PAWNS);
             _coordinatesOfPawnsOnTiles[i][3] = new Point(FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getX() + SPACE_BETWEEN_PAWNS, FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getY() + SPACE_BETWEEN_PAWNS);
         }
+    }
 
+    public void setView(GameView view) {
+        initCoordinatesOfPawnOnTiles();
         _view = view;
         _dicePresenter.setView(new DiceView(view.getDiceBoard()));
 
@@ -52,11 +55,10 @@ public final class GamePresenter {
         }
     }
 
-    public void play() {
+    public void play(){
         _dicePresenter.rollDice();
         int newPosition = _board.getNewPositionOfCurrentPlayer(_dicePresenter);
         _dicePresenter.displayDiceImage();
-
 
         _board.updateCurrentPlayerPosition(newPosition);
 
