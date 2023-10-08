@@ -26,7 +26,7 @@ public final class GameView {
         Parent root = fxmlLoader.load();
         final GameView view = fxmlLoader.getController();
         fxmlLoader.setController(view);
-        Scene scene = new Scene(root, 844, 110);
+        Scene scene = new Scene(root, 1466, 768);
         Stage stage = new Stage();
         scene.getStylesheets().add(Objects.requireNonNull(SetupView.class.getResource("styles.css")).toExternalForm());
         stage.setScene(scene);

@@ -8,8 +8,8 @@ public class PawnView {
         Rectangle pawn = new Rectangle();
         pawn.setX(x);
         pawn.setY(y);
-        pawn.setWidth(10.0f);
-        pawn.setHeight(10.0f);
+        pawn.setWidth(20.0f);
+        pawn.setHeight(20.0f);
         pawn.setFill(color);
         return pawn;
     }

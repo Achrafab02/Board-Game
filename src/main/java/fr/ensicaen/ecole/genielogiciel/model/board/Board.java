@@ -12,8 +12,8 @@ import fr.ensicaen.ecole.genielogiciel.presenter.DicePresenter;
 import java.util.ArrayList;
 
 public class Board {
-    private static final int NB_TILES = 6;
-    private static final Tile[] HARD_CODED_BOARD = new Tile[]{new TileNeutral(), new TileNeutral(), new TileMathClass(), new TileNeutral(), new TileNeutral(), new TileMathExam(), new TileNeutral()};
+    public static final int NB_TILES = 11;
+    private static final Tile[] HARD_CODED_BOARD = new Tile[]{new TileNeutral(), new TileNeutral(), new TileMathClass(), new TileNeutral(), new TileNeutral(), new TileNeutral(), new TileNeutral(), new TileMathExam(), new TileNeutral(), new TileNeutral(), new TileNeutral()};
     private final Tile[] _tiles;
     private static final int NB_MAX_PLAYERS = 4;
     private final ArrayList<Player> _players;
@@ -27,6 +27,10 @@ public class Board {
         _playersPositions = new int[numberOfPlayers];
         _currentPlayerId = 0;
         _tiles = HARD_CODED_BOARD;
+    }
+
+    public static int getNumberOfTiles() {
+        return NB_TILES;
     }
 
     public static int getMaxNumberOfPlayers() {
@@ -84,7 +88,7 @@ public class Board {
     }
 
     public boolean isInWinningPosition() {
-        return _playersPositions[_currentPlayerId] == NB_TILES;
+        return _playersPositions[_currentPlayerId] == (NB_TILES - 1);
     }
 
     public Player[] createRanking() {

@@ -21,6 +21,10 @@ public final class GamePresenter {
     private Board _board;
     private Rectangle[] _pawns;
     private final DicePresenter _dicePresenter;
+    private static final int SPACE_BETWEEN_PAWNS = 40;
+    private static final Point[] FIRST_PLAYER_POSITION_IN_EACH_TILE = {new Point(365, 220), new Point(290, 370), new Point(315, 580), new Point(480, 665), new Point(680, 550), new Point(730, 390), new Point(810, 200), new Point(1040, 170), new Point(1190, 270), new Point(1170, 520), new Point(1040, 605)};
+    private Point[][] _coordinatesOfPawnsOnTiles = new Point[Board.getNumberOfTiles()][Board.getMaxNumberOfPlayers()];
+    private static final Color[] PLAYERS_COLORS = {Color.RED, Color.BLUE, Color.GREEN, Color.PURPLE};
 
     public GamePresenter() {
         _dicePresenter = new DicePresenter();
@@ -31,15 +35,19 @@ public final class GamePresenter {
     }
 
     public void setView(GameView view) {
+        for (int i = 0; i < Board.getNumberOfTiles(); i++) {
+            _coordinatesOfPawnsOnTiles[i][0] = new Point(FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getX(), FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getY());
+            _coordinatesOfPawnsOnTiles[i][1] = new Point(FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getX() + SPACE_BETWEEN_PAWNS, FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getY());
+            _coordinatesOfPawnsOnTiles[i][2] = new Point(FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getX(), FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getY() + SPACE_BETWEEN_PAWNS);
+            _coordinatesOfPawnsOnTiles[i][3] = new Point(FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getX() + SPACE_BETWEEN_PAWNS, FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getY() + SPACE_BETWEEN_PAWNS);
+        }
+
         _view = view;
         _dicePresenter.setView(new DiceView(view.getDiceBoard()));
 
-        Point[] coordinates = {new Point(40, 40), new Point(60, 40), new Point(40, 60), new Point(60, 60)};
-        Color[] colors = {Color.RED, Color.BLUE, Color.GREEN, Color.PURPLE};
-
         _pawns = new Rectangle[_board.getNumberOfPlayers()];
         for (int i = 0; i < _board.getNumberOfPlayers(); i++) {
-            _pawns[i] = PawnView.create(coordinates[i].getX(), coordinates[i].getY(), colors[i]);
+            _pawns[i] = PawnView.create(_coordinatesOfPawnsOnTiles[0][i].getX(), _coordinatesOfPawnsOnTiles[0][i].getY(), PLAYERS_COLORS[i]);
             _view.getBoard().getChildren().add(_pawns[i]);
         }
     }
@@ -49,10 +57,12 @@ public final class GamePresenter {
         int newPosition = _board.getNewPositionOfCurrentPlayer(_dicePresenter);
         _dicePresenter.displayDiceImage();
 
+
         _board.updateCurrentPlayerPosition(newPosition);
 
-        double newX = _board.getCurrentPlayerPosition() * 100 + (_board.getCurrentPlayerId() % 2 == 0 ? 1 : 0) * 40 + (_board.getCurrentPlayerId() % 2 == 1 ? 1 : 0)*60;
-        _pawns[_board.getCurrentPlayerId()].setX(newX);
+        double[] newCoordinates = getCoordinatesOfPawnOnTile(_board.getCurrentPlayerPosition(), _board.getCurrentPlayerId());
+        _pawns[_board.getCurrentPlayerId()].setX(newCoordinates[0]);
+        _pawns[_board.getCurrentPlayerId()].setY(newCoordinates[1]);
 
         if(_board.isInWinningPosition()) {
             Alert alert = new Alert(Alert.AlertType.NONE,  (_board.getCurrentPlayerName()) + " " + LoginMain.getMessageBundle().getString("winning.sentence"), ButtonType.OK);
@@ -62,6 +72,10 @@ public final class GamePresenter {
         }
 
         _board.updateIdToNextPlayer();
+    }
+
+    private double[] getCoordinatesOfPawnOnTile(int position, int playerId) {
+        return new double[]{_coordinatesOfPawnsOnTiles[position][playerId].getX(), _coordinatesOfPawnsOnTiles[position][playerId].getY()};
     }
 
     public void launchRanking() {
