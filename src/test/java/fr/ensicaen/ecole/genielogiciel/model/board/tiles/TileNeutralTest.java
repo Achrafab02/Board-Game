@@ -12,7 +12,7 @@ class TileNeutralTest {
     void return_no_movement() {
         TileNeutral tileNeutral = new TileNeutral();
         Player player = new Player();
-        Action action = tileNeutral.getMoveInstruction(player);
+        Action action = tileNeutral.fetchInstruction(player);
         assertEquals(0, action._moveCount);
     }
 }
