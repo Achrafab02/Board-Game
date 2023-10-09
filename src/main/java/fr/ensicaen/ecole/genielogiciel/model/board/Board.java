@@ -6,19 +6,19 @@ import fr.ensicaen.ecole.genielogiciel.model.board.tiles.TileMathClass;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.TileMathExam;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.TileNeutral;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Board {
     public static final int NB_TILES = 11;
     private static final Tile[] HARD_CODED_BOARD = new Tile[]{new TileNeutral(), new TileNeutral(), new TileMathClass(), new TileNeutral(), new TileNeutral(), new TileNeutral(), new TileNeutral(), new TileMathExam(), new TileNeutral(), new TileNeutral(), new TileNeutral()};
     private final Tile[] _tiles;
     private static final int NB_MAX_PLAYERS = 4;
-    private final ArrayList<Player> _players;
+    private final List<Player> _players;
     private final int _numberOfPlayers;
     private final int[] _playersPositions;
     private int _currentPlayerId;
 
-    public Board(ArrayList<Player> players, int numberOfPlayers) {
+    public Board(List<Player> players, int numberOfPlayers) {
         _players = players;
         _numberOfPlayers = numberOfPlayers;
         _playersPositions = new int[numberOfPlayers];
@@ -54,7 +54,7 @@ public class Board {
         return _playersPositions.clone();
     }
 
-    public ArrayList<Player> getPlayers() {
+    public List<Player> getPlayers() {
         return _players;
     }
 
@@ -86,11 +86,11 @@ public class Board {
     private int moveDueToTileEffect(int position, Player player) {
         Tile newTile = _tiles[position];
         Player currentPlayer = _players.get(_currentPlayerId);
-        return newTile.getMoveInstruction(currentPlayer)._moveCount;
+        return newTile.fetchInstruction(currentPlayer)._moveCount;
     }
 
     private boolean goalOverstepped(int position) {
-        return (position > NB_TILES);
+        return (position >= NB_TILES);
     }
 
     public void updateCurrentPlayerPosition(int newPosition) {

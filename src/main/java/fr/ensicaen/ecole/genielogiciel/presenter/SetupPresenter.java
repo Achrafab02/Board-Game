@@ -10,10 +10,11 @@ import fr.ensicaen.ecole.genielogiciel.view.SetupView;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SetupPresenter {
     private SetupView _setupView;
-    private final ArrayList<Player> _players = new ArrayList<>();
+    private final List<Player> _players = new ArrayList<>();
 
     public void setView(SetupView view) {
         _setupView = view;
@@ -54,7 +55,6 @@ public class SetupPresenter {
 
         gamePresenter.setBoard(board);
         gamePresenter.setView(view);
-        gamePresenter.setRanking(new Ranking(board));
         gamePresenter.initBoardView();
         view.setPresenter(gamePresenter);
         view.show();

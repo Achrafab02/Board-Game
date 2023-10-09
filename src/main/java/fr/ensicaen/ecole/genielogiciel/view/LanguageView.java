@@ -10,8 +10,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 public class LanguageView {
+    private static final ResourceBundle BUNDLE = LoginMain.getMessageBundle();
     private LanguagePresenter _presenter;
     private Stage _stage;
 
@@ -27,7 +29,7 @@ public class LanguageView {
     }
 
     public static LanguageView createView(Stage primaryStage, String  resourceName) throws IOException {
-        FXMLLoader loader = new FXMLLoader(LanguageView.class.getResource(resourceName), LoginMain.getMessageBundle());
+        FXMLLoader loader = new FXMLLoader(LanguageView.class.getResource(resourceName), BUNDLE);
         Parent root = loader.load();
         // getController() does not return a presenter but actually a class of the View
         // if we want the presenter independent of the API JavaFX.

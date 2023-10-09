@@ -15,8 +15,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 public class SetupView {
+    private static final ResourceBundle BUNDLE = LoginMain.getMessageBundle();
     private SetupPresenter _presenter;
     private Stage _stage;
     @FXML private TableView<Player> _playerSetupTableView;
@@ -36,8 +38,8 @@ public class SetupView {
     }
 
     public void popUpAlert(String key) {
-        Alert alert = new Alert(Alert.AlertType.NONE, LoginMain.getMessageBundle().getString(key), ButtonType.OK);
-        alert.setTitle(LoginMain.getMessageBundle().getString(key));
+        Alert alert = new Alert(Alert.AlertType.NONE, BUNDLE.getString(key), ButtonType.OK);
+        alert.setTitle(BUNDLE.getString(key));
         alert.showAndWait().ifPresent(rs -> {});
     }
 
@@ -93,7 +95,7 @@ public class SetupView {
     }
 
     public static SetupView createView() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SetupView.class.getResource("Setup.fxml"), LoginMain.getMessageBundle());
+        FXMLLoader fxmlLoader = new FXMLLoader(SetupView.class.getResource("Setup.fxml"), BUNDLE);
         fxmlLoader.setLocation(SetupView.class.getResource("Setup.fxml"));
         Parent root = fxmlLoader.load();
         final SetupView view = fxmlLoader.getController();

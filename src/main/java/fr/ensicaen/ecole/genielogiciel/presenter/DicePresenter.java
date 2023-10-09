@@ -6,7 +6,7 @@ import fr.ensicaen.ecole.genielogiciel.view.DiceView;
 
 public class DicePresenter {
     private DiceView _diceView;
-    private Rollable _dice;
+    private final Rollable _dice;
     private int _currentDiceResult;
 
     public DicePresenter() {

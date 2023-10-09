@@ -2,7 +2,7 @@ package fr.ensicaen.ecole.genielogiciel.model.board;
 
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Ranking {
     private Board _board;
@@ -12,7 +12,7 @@ public class Ranking {
     }
 
     public Player[] createRanking() {
-        ArrayList<Player> players = _board.getPlayers();
+        List<Player> players = _board.getPlayers();
         Player[] rankedPlayers = new Player[_board.getNumberOfPlayers()];
         int[] playersPosition = _board.getPayersPositions();
 
@@ -30,5 +30,6 @@ public class Ranking {
         }
         return rankedPlayers;
     }
+
 
 }
