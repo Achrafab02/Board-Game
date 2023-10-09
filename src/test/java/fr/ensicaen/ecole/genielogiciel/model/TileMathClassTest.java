@@ -20,7 +20,7 @@ public class TileMathClassTest {
 
         Player p = new Player("bob", hardSkillsList, "noTraining");
 
-        assertEquals(0, tile.getMoveInstruction(p)._moveCount);
+        assertEquals(0, tile.fetchInstruction(p)._moveCount);
         assertEquals(3, p.getHardSkillLevel(Mathematics.class));
     }
 }

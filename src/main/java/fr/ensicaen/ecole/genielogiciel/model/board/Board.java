@@ -1,27 +1,24 @@
 package fr.ensicaen.ecole.genielogiciel.model.board;
 
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
-import fr.ensicaen.ecole.genielogiciel.model.board.dices.RandomDice;
-import fr.ensicaen.ecole.genielogiciel.model.board.dices.Rollable;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.Tile;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.TileMathClass;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.TileMathExam;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.TileNeutral;
-import fr.ensicaen.ecole.genielogiciel.presenter.DicePresenter;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Board {
     public static final int NB_TILES = 11;
     private static final Tile[] HARD_CODED_BOARD = new Tile[]{new TileNeutral(), new TileNeutral(), new TileMathClass(), new TileNeutral(), new TileNeutral(), new TileNeutral(), new TileNeutral(), new TileMathExam(), new TileNeutral(), new TileNeutral(), new TileNeutral()};
     private final Tile[] _tiles;
     private static final int NB_MAX_PLAYERS = 4;
-    private final ArrayList<Player> _players;
+    private final List<Player> _players;
     private final int _numberOfPlayers;
     private final int[] _playersPositions;
     private int _currentPlayerId;
 
-    public Board(ArrayList<Player> players, int numberOfPlayers) {
+    public Board(List<Player> players, int numberOfPlayers) {
         _players = players;
         _numberOfPlayers = numberOfPlayers;
         _playersPositions = new int[numberOfPlayers];
@@ -53,6 +50,14 @@ public class Board {
         return _currentPlayerId;
     }
 
+    public int[] getPayersPositions() {
+        return _playersPositions.clone();
+    }
+
+    public List<Player> getPlayers() {
+        return _players;
+    }
+
     public String getCurrentPlayerName() {
         return _players.get(_currentPlayerId).getName();
     }
@@ -81,11 +86,11 @@ public class Board {
     private int moveDueToTileEffect(int position, Player player) {
         Tile newTile = _tiles[position];
         Player currentPlayer = _players.get(_currentPlayerId);
-        return newTile.getMoveInstruction(currentPlayer)._moveCount;
+        return newTile.fetchInstruction(currentPlayer)._moveCount;
     }
 
     private boolean goalOverstepped(int position) {
-        return (position > NB_TILES);
+        return (position >= NB_TILES);
     }
 
     public void updateCurrentPlayerPosition(int newPosition) {
@@ -94,24 +99,5 @@ public class Board {
 
     public boolean isInWinningPosition() {
         return _playersPositions[_currentPlayerId] == (NB_TILES - 1);
-    }
-
-    public Player[] createRanking() {
-        Player[] players = new Player[_numberOfPlayers];
-        int[] playersPosition = _playersPositions.clone();
-
-        for (int i = 0; i < _numberOfPlayers; i++) {
-            int maxIndex = 0;
-            int maxValue = -1;
-            for (int playerId = 0; playerId < _numberOfPlayers; playerId++) {
-                if (playersPosition[playerId] > maxValue) {
-                    maxValue = playersPosition[playerId];
-                    maxIndex = playerId;
-                }
-            }
-            playersPosition[maxIndex] = -1;
-            players[i] = _players.get(maxIndex);
-        }
-        return players;
     }
 }

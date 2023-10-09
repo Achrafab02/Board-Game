@@ -2,7 +2,7 @@ package fr.ensicaen.ecole.genielogiciel.presenter;
 
 import fr.ensicaen.ecole.genielogiciel.LoginMain;
 import fr.ensicaen.ecole.genielogiciel.model.board.Board;
-import fr.ensicaen.ecole.genielogiciel.model.player.Player;
+import fr.ensicaen.ecole.genielogiciel.model.board.Ranking;
 import fr.ensicaen.ecole.genielogiciel.model.Point;
 import fr.ensicaen.ecole.genielogiciel.view.DiceView;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
@@ -12,12 +12,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 
 public final class GamePresenter {
     private GameView _view;
     private Board _board;
     private Rectangle[] _pawns;
+    private static final ResourceBundle BUNDLE = LoginMain.getMessageBundle();
     private final DicePresenter _dicePresenter;
     private static final int SPACE_BETWEEN_PAWNS = 40;
     private static final Point[] FIRST_PLAYER_POSITION_IN_EACH_TILE = {new Point(365, 220), new Point(290, 370), new Point(315, 580), new Point(480, 665), new Point(680, 550), new Point(730, 390), new Point(810, 200), new Point(1040, 170), new Point(1190, 270), new Point(1170, 520), new Point(1040, 605)};
@@ -42,10 +44,12 @@ public final class GamePresenter {
     }
 
     public void setView(GameView view) {
-        initCoordinatesOfPawnOnTiles();
         _view = view;
         _dicePresenter.setView(new DiceView(view.getDiceBoard()));
+    }
 
+    public void initBoardView() {
+        initCoordinatesOfPawnOnTiles();
         _pawns = new Rectangle[_board.getNumberOfPlayers()];
         for (int i = 0; i < _board.getNumberOfPlayers(); i++) {
             _pawns[i] = PawnView.create(_coordinatesOfPawnsOnTiles[0][i].getX(), _coordinatesOfPawnsOnTiles[0][i].getY(), PLAYERS_COLORS[i]);
@@ -53,23 +57,32 @@ public final class GamePresenter {
         }
     }
 
-    public void play(){
+    public void rollDice() {
         _dicePresenter.rollDice();
-        int newPosition = _board.getNewPositionOfCurrentPlayer(_dicePresenter.getDiceResult());
         _dicePresenter.displayDiceImage();
+    }
+
+    public void movePlayer() {
+        int newPosition = _board.getNewPositionOfCurrentPlayer(_dicePresenter.getDiceResult());
 
         _board.updateCurrentPlayerPosition(newPosition);
 
-        double[] newCoordinates = getCoordinatesOfPawnOnTile(_board.getCurrentPlayerPosition(), _board.getCurrentPlayerId());
-        _pawns[_board.getCurrentPlayerId()].setX(newCoordinates[0]);
-        _pawns[_board.getCurrentPlayerId()].setY(newCoordinates[1]);
+        changeCoordinatesOfPawnOnTile();
 
         if(_board.isInWinningPosition()) {
-            GameView.alert(_board.getCurrentPlayerName() + " " + LoginMain.getMessageBundle().getString("winning.sentence"), LoginMain.getMessageBundle().getString("title.winner"));
+            String winningSentence = BUNDLE.getString("winning.sentence");
+            String winningTitle = BUNDLE.getString("title.winner");
+            GameView.alert(_board.getCurrentPlayerName() + " " + winningSentence, winningTitle);
             launchRanking();
         }
 
         _board.updateIdToNextPlayer();
+    }
+
+    private void changeCoordinatesOfPawnOnTile() {
+        double[] newCoordinates = getCoordinatesOfPawnOnTile(_board.getCurrentPlayerPosition(), _board.getCurrentPlayerId());
+        _pawns[_board.getCurrentPlayerId()].setX(newCoordinates[0]);
+        _pawns[_board.getCurrentPlayerId()].setY(newCoordinates[1]);
     }
 
     private double[] getCoordinatesOfPawnOnTile(int position, int playerId) {
@@ -85,12 +98,11 @@ public final class GamePresenter {
         _view.close();
     }
 
-    public Player[] getRanking() {
-        return _board.createRanking();
-    }
-
     private void createAndDisplayRankingView() throws IOException {
-        RankingView view = RankingView.createView(this);
+        RankingView view = RankingView.createView();
+        RankingPresenter rankingPresenter = new RankingPresenter(new Ranking(_board));
+        view.setPresenter(rankingPresenter);
+        view.initTableView();
         view.show();
     }
 }

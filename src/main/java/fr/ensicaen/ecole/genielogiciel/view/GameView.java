@@ -14,8 +14,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 public final class GameView {
+    private static final ResourceBundle BUNDLE = LoginMain.getMessageBundle();
     private GamePresenter _presenter;
     public AnchorPane _board;
     public AnchorPane _diceBoard;
@@ -23,7 +25,7 @@ public final class GameView {
     private Stage _stage;
 
     public static GameView createView() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(GameView.class.getResource("Board.fxml"), LoginMain.getMessageBundle());
+        FXMLLoader fxmlLoader = new FXMLLoader(GameView.class.getResource("Board.fxml"), BUNDLE);
         fxmlLoader.setLocation(GameView.class.getResource("Board.fxml"));
         Parent root = fxmlLoader.load();
         final GameView view = fxmlLoader.getController();
@@ -53,7 +55,8 @@ public final class GameView {
 
     @FXML
     private void rollDice() {
-        _gamePresenter.play();
+        _gamePresenter.rollDice();
+        _gamePresenter.movePlayer();
     }
 
     public AnchorPane getBoard() {
