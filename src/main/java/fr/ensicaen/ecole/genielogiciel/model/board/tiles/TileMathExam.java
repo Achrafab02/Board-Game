@@ -1,15 +1,15 @@
 package fr.ensicaen.ecole.genielogiciel.model.board.tiles;
 
-import fr.ensicaen.ecole.genielogiciel.model.board.Action;
+import fr.ensicaen.ecole.genielogiciel.model.board.Action.Move;
 import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.Mathematics;
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 
 public class TileMathExam implements Tile {
-    public Action fetchInstruction(Player player) {
-        Action action = new Action();
+    public Move fetchInstruction(Player player) {
+        Move move = new Move();
         if(player.getHardSkillLevel(Mathematics.class) < 4) {
-            action._moveCount = -2;
+            move._moveCount = -2;
         }
-        return action;
+        return move;
     }
 }

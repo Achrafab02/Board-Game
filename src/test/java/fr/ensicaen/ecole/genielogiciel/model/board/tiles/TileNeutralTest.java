@@ -1,6 +1,6 @@
 package fr.ensicaen.ecole.genielogiciel.model.board.tiles;
 
-import fr.ensicaen.ecole.genielogiciel.model.board.Action;
+import fr.ensicaen.ecole.genielogiciel.model.board.Action.Move;
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +12,7 @@ class TileNeutralTest {
     void return_no_movement() {
         TileNeutral tileNeutral = new TileNeutral();
         Player player = new Player();
-        Action action = tileNeutral.fetchInstruction(player);
-        assertEquals(0, action._moveCount);
+        Move move = tileNeutral.fetchInstruction(player);
+        assertEquals(0, move._moveCount);
     }
 }
