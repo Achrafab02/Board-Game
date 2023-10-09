@@ -29,6 +29,13 @@ public class Player {
         _schoolingName = schoolingName;
     }
 
+    public Player() {
+        _name = "";
+        _softSkill = new Rigorous();
+        _hardSkills = new ArrayList<>();
+        _schoolingName = "";
+    }
+
     private SoftSkill chooseSoftSkillAtRandom() {
         return switch ((int) (Math.random() * 3)) {
             case 0 -> new Dabbler();

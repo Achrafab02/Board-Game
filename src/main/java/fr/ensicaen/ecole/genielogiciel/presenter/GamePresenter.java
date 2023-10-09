@@ -53,18 +53,18 @@ public final class GamePresenter {
         }
     }
 
-    public void play(){
-        _dicePresenter.rollDice();
-        int newPosition = _board.getNewPositionOfCurrentPlayer(_dicePresenter.getDiceResult());
+    public void play() {
+        int diceResult = _dicePresenter.rollDice();
         _dicePresenter.displayDiceImage();
 
+        int newPosition = _board.getNewPositionOfCurrentPlayer(diceResult);
         _board.updateCurrentPlayerPosition(newPosition);
 
         double[] newCoordinates = getCoordinatesOfPawnOnTile(_board.getCurrentPlayerPosition(), _board.getCurrentPlayerId());
         _pawns[_board.getCurrentPlayerId()].setX(newCoordinates[0]);
         _pawns[_board.getCurrentPlayerId()].setY(newCoordinates[1]);
 
-        if(_board.isInWinningPosition()) {
+        if (_board.isInWinningPosition()) {
             GameView.alert(_board.getCurrentPlayerName() + " " + LoginMain.getMessageBundle().getString("winning.sentence"), LoginMain.getMessageBundle().getString("title.winner"));
             launchRanking();
         }
