@@ -1,13 +1,10 @@
 package fr.ensicaen.ecole.genielogiciel.model.board;
 
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
-import fr.ensicaen.ecole.genielogiciel.model.board.dices.RandomDice;
-import fr.ensicaen.ecole.genielogiciel.model.board.dices.Rollable;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.Tile;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.TileMathClass;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.TileMathExam;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.TileNeutral;
-import fr.ensicaen.ecole.genielogiciel.presenter.DicePresenter;
 
 import java.util.ArrayList;
 
@@ -53,6 +50,14 @@ public class Board {
         return _currentPlayerId;
     }
 
+    public int[] getPayersPositions() {
+        return _playersPositions.clone();
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return _players;
+    }
+
     public String getCurrentPlayerName() {
         return _players.get(_currentPlayerId).getName();
     }
@@ -94,24 +99,5 @@ public class Board {
 
     public boolean isInWinningPosition() {
         return _playersPositions[_currentPlayerId] == (NB_TILES - 1);
-    }
-
-    public Player[] createRanking() {
-        Player[] players = new Player[_numberOfPlayers];
-        int[] playersPosition = _playersPositions.clone();
-
-        for (int i = 0; i < _numberOfPlayers; i++) {
-            int maxIndex = 0;
-            int maxValue = -1;
-            for (int playerId = 0; playerId < _numberOfPlayers; playerId++) {
-                if (playersPosition[playerId] > maxValue) {
-                    maxValue = playersPosition[playerId];
-                    maxIndex = playerId;
-                }
-            }
-            playersPosition[maxIndex] = -1;
-            players[i] = _players.get(maxIndex);
-        }
-        return players;
     }
 }

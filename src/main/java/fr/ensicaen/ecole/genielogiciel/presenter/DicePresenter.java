@@ -10,7 +10,7 @@ public class DicePresenter {
     private int _currentDiceResult;
 
     public DicePresenter() {
-        _dice = new RandomDice(1, 2);
+        _dice = new RandomDice(1, 6);
     }
 
     public void rollDice() {

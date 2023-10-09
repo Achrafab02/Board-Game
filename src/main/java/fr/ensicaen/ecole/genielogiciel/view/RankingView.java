@@ -32,7 +32,7 @@ public class RankingView {
         _playerRankingTableView.setItems(_playersRankingList);
         _nameColumnRanking.setCellValueFactory(new PropertyValueFactory<>("name"));
         _schoolingColumnRanking.setCellValueFactory(new PropertyValueFactory<>("schooling"));
-        Player[] positions = _gamePresenter.getRanking();
+        Player[] positions = _gamePresenter.getRankingList();
         for (Player position : positions) {
             addPlayerToTableView(position);
         }

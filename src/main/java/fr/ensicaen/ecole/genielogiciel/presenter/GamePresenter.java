@@ -2,6 +2,7 @@ package fr.ensicaen.ecole.genielogiciel.presenter;
 
 import fr.ensicaen.ecole.genielogiciel.LoginMain;
 import fr.ensicaen.ecole.genielogiciel.model.board.Board;
+import fr.ensicaen.ecole.genielogiciel.model.board.Ranking;
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 import fr.ensicaen.ecole.genielogiciel.model.Point;
 import fr.ensicaen.ecole.genielogiciel.view.DiceView;
@@ -17,6 +18,7 @@ import java.io.IOException;
 public final class GamePresenter {
     private GameView _view;
     private Board _board;
+    private Ranking _ranking;
     private Rectangle[] _pawns;
     private final DicePresenter _dicePresenter;
     private static final int SPACE_BETWEEN_PAWNS = 40;
@@ -32,6 +34,14 @@ public final class GamePresenter {
         _board = board;
     }
 
+    public void setRanking(Ranking ranking) {
+        _ranking = ranking;
+    }
+
+    public Player[] getRankingList() {
+        return _ranking.createRanking();
+    }
+
     private void initCoordinatesOfPawnOnTiles() {
         for (int i = 0; i < Board.getNumberOfTiles(); i++) {
             _coordinatesOfPawnsOnTiles[i][0] = new Point(FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getX(), FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getY());
@@ -42,10 +52,12 @@ public final class GamePresenter {
     }
 
     public void setView(GameView view) {
-        initCoordinatesOfPawnOnTiles();
         _view = view;
         _dicePresenter.setView(new DiceView(view.getDiceBoard()));
+    }
 
+    public void initBoardView() {
+        initCoordinatesOfPawnOnTiles();
         _pawns = new Rectangle[_board.getNumberOfPlayers()];
         for (int i = 0; i < _board.getNumberOfPlayers(); i++) {
             _pawns[i] = PawnView.create(_coordinatesOfPawnsOnTiles[0][i].getX(), _coordinatesOfPawnsOnTiles[0][i].getY(), PLAYERS_COLORS[i]);
@@ -53,16 +65,17 @@ public final class GamePresenter {
         }
     }
 
-    public void play(){
+    public void rollDice() {
         _dicePresenter.rollDice();
-        int newPosition = _board.getNewPositionOfCurrentPlayer(_dicePresenter.getDiceResult());
         _dicePresenter.displayDiceImage();
+    }
+
+    public void movePlayer() {
+        int newPosition = _board.getNewPositionOfCurrentPlayer(_dicePresenter.getDiceResult());
 
         _board.updateCurrentPlayerPosition(newPosition);
 
-        double[] newCoordinates = getCoordinatesOfPawnOnTile(_board.getCurrentPlayerPosition(), _board.getCurrentPlayerId());
-        _pawns[_board.getCurrentPlayerId()].setX(newCoordinates[0]);
-        _pawns[_board.getCurrentPlayerId()].setY(newCoordinates[1]);
+        changeCoordinatesOfPawnOnTile();
 
         if(_board.isInWinningPosition()) {
             GameView.alert(_board.getCurrentPlayerName() + " " + LoginMain.getMessageBundle().getString("winning.sentence"), LoginMain.getMessageBundle().getString("title.winner"));
@@ -70,6 +83,12 @@ public final class GamePresenter {
         }
 
         _board.updateIdToNextPlayer();
+    }
+
+    private void changeCoordinatesOfPawnOnTile() {
+        double[] newCoordinates = getCoordinatesOfPawnOnTile(_board.getCurrentPlayerPosition(), _board.getCurrentPlayerId());
+        _pawns[_board.getCurrentPlayerId()].setX(newCoordinates[0]);
+        _pawns[_board.getCurrentPlayerId()].setY(newCoordinates[1]);
     }
 
     private double[] getCoordinatesOfPawnOnTile(int position, int playerId) {
@@ -83,10 +102,6 @@ public final class GamePresenter {
             throw new RuntimeException(e);
         }
         _view.close();
-    }
-
-    public Player[] getRanking() {
-        return _board.createRanking();
     }
 
     private void createAndDisplayRankingView() throws IOException {

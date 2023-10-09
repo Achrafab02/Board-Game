@@ -1,6 +1,7 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
 import fr.ensicaen.ecole.genielogiciel.model.board.Board;
+import fr.ensicaen.ecole.genielogiciel.model.board.Ranking;
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 import fr.ensicaen.ecole.genielogiciel.model.schooling.Schooling;
 import fr.ensicaen.ecole.genielogiciel.model.schooling.SchoolingBuilder;
@@ -53,6 +54,8 @@ public class SetupPresenter {
 
         gamePresenter.setBoard(board);
         gamePresenter.setView(view);
+        gamePresenter.setRanking(new Ranking(board));
+        gamePresenter.initBoardView();
         view.setPresenter(gamePresenter);
         view.show();
     }
