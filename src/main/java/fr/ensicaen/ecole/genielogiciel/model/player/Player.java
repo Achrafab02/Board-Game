@@ -12,14 +12,16 @@ import java.util.ArrayList;
 public class Player {
     private final String _name;
     private final SoftSkill _softSkill;
-    private ArrayList<HardSkill> _hardSkills;
+    private final ArrayList<HardSkill> _hardSkills;
     private final String _schoolingName;
+    private int _currentTileIndex;
 
     public Player(String name, String schoolingName) {
         _name = name;
         _softSkill = chooseSoftSkillAtRandom();
         _hardSkills = new ArrayList<>();
         _schoolingName = schoolingName;
+        _currentTileIndex = 0;
     }
 
     public Player(String name, ArrayList<HardSkill> hardSkills, String schoolingName) {
@@ -27,6 +29,7 @@ public class Player {
         _softSkill = chooseSoftSkillAtRandom();
         _hardSkills = hardSkills;
         _schoolingName = schoolingName;
+        _currentTileIndex = 0;
     }
 
     public Player() {
@@ -34,6 +37,7 @@ public class Player {
         _softSkill = new Rigorous();
         _hardSkills = new ArrayList<>();
         _schoolingName = "";
+        _currentTileIndex = 0;
     }
 
     private SoftSkill chooseSoftSkillAtRandom() {
@@ -86,5 +90,9 @@ public class Player {
             }
         }
         setHardSkillLevel(subject, scoreToAdd);
+    }
+
+    public void advance(int moveCount) {
+        _currentTileIndex += moveCount;
     }
 }

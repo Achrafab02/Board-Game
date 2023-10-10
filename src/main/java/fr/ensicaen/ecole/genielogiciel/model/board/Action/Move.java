@@ -17,6 +17,6 @@ public class Move implements Action {
 
     @Override
     public void performAction(Player player) {
-        //player changes position
+        player.advance(_moveCount);
     }
 }

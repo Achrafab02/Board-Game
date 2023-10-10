@@ -4,10 +4,10 @@ import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.HardSkill;
 
 public class IncreaseSkill implements Action {
-    private final HardSkill _hardSkill;
+    private final Class<? extends HardSkill> _hardSkill;
     private final int _levelIncrease;
 
-    public IncreaseSkill(HardSkill hardSkill, int levelIncrease) {
+    public IncreaseSkill(Class<? extends HardSkill> hardSkill, int levelIncrease) {
         _hardSkill = hardSkill;
         _levelIncrease = levelIncrease;
 
@@ -15,6 +15,6 @@ public class IncreaseSkill implements Action {
 
     @Override
     public void performAction(Player player) {
-        //player.addToLevelOfHardSkill(_hardSkill, _levelIncrease);
+        player.addToLevelOfHardSkill(_hardSkill, _levelIncrease);
     }
 }
