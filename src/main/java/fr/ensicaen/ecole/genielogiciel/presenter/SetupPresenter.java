@@ -50,7 +50,7 @@ public class SetupPresenter {
 
     private void createAndDisplayGameView() throws IOException {
         GameView view = GameView.createView();
-        GamePresenter gamePresenter = new GamePresenter();
+        GamePresenter gamePresenter = new GamePresenter(_players);
         Board board = new Board(_players, _players.size());
 
         gamePresenter.setBoard(board);

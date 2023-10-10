@@ -4,6 +4,7 @@ import fr.ensicaen.ecole.genielogiciel.LoginMain;
 import fr.ensicaen.ecole.genielogiciel.model.board.Board;
 import fr.ensicaen.ecole.genielogiciel.model.board.Ranking;
 import fr.ensicaen.ecole.genielogiciel.model.Point;
+import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 import fr.ensicaen.ecole.genielogiciel.view.DiceView;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.PawnView;
@@ -12,6 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -25,9 +27,29 @@ public final class GamePresenter {
     private static final Point[] FIRST_PLAYER_POSITION_IN_EACH_TILE = {new Point(365, 220), new Point(290, 370), new Point(315, 580), new Point(480, 665), new Point(680, 550), new Point(730, 390), new Point(810, 200), new Point(1040, 170), new Point(1190, 270), new Point(1170, 520), new Point(1040, 605)};
     private final Point[][] _coordinatesOfPawnsOnTiles = new Point[Board.getNumberOfTiles()][Board.getMaxNumberOfPlayers()];
     private static final Color[] PLAYERS_COLORS = {Color.RED, Color.BLUE, Color.GREEN, Color.PURPLE};
+    //NEW
+    private List<Player> _players;
+    private BoardControllerPresenter _boardControllerPresenter;
+    private int _numberOfPlayer;
+    private int _currentPlayerId = 0;
 
     public GamePresenter() {
         _dicePresenter = new DicePresenter();
+    }
+
+    public GamePresenter(List<Player> players) {
+        _players = players;
+        _numberOfPlayer = players.size();
+        _dicePresenter = new DicePresenter();
+        _boardControllerPresenter = new BoardControllerPresenter();
+    }
+
+    //When roll dice is pressed
+    public void play() {
+        int diceRoll = _dicePresenter.rollDice();
+        _players.get(_currentPlayerId).move(diceRoll);
+        //next player
+        _currentPlayerId = (_currentPlayerId + 1) % _numberOfPlayer;
     }
 
     public void setBoard(Board board) {

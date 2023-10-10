@@ -73,10 +73,12 @@ public class Board {
     }
 
     private int move(int newPosition) {
-        if (goalOverstepped(newPosition)) {
+        /*if (goalOverstepped(newPosition)) {
             return moveBackwards(newPosition);
         }
         return newPosition;
+         */
+        return 0;
     }
 
     private int moveBackwards(int position) {
