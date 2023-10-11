@@ -23,4 +23,9 @@ public class TileMathExam implements fr.ensicaen.ecole.genielogiciel.model.board
     public int getPositionIndex() {
         return _positionIndex;
     }
+
+    @Override
+    public Point getCoordinates() {
+        return _tileCoordinates;
+    }
 }

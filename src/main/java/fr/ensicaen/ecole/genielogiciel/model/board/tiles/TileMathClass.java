@@ -25,4 +25,9 @@ public class TileMathClass implements fr.ensicaen.ecole.genielogiciel.model.boar
     public int getPositionIndex() {
         return _positionIndex;
     }
+
+    @Override
+    public Point getCoordinates() {
+        return _tileCoordinates;
+    }
 }

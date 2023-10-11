@@ -8,6 +8,7 @@ import fr.ensicaen.ecole.genielogiciel.model.player.softskills.Rigorous;
 import fr.ensicaen.ecole.genielogiciel.model.player.softskills.SoftSkill;
 import fr.ensicaen.ecole.genielogiciel.presenter.BoardControllerPresenter;
 import fr.ensicaen.ecole.genielogiciel.presenter.PawnPresenter;
+import javafx.scene.layout.AnchorPane;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -117,5 +118,9 @@ public class Player {
 
     public void setBoardController(BoardControllerPresenter boardController) {
         _boardController = boardController;
+    }
+
+    public void initPawn(AnchorPane board) {
+        _pawn.initPawn(board);
     }
 }

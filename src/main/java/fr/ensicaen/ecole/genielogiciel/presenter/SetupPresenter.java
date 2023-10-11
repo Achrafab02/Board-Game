@@ -52,9 +52,10 @@ public class SetupPresenter {
         GameView view = GameView.createView();
         GamePresenter gamePresenter = new GamePresenter(_players);
         Board board = new Board(_players, _players.size());
+        gamePresenter.setView(view);
+        gamePresenter.initGame();
 
         gamePresenter.setBoard(board);
-        gamePresenter.setView(view);
         gamePresenter.initBoardView();
         view.setPresenter(gamePresenter);
         view.show();

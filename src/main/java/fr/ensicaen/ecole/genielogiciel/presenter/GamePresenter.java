@@ -48,6 +48,12 @@ public final class GamePresenter {
         }
     }
 
+    public void initGame() {
+        for (Player player: _players) {
+            player.initPawn(_view.getBoard());
+        }
+    }
+
     //When roll dice is pressed
     public void play() {
         int diceRoll = _dicePresenter.rollDice();
