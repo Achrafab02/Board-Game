@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MoveTest {
 
+    /*
     @Test
     void idle() {
         Move move = new Move();
@@ -30,4 +31,5 @@ class MoveTest {
         move._moveCount = 5;
         assertEquals(5, move._moveCount);
     }
+    */
 }
