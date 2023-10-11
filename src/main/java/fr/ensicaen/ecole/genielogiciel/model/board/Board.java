@@ -1,5 +1,6 @@
 package fr.ensicaen.ecole.genielogiciel.model.board;
 
+import fr.ensicaen.ecole.genielogiciel.model.Point;
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.Tile;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.TileMathClass;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class Board {
     public static final int NB_TILES = 11;
-    private static final Tile[] HARD_CODED_BOARD = new Tile[]{new TileNeutral(), new TileNeutral(), new TileMathClass(), new TileNeutral(), new TileNeutral(), new TileNeutral(), new TileNeutral(), new TileMathExam(), new TileNeutral(), new TileNeutral(), new TileNeutral()};
+    //private static final Tile[] HARD_CODED_BOARD = new Tile[]{new TileNeutral(), new TileNeutral(), new TileMathClass(), new TileNeutral(), new TileNeutral(), new TileNeutral(), new TileNeutral(), new TileMathExam(), new TileNeutral(), new TileNeutral(), new TileNeutral()};
     private final Tile[] _tiles;
     private static final int NB_MAX_PLAYERS = 4;
     private final List<Player> _players;
@@ -23,7 +24,8 @@ public class Board {
         _numberOfPlayers = numberOfPlayers;
         _playersPositions = new int[numberOfPlayers];
         _currentPlayerId = 0;
-        _tiles = HARD_CODED_BOARD;
+        //_tiles = HARD_CODED_BOARD;
+        _tiles = new Tile[] {new TileNeutral(0, new Point(0, 0))};
     }
 
     public static int getNumberOfTiles() {
@@ -88,7 +90,8 @@ public class Board {
     private int moveDueToTileEffect(int position, Player player) {
         Tile newTile = _tiles[position];
         Player currentPlayer = _players.get(_currentPlayerId);
-        return newTile.fetchInstruction(currentPlayer)._moveCount;
+        //return newTile.fetchInstruction(currentPlayer)._moveCount;
+        return 0;
     }
 
     private boolean goalOverstepped(int position) {

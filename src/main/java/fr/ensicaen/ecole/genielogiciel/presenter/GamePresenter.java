@@ -12,6 +12,7 @@ import fr.ensicaen.ecole.genielogiciel.view.RankingView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -42,11 +43,15 @@ public final class GamePresenter {
         _numberOfPlayer = players.size();
         _dicePresenter = new DicePresenter();
         _boardControllerPresenter = new BoardControllerPresenter();
+        for (Player player : players) {
+            player.setBoardController(_boardControllerPresenter);
+        }
     }
 
     //When roll dice is pressed
     public void play() {
         int diceRoll = _dicePresenter.rollDice();
+        _dicePresenter.displayDiceImage(); /*In dicePresenter.rollDice() preferably*/
         _players.get(_currentPlayerId).move(diceRoll);
         //next player
         _currentPlayerId = (_currentPlayerId + 1) % _numberOfPlayer;

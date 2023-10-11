@@ -6,5 +6,5 @@ import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 public interface Tile {
      Action fetchInstruction(Player player);
 
-     int getPosition();
+     int getPositionIndex();
 }

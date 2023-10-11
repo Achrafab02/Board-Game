@@ -7,6 +7,7 @@ import fr.ensicaen.ecole.genielogiciel.model.player.softskills.Dabbler;
 import fr.ensicaen.ecole.genielogiciel.model.player.softskills.Rigorous;
 import fr.ensicaen.ecole.genielogiciel.model.player.softskills.SoftSkill;
 import fr.ensicaen.ecole.genielogiciel.presenter.BoardControllerPresenter;
+import fr.ensicaen.ecole.genielogiciel.presenter.PawnPresenter;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class Player {
     private int _currentTileIndex;
     
     private BoardControllerPresenter _boardController;
+    private final PawnPresenter _pawn;
 
     public Player(String name, String schoolingName) {
         _name = name;
@@ -26,6 +28,7 @@ public class Player {
         _hardSkills = new ArrayList<>();
         _schoolingName = schoolingName;
         _currentTileIndex = 0;
+        _pawn = new PawnPresenter();
     }
 
     public Player(String name, ArrayList<HardSkill> hardSkills, String schoolingName) {
@@ -34,6 +37,7 @@ public class Player {
         _hardSkills = hardSkills;
         _schoolingName = schoolingName;
         _currentTileIndex = 0;
+        _pawn = new PawnPresenter();
     }
 
     public Player() {
@@ -42,6 +46,7 @@ public class Player {
         _hardSkills = new ArrayList<>();
         _schoolingName = "";
         _currentTileIndex = 0;
+        _pawn = new PawnPresenter();
     }
 
     private SoftSkill chooseSoftSkillAtRandom() {
@@ -102,9 +107,15 @@ public class Player {
     }
 
     public void move(int diceResult) {
-        Tile tile = _boardController.getActionFromTile(_currentTileIndex + diceResult);
-        _currentTileIndex = tile.getPosition();
+        Tile tile = _boardController.getTile(_currentTileIndex + diceResult);
+        _currentTileIndex = tile.getPositionIndex();
         tile.fetchInstruction(this);
+        Tile finalTile = _boardController.getTile(_currentTileIndex);
+        _pawn.draw(finalTile);
         //Draw with Pawn
+    }
+
+    public void setBoardController(BoardControllerPresenter boardController) {
+        _boardController = boardController;
     }
 }

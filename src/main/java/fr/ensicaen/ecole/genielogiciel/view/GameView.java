@@ -55,8 +55,11 @@ public final class GameView {
 
     @FXML
     private void rollDice() {
+        /*
         int diceResult = _gamePresenter.rollDice();
         _gamePresenter.movePlayer(diceResult);
+        */
+         _gamePresenter.play();
     }
 
     public AnchorPane getBoard() {
