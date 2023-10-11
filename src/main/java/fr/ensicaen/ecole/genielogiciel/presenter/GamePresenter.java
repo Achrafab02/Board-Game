@@ -63,6 +63,7 @@ public final class GamePresenter {
         _players.get(_currentPlayerId).move(diceRoll);
         //next player
         _currentPlayerId = (_currentPlayerId + 1) % _numberOfPlayer;
+        
     }
 
     public void setBoard(Board board) {

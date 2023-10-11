@@ -120,6 +120,8 @@ public class Player {
     }
 
     public void initPawn(AnchorPane board, int id) {
+        Tile firstTile = _boardController.getTile(_currentTileIndex);
         _pawn.initPawn(board, id);
+        _pawn.draw(firstTile);
     }
 }
