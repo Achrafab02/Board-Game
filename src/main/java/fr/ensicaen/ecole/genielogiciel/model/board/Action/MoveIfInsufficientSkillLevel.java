@@ -17,7 +17,7 @@ public class MoveIfInsufficientSkillLevel implements Action {
     @Override
     public void performAction(Player player) {
         if (player.getHardSkillLevel(_hardSkill) < _skillCap) {
-            player.advance(_moveCount);
+            player.moveWithoutTileEffect(_moveCount);
         }
     }
 }

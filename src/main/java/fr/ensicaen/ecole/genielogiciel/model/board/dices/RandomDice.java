@@ -6,17 +6,19 @@ public class RandomDice implements Rollable {
     private final Random _randomGenerator;
     private final int _lowerInterval;
     private final int _upperInterval;
+    private final int CLASSIC_DICE_MIN_VALUE = 1;
+    private final int CLASSIC_DICE_MAX_VALUE = 6;
 
     public RandomDice() {
         _randomGenerator = new Random();
-        _lowerInterval = 1;
-        _upperInterval = 6;
+        _lowerInterval = CLASSIC_DICE_MIN_VALUE;
+        _upperInterval = CLASSIC_DICE_MAX_VALUE;
     }
 
     public RandomDice(long seed) {
         _randomGenerator = new Random(seed);
-        _lowerInterval = 1;
-        _upperInterval = 6;
+        _lowerInterval = CLASSIC_DICE_MIN_VALUE;
+        _upperInterval = CLASSIC_DICE_MAX_VALUE;
     }
 
     public RandomDice(int lowerInterval, int upperInterval) {

@@ -11,6 +11,6 @@ public class Prepa implements Schooling {
     public Player createPlayer(String name) {
         ArrayList<HardSkill> tab = new ArrayList<>();
         tab.add(new Mathematics(4));
-        return new Player(name, tab, "prepa");
+        return new Player(name, tab);
     }
 }

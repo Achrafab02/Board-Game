@@ -22,14 +22,6 @@ public class LanguagePresenter {
         _view = view;
     }
 
-    public void launchSetup() {
-        try {
-            createAndDisplaySetupView();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     private void createAndDisplaySetupView() throws IOException {
         SetupView view = SetupView.createView();
         SetupPresenter setupPresenter = new SetupPresenter();

@@ -4,8 +4,7 @@ import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 
 public class Move implements Action {
     private static final int NUMBER_OF_MOVES_WHEN_YOU_DO_NOT_MOVE = 0;
-    //TODO : Will become private
-    public int _moveCount;
+    private final int _moveCount;
 
     public Move() {
         _moveCount = NUMBER_OF_MOVES_WHEN_YOU_DO_NOT_MOVE;
@@ -17,6 +16,6 @@ public class Move implements Action {
 
     @Override
     public void performAction(Player player) {
-        player.advance(_moveCount);
+        player.moveWithoutTileEffect(_moveCount);
     }
 }

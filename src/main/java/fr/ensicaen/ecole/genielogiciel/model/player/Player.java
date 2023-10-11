@@ -1,5 +1,6 @@
 package fr.ensicaen.ecole.genielogiciel.model.player;
 
+import fr.ensicaen.ecole.genielogiciel.model.board.Action.Action;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.Tile;
 import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.HardSkill;
 import fr.ensicaen.ecole.genielogiciel.model.player.softskills.Brilliant;
@@ -17,26 +18,22 @@ public class Player {
     private final String _name;
     private final SoftSkill _softSkill;
     private final ArrayList<HardSkill> _hardSkills;
-    private final String _schoolingName;
     private int _currentTileIndex;
-
     private BoardControllerPresenter _boardController;
     private final PawnPresenter _pawn;
 
-    public Player(String name, String schoolingName) {
+    public Player(String name) {
         _name = name;
         _softSkill = chooseSoftSkillAtRandom();
         _hardSkills = new ArrayList<>();
-        _schoolingName = schoolingName;
         _currentTileIndex = 0;
         _pawn = new PawnPresenter();
     }
 
-    public Player(String name, ArrayList<HardSkill> hardSkills, String schoolingName) {
+    public Player(String name, ArrayList<HardSkill> hardSkills) {
         _name = name;
         _softSkill = chooseSoftSkillAtRandom();
         _hardSkills = hardSkills;
-        _schoolingName = schoolingName;
         _currentTileIndex = 0;
         _pawn = new PawnPresenter();
     }
@@ -45,7 +42,6 @@ public class Player {
         _name = "";
         _softSkill = new Rigorous();
         _hardSkills = new ArrayList<>();
-        _schoolingName = "";
         _currentTileIndex = 0;
         _pawn = new PawnPresenter();
     }
@@ -56,10 +52,6 @@ public class Player {
             case 1 -> new Rigorous();
             default -> new Brilliant();
         };
-    }
-
-    public String getSchooling() {
-        return _schoolingName;
     }
 
     public String getName() {
@@ -103,14 +95,15 @@ public class Player {
         setHardSkillLevel(subject, scoreToAdd);
     }
 
-    public void advance(int moveCount) {
+    public void moveWithoutTileEffect(int moveCount) {
         _currentTileIndex += moveCount;
     }
 
     public void move(int diceResult) {
         Tile tile = _boardController.getTile(_currentTileIndex + diceResult);
         _currentTileIndex = tile.getPositionIndex();
-        tile.fetchInstruction(this);
+        Action action = tile.fetchInstruction(this);
+        action.performAction(this);
         Tile finalTile = _boardController.getTile(_currentTileIndex);
         _pawn.draw(finalTile);
     }
@@ -123,6 +116,10 @@ public class Player {
         Tile firstTile = _boardController.getTile(_currentTileIndex);
         _pawn.initPawn(board, id);
         _pawn.draw(firstTile);
+    }
+
+    public int getPosition() {
+        return _currentTileIndex;
     }
 
     public boolean isOnWinningTile() {

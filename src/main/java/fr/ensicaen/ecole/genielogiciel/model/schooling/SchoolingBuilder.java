@@ -6,7 +6,6 @@ public class SchoolingBuilder {
             case "noTraining" -> new NoTraining();
             case "ast" -> new AST();
             case "prepa" -> new Prepa();
-            // TODO: add other schoolings
             default -> throw new IllegalArgumentException("Schooling not found");
         };
     }
