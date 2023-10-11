@@ -55,7 +55,7 @@ public class SetupPresenter {
         gamePresenter.setView(view);
         gamePresenter.initGame();
 
-        //gamePresenter.setBoard(board);
+        gamePresenter.setBoard(board);
         //gamePresenter.initBoardView();
         view.setPresenter(gamePresenter);
         view.show();
