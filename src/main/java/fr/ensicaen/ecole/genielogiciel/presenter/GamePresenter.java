@@ -56,12 +56,20 @@ public final class GamePresenter {
         }
     }
 
-    //When roll dice is pressed
     public void play() {
+        Player currentPlayer = _players.get(_currentPlayerId);
         int diceRoll = _dicePresenter.rollDice();
         _dicePresenter.displayDiceImage(); /*In dicePresenter.rollDice() preferably*/
-        _players.get(_currentPlayerId).move(diceRoll);
-        //next player
+        currentPlayer.move(diceRoll);
+        if (currentPlayer.isOnWinningTile()) {
+            GameView.alert(currentPlayer.getName() + " " + BUNDLE.getString("winning.sentence"), LoginMain.getMessageBundle().getString("title.winner"));
+            launchRanking();
+        }
+
+        changeIdToNextPlayer();
+    }
+
+    private void changeIdToNextPlayer() {
         _currentPlayerId = (_currentPlayerId + 1) % _numberOfPlayer;
         
     }

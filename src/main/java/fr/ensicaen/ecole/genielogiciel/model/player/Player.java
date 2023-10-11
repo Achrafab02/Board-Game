@@ -124,4 +124,8 @@ public class Player {
         _pawn.initPawn(board, id);
         _pawn.draw(firstTile);
     }
+
+    public boolean isOnWinningTile() {
+        return _currentTileIndex == _boardController.getWinningTileIndex();
+    }
 }

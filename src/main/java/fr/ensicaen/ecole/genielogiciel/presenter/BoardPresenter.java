@@ -38,4 +38,8 @@ public class BoardPresenter {
     private int moveBackwards(int position) {
         return (LAST_TILES - (position - LAST_TILES));
     }
+
+    public int getWinningTileIndex() {
+        return LAST_TILES;
+    }
 }
