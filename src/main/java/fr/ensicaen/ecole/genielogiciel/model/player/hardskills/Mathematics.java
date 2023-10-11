@@ -1,30 +1,12 @@
 package fr.ensicaen.ecole.genielogiciel.model.player.hardskills;
 
-public class Mathematics implements HardSkill {
-    private int _score = 0;
-
+public class Mathematics extends HardSkill {
     public Mathematics() {
-
+        super(0);
     }
 
     public Mathematics(int score) {
-        _score = score;
+        super(score);
     }
-
-    @Override
-    public int getScore() {
-        return _score;
-    }
-
-    @Override
-    public void setScore(int score) {
-        _score = score;
-    }
-
-    @Override
-    public void addToScore(int scoreToAdd) {
-        _score = Math.max(_score + scoreToAdd, 0);
-    }
-
 
 }

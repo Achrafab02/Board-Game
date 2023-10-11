@@ -1,9 +1,7 @@
 package fr.ensicaen.ecole.genielogiciel.view;
 
 import fr.ensicaen.ecole.genielogiciel.LoginMain;
-import fr.ensicaen.ecole.genielogiciel.model.board.Ranking;
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
-import fr.ensicaen.ecole.genielogiciel.presenter.GamePresenter;
 import fr.ensicaen.ecole.genielogiciel.presenter.RankingPresenter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,6 +26,8 @@ public class RankingView {
     private TableView<Player> _playerRankingTableView;
     @FXML private TableColumn<Player, String> _nameColumnRanking;
     @FXML private TableColumn<Player, String> _schoolingColumnRanking;
+    @FXML private TableColumn<Player, String> _mathematicsColumnRanking;
+    @FXML private TableColumn<Player, String> _computerScienceColumnRanking;
     private ObservableList<Player> _playersRankingList;
 
 
@@ -36,6 +36,8 @@ public class RankingView {
         _playerRankingTableView.setItems(_playersRankingList);
         _nameColumnRanking.setCellValueFactory(new PropertyValueFactory<>("name"));
         _schoolingColumnRanking.setCellValueFactory(new PropertyValueFactory<>("schooling"));
+        _mathematicsColumnRanking.setCellValueFactory(new PropertyValueFactory<>("mathematicsLevel"));
+        _computerScienceColumnRanking.setCellValueFactory(new PropertyValueFactory<>("computerScienceLevel"));
         Player[] positions = _rankingPresenter.getRankingList();
         for (Player position : positions) {
             addPlayerToTableView(position);
@@ -61,7 +63,7 @@ public class RankingView {
         Parent root = fxmlLoader.load();
         RankingView view = fxmlLoader.getController();
         fxmlLoader.setController(view);
-        Scene scene = new Scene(root, 387.0, 287.0);
+        Scene scene = new Scene(root, 588, 287.0);
         Stage stage = new Stage();
         scene.getStylesheets().add(Objects.requireNonNull(SetupView.class.getResource("styles.css")).toExternalForm());
         stage.setScene(scene);

@@ -1,7 +1,3 @@
 .board {
     -fx-background-image:url('boardV2.png');
 }
-
-.diceBoard {
-    -fx-background-size:83
-}

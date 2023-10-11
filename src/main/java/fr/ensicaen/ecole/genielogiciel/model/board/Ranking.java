@@ -5,29 +5,33 @@ import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 import java.util.List;
 
 public class Ranking {
-    private Board _board;
+    private final List<Player> _players;
 
-    public Ranking(Board board) {
-        _board = board;
+    public Ranking(List<Player> players) {
+        _players = players;
     }
 
     public Player[] createRanking() {
-        List<Player> players = _board.getPlayers();
-        Player[] rankedPlayers = new Player[_board.getNumberOfPlayers()];
-        int[] playersPosition = _board.getPayersPositions();
+        int numberOfPlayers = _players.size();
+        Player[] rankedPlayers = new Player[numberOfPlayers];
+        int[] playersPosition = new int[_players.size()];
+        for (int i = 0; i < playersPosition.length; i++) {
+            playersPosition[i] = _players.get(i).getPosition();
+        }
 
-        for (int i = 0; i < _board.getNumberOfPlayers(); i++) {
+        for (int i = 0; i < numberOfPlayers; i++) {
             int maxIndex = 0;
             int maxValue = -1;
-            for (int playerId = 0; playerId < _board.getNumberOfPlayers(); playerId++) {
+            for (int playerId = 0; playerId < numberOfPlayers; playerId++) {
                 if (playersPosition[playerId] > maxValue) {
                     maxValue = playersPosition[playerId];
                     maxIndex = playerId;
                 }
             }
             playersPosition[maxIndex] = -1;
-            rankedPlayers[i] = players.get(maxIndex);
+            rankedPlayers[i] = _players.get(maxIndex);
         }
+
         return rankedPlayers;
     }
 

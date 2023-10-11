@@ -15,19 +15,11 @@ public class LanguagePresenter {
     }
 
     public static String getLanguage() {
-        return _language ;
+        return _language;
     }
 
     public void setView(LanguageView view) {
         _view = view;
-    }
-
-    public void launchSetup() {
-        try {
-            createAndDisplaySetupView();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     private void createAndDisplaySetupView() throws IOException {

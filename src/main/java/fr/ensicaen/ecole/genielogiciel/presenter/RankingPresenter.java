@@ -4,7 +4,7 @@ import fr.ensicaen.ecole.genielogiciel.model.board.Ranking;
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 
 public class RankingPresenter {
-    private Ranking _ranking;
+    private final Ranking _ranking;
 
     public RankingPresenter(Ranking ranking) {
         _ranking = ranking;

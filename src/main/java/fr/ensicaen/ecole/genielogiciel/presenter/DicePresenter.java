@@ -13,11 +13,8 @@ public class DicePresenter {
         _dice = new RandomDice(1, 6);
     }
 
-    public void rollDice() {
+    public int rollDice() {
         _currentDiceResult = _dice.roll();
-    }
-
-    public int getDiceResult() {
         return _currentDiceResult;
     }
 

@@ -5,4 +5,9 @@ public class Rigorous implements SoftSkill {
     public int modifyDiceRoll(int roll) {
         return roll;
     }
+
+    @Override
+    public String getName() {
+        return "rigorous";
+    }
 }

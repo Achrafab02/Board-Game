@@ -1,92 +1,65 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
 import fr.ensicaen.ecole.genielogiciel.LoginMain;
-import fr.ensicaen.ecole.genielogiciel.model.board.Board;
 import fr.ensicaen.ecole.genielogiciel.model.board.Ranking;
-import fr.ensicaen.ecole.genielogiciel.model.Point;
+import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 import fr.ensicaen.ecole.genielogiciel.view.DiceView;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
-import fr.ensicaen.ecole.genielogiciel.view.PawnView;
 import fr.ensicaen.ecole.genielogiciel.view.RankingView;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
 public final class GamePresenter {
     private GameView _view;
-    private Board _board;
-    private Rectangle[] _pawns;
     private static final ResourceBundle BUNDLE = LoginMain.getMessageBundle();
     private final DicePresenter _dicePresenter;
-    private static final int SPACE_BETWEEN_PAWNS = 40;
-    private static final Point[] FIRST_PLAYER_POSITION_IN_EACH_TILE = {new Point(365, 220), new Point(290, 370), new Point(315, 580), new Point(480, 665), new Point(680, 550), new Point(730, 390), new Point(810, 200), new Point(1040, 170), new Point(1190, 270), new Point(1170, 520), new Point(1040, 605)};
-    private final Point[][] _coordinatesOfPawnsOnTiles = new Point[Board.getNumberOfTiles()][Board.getMaxNumberOfPlayers()];
-    private static final Color[] PLAYERS_COLORS = {Color.RED, Color.BLUE, Color.GREEN, Color.PURPLE};
+    private final List<Player> _players;
+    private BoardControllerPresenter _boardControllerPresenter;
+    private final int _numberOfPlayer;
+    private int _currentPlayerId = 0;
 
-    public GamePresenter() {
+    public GamePresenter(List<Player> players) {
+        _players = players;
+        _numberOfPlayer = players.size();
         _dicePresenter = new DicePresenter();
-    }
-
-    public void setBoard(Board board) {
-        _board = board;
-    }
-
-    private void initCoordinatesOfPawnOnTiles() {
-        for (int i = 0; i < Board.getNumberOfTiles(); i++) {
-            _coordinatesOfPawnsOnTiles[i][0] = new Point(FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getX(), FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getY());
-            _coordinatesOfPawnsOnTiles[i][1] = new Point(FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getX() + SPACE_BETWEEN_PAWNS, FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getY());
-            _coordinatesOfPawnsOnTiles[i][2] = new Point(FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getX(), FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getY() + SPACE_BETWEEN_PAWNS);
-            _coordinatesOfPawnsOnTiles[i][3] = new Point(FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getX() + SPACE_BETWEEN_PAWNS, FIRST_PLAYER_POSITION_IN_EACH_TILE[i].getY() + SPACE_BETWEEN_PAWNS);
+        _boardControllerPresenter = new BoardControllerPresenter();
+        for (Player player : players) {
+            player.setBoardController(_boardControllerPresenter);
         }
+    }
+
+    public void initGame() {
+        int i = 0;
+        for (Player player : _players) {
+            player.initPawn(_view.getBoard(), i);
+            i++;
+        }
+    }
+
+    public void play() {
+        Player currentPlayer = _players.get(_currentPlayerId);
+        int diceRoll = _dicePresenter.rollDice();
+        _dicePresenter.displayDiceImage(); /* TODO : In dicePresenter.rollDice() preferably */
+        currentPlayer.move(currentPlayer.getSoftSkill().modifyDiceRoll(diceRoll));
+
+        if (currentPlayer.isOnWinningTile()) {
+            GameView.alert(currentPlayer.getName() + " " + BUNDLE.getString("winning.sentence"), LoginMain.getMessageBundle().getString("title.winner"));
+            launchRanking();
+        }
+
+        changeIdToNextPlayer();
+    }
+
+    private void changeIdToNextPlayer() {
+        _currentPlayerId = (_currentPlayerId + 1) % _numberOfPlayer;
     }
 
     public void setView(GameView view) {
         _view = view;
         _dicePresenter.setView(new DiceView(view.getDiceBoard()));
-    }
-
-    public void initBoardView() {
-        initCoordinatesOfPawnOnTiles();
-        _pawns = new Rectangle[_board.getNumberOfPlayers()];
-        for (int i = 0; i < _board.getNumberOfPlayers(); i++) {
-            _pawns[i] = PawnView.create(_coordinatesOfPawnsOnTiles[0][i].getX(), _coordinatesOfPawnsOnTiles[0][i].getY(), PLAYERS_COLORS[i]);
-            _view.getBoard().getChildren().add(_pawns[i]);
-        }
-    }
-
-    public void rollDice() {
-        _dicePresenter.rollDice();
-        _dicePresenter.displayDiceImage();
-    }
-
-    public void movePlayer() {
-        int newPosition = _board.getNewPositionOfCurrentPlayer(_dicePresenter.getDiceResult());
-
-        _board.updateCurrentPlayerPosition(newPosition);
-
-        changeCoordinatesOfPawnOnTile();
-
-        if(_board.isInWinningPosition()) {
-            String winningSentence = BUNDLE.getString("winning.sentence");
-            String winningTitle = BUNDLE.getString("title.winner");
-            GameView.alert(_board.getCurrentPlayerName() + " " + winningSentence, winningTitle);
-            launchRanking();
-        }
-
-        _board.updateIdToNextPlayer();
-    }
-
-    private void changeCoordinatesOfPawnOnTile() {
-        double[] newCoordinates = getCoordinatesOfPawnOnTile(_board.getCurrentPlayerPosition(), _board.getCurrentPlayerId());
-        _pawns[_board.getCurrentPlayerId()].setX(newCoordinates[0]);
-        _pawns[_board.getCurrentPlayerId()].setY(newCoordinates[1]);
-    }
-
-    private double[] getCoordinatesOfPawnOnTile(int position, int playerId) {
-        return new double[]{_coordinatesOfPawnsOnTiles[position][playerId].getX(), _coordinatesOfPawnsOnTiles[position][playerId].getY()};
     }
 
     public void launchRanking() {
@@ -100,7 +73,7 @@ public final class GamePresenter {
 
     private void createAndDisplayRankingView() throws IOException {
         RankingView view = RankingView.createView();
-        RankingPresenter rankingPresenter = new RankingPresenter(new Ranking(_board));
+        RankingPresenter rankingPresenter = new RankingPresenter(new Ranking(_players));
         view.setPresenter(rankingPresenter);
         view.initTableView();
         view.show();
