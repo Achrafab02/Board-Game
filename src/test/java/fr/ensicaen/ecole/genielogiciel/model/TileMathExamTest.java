@@ -18,7 +18,7 @@ public class TileMathExamTest {
         ArrayList<HardSkill> hardSkillsList = new ArrayList<>();
         hardSkillsList.add(new Mathematics(4));
 
-        Player p = new Player("bob", hardSkillsList);
+        Player p = new Player("bob", hardSkillsList, );
 
         assertEquals(0, tile.fetchInstruction(p)._moveCount);
         assertEquals(4, p.getHardSkillLevel(Mathematics.class));
@@ -31,7 +31,7 @@ public class TileMathExamTest {
         ArrayList<HardSkill> hardSkillsList = new ArrayList<>();
         hardSkillsList.add(new Mathematics(2));
 
-        Player p = new Player("bob", hardSkillsList);
+        Player p = new Player("bob", hardSkillsList, );
 
         assertEquals(-2, tile.fetchInstruction(p)._moveCount);
         assertEquals(2, p.getHardSkillLevel(Mathematics.class));

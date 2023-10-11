@@ -28,7 +28,7 @@ public class SetupPresenter {
             _setupView.popUpAlert("error.title.empty.training");
         } else {
             Schooling schooling = SchoolingBuilder.createSchooling(schoolingName); // TODO : catch exception
-            Player newPlayer = schooling.createPlayer(name);
+            Player newPlayer = schooling.createPlayer(name, schoolingName);
             _players.add(newPlayer);
             _setupView.addPlayerToTableView(newPlayer);
         }

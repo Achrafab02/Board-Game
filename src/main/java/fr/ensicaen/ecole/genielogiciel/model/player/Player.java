@@ -18,20 +18,23 @@ public class Player {
     private final String _name;
     private final SoftSkill _softSkill;
     private final ArrayList<HardSkill> _hardSkills;
+    private String _schoolingName;
     private int _currentTileIndex;
     private BoardControllerPresenter _boardController;
     private final PawnPresenter _pawn;
 
-    public Player(String name) {
+    public Player(String name, String schoolingName) {
         _name = name;
+        _schoolingName = schoolingName;
         _softSkill = chooseSoftSkillAtRandom();
         _hardSkills = new ArrayList<>();
         _currentTileIndex = 0;
         _pawn = new PawnPresenter();
     }
 
-    public Player(String name, ArrayList<HardSkill> hardSkills) {
+    public Player(String name, ArrayList<HardSkill> hardSkills, String schoolingName) {
         _name = name;
+        _schoolingName = schoolingName;
         _softSkill = chooseSoftSkillAtRandom();
         _hardSkills = hardSkills;
         _currentTileIndex = 0;
@@ -52,6 +55,10 @@ public class Player {
             case 1 -> new Rigorous();
             default -> new Brilliant();
         };
+    }
+
+    public String getSchooling() {
+        return _schoolingName;
     }
 
     public String getName() {

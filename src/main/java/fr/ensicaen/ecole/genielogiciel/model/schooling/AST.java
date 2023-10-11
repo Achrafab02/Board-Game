@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 public class AST implements Schooling {
     @Override
-    public Player createPlayer(String name) {
+    public Player createPlayer(String name, String schoolingName) {
         ArrayList<HardSkill> tab = new ArrayList<>();
         tab.add(new ComputerScience(4));
-        return new Player(name, tab);
+        return new Player(name, tab, "AST");
     }
 }

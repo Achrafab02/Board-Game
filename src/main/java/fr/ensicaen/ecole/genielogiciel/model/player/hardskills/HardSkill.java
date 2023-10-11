@@ -1,9 +1,21 @@
 package fr.ensicaen.ecole.genielogiciel.model.player.hardskills;
 
-public interface HardSkill { // TODO : INTERFACE -> ABSTRACT
-    int getScore();
+public abstract class HardSkill {
+    private int _score = 0;
 
-    void setScore(int score);
+    public HardSkill(int score) {
+        _score = score;
+    }
 
-    void addToScore(int scoreToAdd);
+    public int getScore() {
+        return _score;
+    }
+
+    public void setScore(int score) {
+        _score = score;
+    }
+
+    public void addToScore(int scoreToAdd) {
+        _score = Math.max(_score + scoreToAdd, 0);
+    }
 }

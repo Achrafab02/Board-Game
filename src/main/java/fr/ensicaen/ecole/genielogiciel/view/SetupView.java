@@ -34,7 +34,7 @@ public class SetupView {
         _playerSetupTableView.setItems(_playersList);
         _nameColumnSetup.setCellValueFactory(new PropertyValueFactory<>("name"));
         _schoolingColumnSetup.setCellValueFactory(new PropertyValueFactory<>("schooling"));
-        addPlayerToTableView(new Player("")); // TO HIDE TEMPORARILY "empty table message"
+        addPlayerToTableView(new Player("", "")); // TO HIDE TEMPORARILY "empty table message"
     }
 
     public void popUpAlert(String key) {
