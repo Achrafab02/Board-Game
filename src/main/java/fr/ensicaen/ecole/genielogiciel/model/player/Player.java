@@ -19,7 +19,7 @@ public class Player {
     private final ArrayList<HardSkill> _hardSkills;
     private final String _schoolingName;
     private int _currentTileIndex;
-    
+
     private BoardControllerPresenter _boardController;
     private final PawnPresenter _pawn;
 
@@ -113,14 +113,13 @@ public class Player {
         tile.fetchInstruction(this);
         Tile finalTile = _boardController.getTile(_currentTileIndex);
         _pawn.draw(finalTile);
-        //Draw with Pawn
     }
 
     public void setBoardController(BoardControllerPresenter boardController) {
         _boardController = boardController;
     }
 
-    public void initPawn(AnchorPane board) {
-        _pawn.initPawn(board);
+    public void initPawn(AnchorPane board, int id) {
+        _pawn.initPawn(board, id);
     }
 }

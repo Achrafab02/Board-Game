@@ -7,7 +7,7 @@ import fr.ensicaen.ecole.genielogiciel.model.board.tiles.TileMathExam;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.TileNeutral;
 
 public class BoardPresenter {
-    private static final Tile[] HARD_CODED_BOARD = new Tile[] {
+    private static final Tile[] HARD_CODED_BOARD = new Tile[]{
             new TileNeutral(0, new Point(365, 220)),
             new TileNeutral(1, new Point(290, 370)),
             new TileMathClass(2, new Point(315, 580)),
@@ -21,7 +21,8 @@ public class BoardPresenter {
             new TileNeutral(10, new Point(1040, 605))
     };
     private final Tile[] _tiles = HARD_CODED_BOARD;
-    private final int NB_TILES = 11;
+    private final int LAST_TILES = 10;
+
     public Tile getTile(int tileIndex) {
         if (goalOverstepped(tileIndex)) {
             tileIndex = moveBackwards(tileIndex);
@@ -30,12 +31,11 @@ public class BoardPresenter {
 
     }
 
-
     private boolean goalOverstepped(int position) {
-        return (position >= NB_TILES);
+        return (position >= LAST_TILES);
     }
 
     private int moveBackwards(int position) {
-        return (NB_TILES - (position - NB_TILES));
+        return (LAST_TILES - (position - LAST_TILES));
     }
 }

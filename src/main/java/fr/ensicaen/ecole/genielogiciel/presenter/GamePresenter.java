@@ -49,8 +49,10 @@ public final class GamePresenter {
     }
 
     public void initGame() {
-        for (Player player: _players) {
-            player.initPawn(_view.getBoard());
+        int i = 0;
+        for (Player player : _players) {
+            player.initPawn(_view.getBoard(), i);
+            i++;
         }
     }
 

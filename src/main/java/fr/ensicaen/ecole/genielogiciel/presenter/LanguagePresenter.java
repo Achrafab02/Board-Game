@@ -15,7 +15,7 @@ public class LanguagePresenter {
     }
 
     public static String getLanguage() {
-        return _language ;
+        return _language;
     }
 
     public void setView(LanguageView view) {

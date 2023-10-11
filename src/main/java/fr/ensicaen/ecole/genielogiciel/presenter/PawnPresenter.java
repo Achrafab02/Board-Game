@@ -21,7 +21,7 @@ public class PawnPresenter {
         _pawnView.updatePosition(point.x, point.y);
     }
 
-    public void initPawn(AnchorPane board) {
-        _pawnView.initPawn(board);
+    public void initPawn(AnchorPane board, int id) {
+        _pawnView.initPawn(board, id);
     }
 }
