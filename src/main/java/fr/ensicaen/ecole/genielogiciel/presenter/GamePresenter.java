@@ -43,7 +43,7 @@ public final class GamePresenter {
         Player currentPlayer = _players.get(_currentPlayerId);
         int diceRoll = _dicePresenter.rollDice();
         _dicePresenter.displayDiceImage(); /* TODO : In dicePresenter.rollDice() preferably */
-        currentPlayer.move(diceRoll);
+        currentPlayer.move(currentPlayer.getSoftSkill().modifyDiceRoll(diceRoll));
 
         if (currentPlayer.isOnWinningTile()) {
             GameView.alert(currentPlayer.getName() + " " + BUNDLE.getString("winning.sentence"), LoginMain.getMessageBundle().getString("title.winner"));

@@ -19,6 +19,7 @@ public class Player {
     private final SoftSkill _softSkill;
     private final ArrayList<HardSkill> _hardSkills;
     private String _schoolingName;
+    private final String _softSkillName;
     private int _currentTileIndex;
     private BoardControllerPresenter _boardController;
     private final PawnPresenter _pawn;
@@ -27,6 +28,7 @@ public class Player {
         _name = name;
         _schoolingName = schoolingName;
         _softSkill = chooseSoftSkillAtRandom();
+        _softSkillName = _softSkill.getName();
         _hardSkills = new ArrayList<>();
         _currentTileIndex = 0;
         _pawn = new PawnPresenter();
@@ -36,6 +38,7 @@ public class Player {
         _name = name;
         _schoolingName = schoolingName;
         _softSkill = chooseSoftSkillAtRandom();
+        _softSkillName = _softSkill.getName();
         _hardSkills = hardSkills;
         _currentTileIndex = 0;
         _pawn = new PawnPresenter();
@@ -44,6 +47,7 @@ public class Player {
     public Player() {
         _name = "";
         _softSkill = new Rigorous();
+        _softSkillName = _softSkill.getName();
         _hardSkills = new ArrayList<>();
         _currentTileIndex = 0;
         _pawn = new PawnPresenter();
@@ -57,12 +61,27 @@ public class Player {
         };
     }
 
+    // WARNING: this method is used by the tableView, do not remove it!
     public String getSchooling() {
         return _schoolingName;
     }
 
     public String getName() {
         return _name;
+    }
+
+    // WARNING: this method is used by the tableView, do not remove it!
+    public String getMathematicsLevel() {
+        return String.valueOf(getHardSkillLevel(fr.ensicaen.ecole.genielogiciel.model.player.hardskills.Mathematics.class));
+    }
+
+    // WARNING: this method is used by the tableView, do not remove it!
+    public String getComputerScienceLevel() {
+        return String.valueOf(getHardSkillLevel(fr.ensicaen.ecole.genielogiciel.model.player.hardskills.ComputerScience.class));
+    }
+
+    public String getSoftSkillName() {
+        return _softSkillName;
     }
 
     public int getHardSkillLevel(Class<? extends HardSkill> subject) {
@@ -123,6 +142,10 @@ public class Player {
         Tile firstTile = _boardController.getTile(_currentTileIndex);
         _pawn.initPawn(board, id);
         _pawn.draw(firstTile);
+    }
+
+    public SoftSkill getSoftSkill() {
+        return _softSkill;
     }
 
     public int getPosition() {

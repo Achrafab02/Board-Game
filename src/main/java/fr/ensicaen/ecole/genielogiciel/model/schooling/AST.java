@@ -11,6 +11,6 @@ public class AST implements Schooling {
     public Player createPlayer(String name, String schoolingName) {
         ArrayList<HardSkill> tab = new ArrayList<>();
         tab.add(new ComputerScience(4));
-        return new Player(name, tab, "AST");
+        return new Player(name, tab, "ast");
     }
 }

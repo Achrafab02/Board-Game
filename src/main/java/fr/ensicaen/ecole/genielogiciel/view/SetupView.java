@@ -24,6 +24,9 @@ public class SetupView {
     @FXML private TableView<Player> _playerSetupTableView;
     @FXML private TableColumn<Player, String> _nameColumnSetup;
     @FXML private TableColumn<Player, String> _schoolingColumnSetup;
+    @FXML private TableColumn<Player, String> _mathematicsColumnSetup;
+    @FXML private TableColumn<Player, String> _computerScienceColumnSetup;
+    @FXML private TableColumn<Player, String> _softSkillColumnSetup;
     private ObservableList<Player> _playersList;
 
     @FXML private TextField _playerName;
@@ -34,7 +37,9 @@ public class SetupView {
         _playerSetupTableView.setItems(_playersList);
         _nameColumnSetup.setCellValueFactory(new PropertyValueFactory<>("name"));
         _schoolingColumnSetup.setCellValueFactory(new PropertyValueFactory<>("schooling"));
-        addPlayerToTableView(new Player("", "")); // TO HIDE TEMPORARILY "empty table message"
+        _mathematicsColumnSetup.setCellValueFactory(new PropertyValueFactory<>("mathematicsLevel"));
+        _computerScienceColumnSetup.setCellValueFactory(new PropertyValueFactory<>("computerScienceLevel"));
+        _softSkillColumnSetup.setCellValueFactory(new PropertyValueFactory<>("softSkillName"));
     }
 
     public void popUpAlert(String key) {
@@ -83,10 +88,6 @@ public class SetupView {
     }
 
     public void getPlayerParameters() {
-        // REMOVE PLAYER PREVENTING FROM "empty table message"
-        if (_playersList.size() == 1 && _playersList.get(0).getName().isEmpty()) {
-            _playersList.remove(0);
-        }
         _presenter.createPlayer(getName(), getSchooling());
     }
 
@@ -100,7 +101,7 @@ public class SetupView {
         Parent root = fxmlLoader.load();
         final SetupView view = fxmlLoader.getController();
         fxmlLoader.setController(view);
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 900, 400);
         scene.getStylesheets().add(Objects.requireNonNull(SetupView.class.getResource("styles.css")).toExternalForm());
         Stage stage = new Stage();
         stage.setScene(scene);

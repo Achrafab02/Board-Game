@@ -5,4 +5,9 @@ public class Dabbler implements SoftSkill {
     public int modifyDiceRoll(int roll) {
         return roll / 2;
     }
+
+    @Override
+    public String getName() {
+        return "dabbler";
+    }
 }

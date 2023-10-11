@@ -4,11 +4,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="287.0" prefWidth="387.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ensicaen.ecole.genielogiciel.view.RankingView">
-        <TableView fx:id="_playerRankingTableView" layoutX="40.0" layoutY="67.0" prefHeight="206.0" prefWidth="308.0">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="287.0" prefWidth="588.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ensicaen.ecole.genielogiciel.view.RankingView">
+        <TableView fx:id="_playerRankingTableView" layoutX="35.0" layoutY="67.0" prefHeight="206.0" prefWidth="519.0">
             <columns>
-                <TableColumn fx:id="_nameColumnRanking" prefWidth="121.0" styleClass="tableColumn" text="%ranking.table.name" />
-                <TableColumn fx:id="_schoolingColumnRanking" prefWidth="186.0" styleClass="tableColumn" text="%ranking.table.formation" />
+        <TableColumn fx:id="_nameColumnRanking" prefWidth="121.0" styleClass="tableColumn" text="%ranking.table.name" />
+        <TableColumn fx:id="_schoolingColumnRanking" prefWidth="146.0" styleClass="tableColumn" text="%ranking.table.formation" />
+         <TableColumn fx:id="_mathematicsColumnRanking" prefWidth="119.0" styleClass="tableColumn" text="%ranking.table.mathematics" />
+         <TableColumn fx:id="_computerScienceColumnRanking" prefWidth="132.0" styleClass="tableColumn" text="%ranking.table.computerScience" />
             </columns>
         </TableView>
         <Text layoutX="40.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%ranking.title">
