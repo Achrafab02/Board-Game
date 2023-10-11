@@ -29,7 +29,6 @@ public class SetupPresenter {
         } else {
             Schooling schooling = SchoolingBuilder.createSchooling(schoolingName); // TODO : catch exception
             Player newPlayer = schooling.createPlayer(name, schoolingName);
-            System.out.println(newPlayer.getSoftSkillName());
             _players.add(newPlayer);
             _setupView.addPlayerToTableView(newPlayer);
         }
