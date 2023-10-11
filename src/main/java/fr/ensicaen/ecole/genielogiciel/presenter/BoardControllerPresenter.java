@@ -12,4 +12,8 @@ public class BoardControllerPresenter {
     public Tile getTile(int tileIndex) {
         return _board.getTile(tileIndex);
     }
+
+    public int getWinningTileIndex() {
+        return _board.getWinningTileIndex();
+    }
 }

@@ -6,26 +6,13 @@ import fr.ensicaen.ecole.genielogiciel.model.board.Action.MoveIfInsufficientSkil
 import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.Mathematics;
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 
-public class TileMathExam implements fr.ensicaen.ecole.genielogiciel.model.board.tiles.Tile {
-    private final int _positionIndex;
-    private final Point _tileCoordinates;
-
+public class TileMathExam extends Tile {
     public TileMathExam(int positionIndex, Point tileCoordinates) {
-        _positionIndex = positionIndex;
-        _tileCoordinates = tileCoordinates;
+        super(positionIndex, tileCoordinates);
     }
+
     @Override
     public Action fetchInstruction(Player player) {
         return new MoveIfInsufficientSkillLevel(Mathematics.class, 4, -2);
-    }
-
-    @Override
-    public int getPositionIndex() {
-        return _positionIndex;
-    }
-
-    @Override
-    public Point getCoordinates() {
-        return _tileCoordinates;
     }
 }

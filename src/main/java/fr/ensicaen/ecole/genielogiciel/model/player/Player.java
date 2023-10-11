@@ -122,4 +122,8 @@ public class Player {
     public void initPawn(AnchorPane board, int id) {
         _pawn.initPawn(board, id);
     }
+
+    public boolean isOnWinningTile() {
+        return _currentTileIndex == _boardController.getWinningTileIndex();
+    }
 }
