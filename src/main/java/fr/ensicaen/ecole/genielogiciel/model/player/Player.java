@@ -37,7 +37,6 @@ public class Player {
     public Player(String name, ArrayList<HardSkill> hardSkills, String schoolingName) {
         this(name, schoolingName);
         _hardSkills = hardSkills;
-
     }
 
     public Player() {

@@ -1,12 +1,12 @@
 package fr.ensicaen.ecole.genielogiciel.model.player.softskills;
 
 public class Dabbler implements SoftSkill {
-    @Override
+    private static final double DABBLER_MODIFIER = 0.5;
+
     public int modifyDiceRoll(int roll) {
-        return roll / 2;
+        return (int)(roll * DABBLER_MODIFIER);
     }
 
-    @Override
     public String getName() {
         return "dabbler";
     }
