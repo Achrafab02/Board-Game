@@ -15,21 +15,29 @@ class RandomDiceTest {
             assertEquals(d1.roll(), d2.roll());
         }
     }
+
     @Test
     void test_random_dice_seed_min_max_interval() {
-        int lowerInterval =  4;
+        int lowerInterval = 4;
         int upperInterval = 10;
         int seed = 15;
         RandomDice randomDice = new RandomDice(seed, lowerInterval, upperInterval);
-        assertTrue(lowerInterval <= randomDice.roll() && randomDice.roll() <= upperInterval);
+        for (int i = 0; i < 20; i++) {
+            assertDiceRollIsInInterval(lowerInterval, upperInterval, randomDice.roll());
+        }
     }
 
     @Test
     void test_random_dice_min_max_interval() {
-        int lowerInterval =  4;
+        int lowerInterval = 4;
         int upperInterval = 10;
         RandomDice randomDice = new RandomDice(lowerInterval, upperInterval);
-        int randomResult = randomDice.roll();
-        assertTrue(lowerInterval <= randomResult && randomResult <= randomResult);
+        for (int i = 0; i < 20; i++) {
+            assertDiceRollIsInInterval(lowerInterval, upperInterval, randomDice.roll());
+        }
+    }
+
+    private static void assertDiceRollIsInInterval(int lowerInterval, int upperInterval, int roll) {
+        assertTrue(lowerInterval <= roll && roll <= upperInterval);
     }
 }

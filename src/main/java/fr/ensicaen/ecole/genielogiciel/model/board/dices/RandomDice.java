@@ -35,6 +35,6 @@ public class RandomDice implements Rollable {
 
     @Override
     public int roll() {
-        return _lowerInterval + _randomGenerator.nextInt(_upperInterval);
+        return _lowerInterval + _randomGenerator.nextInt(_upperInterval - _lowerInterval + 1);
     }
 }
