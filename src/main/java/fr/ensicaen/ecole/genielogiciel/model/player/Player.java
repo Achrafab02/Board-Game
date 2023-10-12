@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class Player {
     private final String _name;
     private final SoftSkill _softSkill;
-    private final ArrayList<HardSkill> _hardSkills;
+    private ArrayList<HardSkill> _hardSkills;
     private String _schoolingName;
     private final String _softSkillName;
     private int _currentTileIndex;
@@ -35,13 +35,9 @@ public class Player {
     }
 
     public Player(String name, ArrayList<HardSkill> hardSkills, String schoolingName) {
-        _name = name;
-        _schoolingName = schoolingName;
-        _softSkill = chooseSoftSkillAtRandom();
-        _softSkillName = _softSkill.getName();
+        this(name, schoolingName);
         _hardSkills = hardSkills;
-        _currentTileIndex = 0;
-        _pawn = new PawnPresenter();
+
     }
 
     public Player() {
