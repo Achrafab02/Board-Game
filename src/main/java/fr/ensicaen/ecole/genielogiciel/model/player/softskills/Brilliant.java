@@ -1,12 +1,12 @@
 package fr.ensicaen.ecole.genielogiciel.model.player.softskills;
 
 public class Brilliant implements SoftSkill {
-    @Override
+    private static final double BRILLIANT_MODIFIER = 2.0;
+
     public int modifyDiceRoll(int roll) {
-        return roll * 2;
+        return (int)(roll * BRILLIANT_MODIFIER);
     }
 
-    @Override
     public String getName() {
         return "brilliant";
     }

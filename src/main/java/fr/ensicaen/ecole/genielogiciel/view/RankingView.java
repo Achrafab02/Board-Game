@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -38,9 +39,9 @@ public class RankingView {
         _schoolingColumnRanking.setCellValueFactory(new PropertyValueFactory<>("schooling"));
         _mathematicsColumnRanking.setCellValueFactory(new PropertyValueFactory<>("mathematicsLevel"));
         _computerScienceColumnRanking.setCellValueFactory(new PropertyValueFactory<>("computerScienceLevel"));
-        Player[] positions = _rankingPresenter.getRankingList();
-        for (Player position : positions) {
-            addPlayerToTableView(position);
+        List<Player> rankedPlayers = _rankingPresenter.getRankingList();
+        for (Player player : rankedPlayers) {
+            addPlayerToTableView(player);
         }
     }
 

@@ -1,12 +1,12 @@
 package fr.ensicaen.ecole.genielogiciel.model.player.softskills;
 
 public class Rigorous implements SoftSkill {
-    @Override
+    private static final double RIGOROUS_MODIFIER = 1;
+
     public int modifyDiceRoll(int roll) {
-        return roll;
+        return (int)(roll * RIGOROUS_MODIFIER);
     }
 
-    @Override
     public String getName() {
         return "rigorous";
     }

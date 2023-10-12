@@ -3,6 +3,8 @@ package fr.ensicaen.ecole.genielogiciel.presenter;
 import fr.ensicaen.ecole.genielogiciel.model.board.Ranking;
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 
+import java.util.List;
+
 public class RankingPresenter {
     private final Ranking _ranking;
 
@@ -10,7 +12,7 @@ public class RankingPresenter {
         _ranking = ranking;
     }
 
-    public Player[] getRankingList() {
+    public List<Player> getRankingList() {
         return _ranking.createRanking();
     }
 }

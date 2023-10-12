@@ -14,7 +14,7 @@ public class DiceView {
 
     public void display(int nb) {
         Image image = new Image(IMAGE_LOCATION + nb + IMAGE_TYPE);
-        BackgroundSize backgroundSize = new BackgroundSize(86, 86, false, false, false, false);
+        BackgroundSize backgroundSize = new BackgroundSize(123, 123, false, false, false, false);
         BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         Background background = new Background(backgroundImage);
         _diceBoard.setBackground(background);
