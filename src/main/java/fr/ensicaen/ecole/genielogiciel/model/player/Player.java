@@ -80,6 +80,7 @@ public class Player {
         return String.valueOf(getHardSkillLevel(fr.ensicaen.ecole.genielogiciel.model.player.hardskills.ComputerScience.class));
     }
 
+    // WARNING: this method is used by the tableView, do not remove it!
     public String getSoftSkillName() {
         return _softSkillName;
     }
