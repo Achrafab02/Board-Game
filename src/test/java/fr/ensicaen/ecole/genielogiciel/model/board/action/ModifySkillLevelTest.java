@@ -1,10 +1,8 @@
 package fr.ensicaen.ecole.genielogiciel.model.board.action;
 
-import fr.ensicaen.ecole.genielogiciel.model.board.Action.CompositeAction;
 import fr.ensicaen.ecole.genielogiciel.model.board.Action.ModifySkillLevel;
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.ComputerScience;
-import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.HardSkill;
 import fr.ensicaen.ecole.genielogiciel.model.schooling.AST;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,8 +16,7 @@ class ModifySkillLevelTest {
         System.out.println(" computerScienceLevel " + player.getComputerScienceLevel());
         ModifySkillLevel modifySkillLevel = new ModifySkillLevel(ComputerScience.class, 6);
         modifySkillLevel.performAction(player);
-
-        assertEquals("4", player.getComputerScienceLevel());
+        assertEquals("10", player.getComputerScienceLevel());
 
      }
 
