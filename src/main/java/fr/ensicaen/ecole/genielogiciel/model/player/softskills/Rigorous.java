@@ -10,4 +10,8 @@ public class Rigorous implements SoftSkill {
     public String getName() {
         return "rigorous";
     }
+
+    public double getModifierValue() {
+        return RIGOROUS_MODIFIER;
+    }
 }

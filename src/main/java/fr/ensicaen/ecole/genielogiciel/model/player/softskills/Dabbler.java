@@ -10,4 +10,8 @@ public class Dabbler implements SoftSkill {
     public String getName() {
         return "dabbler";
     }
+
+    public double getModifierValue() {
+        return DABBLER_MODIFIER;
+    }
 }

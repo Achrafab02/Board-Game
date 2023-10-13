@@ -2,11 +2,16 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <HBox prefHeight="0.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ensicaen.ecole.genielogiciel.view.GameView">
     <AnchorPane fx:id="_board" maxHeight="768.0" maxWidth="1366.0" minHeight="768.0" minWidth="1366.0" prefHeight="768.0" prefWidth="1366.0" styleClass="board" stylesheets="@Board.css" />
     <VBox>
         <AnchorPane fx:id="_diceBoard" prefHeight="123" prefWidth="123" stylesheets="@Board.css" />
+        <Label fx:id="_diceModifier" styleClass="diceModifier" stylesheets="@Board.css">
+         <font>
+            <Font size="25.0" />
+         </font></Label>
         <Button mnemonicParsing="false" onAction="#rollDice" prefHeight="24.0" prefWidth="146.0" text="%board.button.rollDice" />
     </VBox>
 </HBox>
