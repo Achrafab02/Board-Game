@@ -17,26 +17,15 @@ public class BoardPresenter {
             new TileRetakeExam(9, new Point(1170, 520)),
             new TileNeutral(10, new Point(1040, 605))
     };
-    private final Tile[] _tiles = HARD_CODED_BOARD;
-    private final int LAST_TILES = 10;
+    private static final Tile[] _tiles = HARD_CODED_BOARD;
+    private static final int LAST_TILES = 10;
 
     public Tile getTile(int tileIndex) {
-        if (goalOverstepped(tileIndex)) {
-            tileIndex = moveBackwards(tileIndex);
-        }
         return _tiles[tileIndex];
-
     }
 
-    private boolean goalOverstepped(int position) {
-        return (position >= LAST_TILES);
-    }
-
-    private int moveBackwards(int position) {
-        return (LAST_TILES - (position - LAST_TILES));
-    }
-
-    public int getWinningTileIndex() {
+    public static int getLastTileIndex() {
         return LAST_TILES;
     }
+
 }

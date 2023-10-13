@@ -15,11 +15,8 @@ public class DicePresenter {
 
     public int rollDice() {
         _currentDiceResult = _dice.roll();
-        return _currentDiceResult;
-    }
-
-    public void displayDiceImage() {
         _diceView.display(_currentDiceResult);
+        return _currentDiceResult;
     }
 
     public void setView(DiceView diceView) {
