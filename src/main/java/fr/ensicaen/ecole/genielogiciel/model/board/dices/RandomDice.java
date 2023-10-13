@@ -6,8 +6,8 @@ public class RandomDice implements Rollable {
     private final Random _randomGenerator;
     private final int _lowerInterval;
     private final int _upperInterval;
-    private final int CLASSIC_DICE_MIN_VALUE = 1;
-    private final int CLASSIC_DICE_MAX_VALUE = 6;
+    private static final int CLASSIC_DICE_MIN_VALUE = 1;
+    private static final int CLASSIC_DICE_MAX_VALUE = 6;
 
     public RandomDice() {
         _randomGenerator = new Random();

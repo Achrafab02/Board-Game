@@ -18,7 +18,6 @@ import java.util.ResourceBundle;
 
 public final class GameView {
     private static final ResourceBundle BUNDLE = LoginMain.getMessageBundle();
-    private GamePresenter _presenter;
     public AnchorPane _board;
     public AnchorPane _diceBoard;
     private GamePresenter _gamePresenter;
@@ -55,10 +54,6 @@ public final class GameView {
 
     @FXML
     private void rollDice() {
-        /*
-        int diceResult = _gamePresenter.rollDice();
-        _gamePresenter.movePlayer(diceResult);
-        */
          _gamePresenter.play();
     }
 

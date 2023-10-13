@@ -18,8 +18,9 @@ class MoveIfInsufficientSkillLevelTest {
         System.out.println(" computerScienceLevel " + player.getComputerScienceLevel());
         MoveIfInsufficientSkillLevel moveIfInsufficientSkillLevel = new MoveIfInsufficientSkillLevel(ComputerScience.class, 8, -2);
         moveIfInsufficientSkillLevel.performAction(player);
-        assertEquals(-2,player.getPosition());
+        assertEquals(-2, player.getPosition());
     }
+
     @Test
     public void test_modify_skill_with_sufficient_level() {
         String playerName = "ME";
@@ -28,6 +29,6 @@ class MoveIfInsufficientSkillLevelTest {
         System.out.println(" computerScienceLevel " + player.getComputerScienceLevel());
         MoveIfInsufficientSkillLevel moveIfInsufficientSkillLevel = new MoveIfInsufficientSkillLevel(ComputerScience.class, 3, 2);
         moveIfInsufficientSkillLevel.performAction(player);
-        assertEquals(0,player.getPosition());
+        assertEquals(0, player.getPosition());
     }
 }

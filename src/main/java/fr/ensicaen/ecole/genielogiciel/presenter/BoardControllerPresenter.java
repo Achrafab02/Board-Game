@@ -10,10 +10,22 @@ public class BoardControllerPresenter {
     }
 
     public Tile getTile(int tileIndex) {
+        int lastTileIndex = getLastTileIndex();
+        if (goalOverstepped(tileIndex, lastTileIndex)) {
+            tileIndex = moveBackwards(tileIndex, lastTileIndex);
+        }
         return _board.getTile(tileIndex);
     }
 
-    public int getWinningTileIndex() {
-        return _board.getWinningTileIndex();
+    private boolean goalOverstepped(int position, int lastTileIndex) {
+        return (position >= lastTileIndex);
+    }
+
+    private int moveBackwards(int position, int lastTileIndex) {
+        return (lastTileIndex - (position - lastTileIndex));
+    }
+
+    public int getLastTileIndex() {
+        return BoardPresenter.getLastTileIndex();
     }
 }

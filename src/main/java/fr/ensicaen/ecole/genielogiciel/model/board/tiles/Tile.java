@@ -8,7 +8,7 @@ public abstract class Tile {
      private final int _positionIndex;
      private final Point _tileCoordinates;
 
-     public Tile(int positionIndex, Point tileCoordinates) {
+     protected Tile(int positionIndex, Point tileCoordinates) {
           _positionIndex = positionIndex;
           _tileCoordinates = tileCoordinates;
      }

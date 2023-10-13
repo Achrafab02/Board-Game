@@ -122,7 +122,8 @@ public class Player {
     }
 
     public void move(int diceResult) {
-        Tile tile = _boardController.getTile(_currentTileIndex + diceResult);
+        int diceResultModifiedBySoftSkill = _softSkill.modifyDiceRoll(diceResult);
+        Tile tile = _boardController.getTile(_currentTileIndex + diceResultModifiedBySoftSkill);
         _currentTileIndex = tile.getPositionIndex();
         Action action = tile.fetchInstruction(this);
         action.performAction(this);
@@ -140,15 +141,11 @@ public class Player {
         _pawn.draw(firstTile);
     }
 
-    public SoftSkill getSoftSkill() {
-        return _softSkill;
-    }
-
     public int getPosition() {
         return _currentTileIndex;
     }
 
     public boolean isOnWinningTile() {
-        return _currentTileIndex == _boardController.getWinningTileIndex();
+        return _currentTileIndex == _boardController.getLastTileIndex();
     }
 }

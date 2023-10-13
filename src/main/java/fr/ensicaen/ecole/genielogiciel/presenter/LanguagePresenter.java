@@ -10,7 +10,7 @@ public class LanguagePresenter {
 
     private static String _language = "en";
 
-    public void setLanguage(String language) {
+    public static void setLanguage(String language) {
         _language = language;
     }
 
@@ -32,7 +32,7 @@ public class LanguagePresenter {
 
     public void launchFrenchSetup() {
         try {
-            setLanguage("fr");
+            LanguagePresenter.setLanguage("fr");
             createAndDisplaySetupView();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -42,7 +42,7 @@ public class LanguagePresenter {
 
     public void launchEnglishSetup() {
         try {
-            setLanguage("en");
+            LanguagePresenter.setLanguage("en");
             createAndDisplaySetupView();
         } catch (IOException e) {
             throw new RuntimeException(e);
