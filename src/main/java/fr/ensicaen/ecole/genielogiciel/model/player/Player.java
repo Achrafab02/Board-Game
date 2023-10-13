@@ -3,10 +3,7 @@ package fr.ensicaen.ecole.genielogiciel.model.player;
 import fr.ensicaen.ecole.genielogiciel.model.board.Action.Action;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.Tile;
 import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.HardSkill;
-import fr.ensicaen.ecole.genielogiciel.model.player.softskills.Brilliant;
-import fr.ensicaen.ecole.genielogiciel.model.player.softskills.Dabbler;
-import fr.ensicaen.ecole.genielogiciel.model.player.softskills.Rigorous;
-import fr.ensicaen.ecole.genielogiciel.model.player.softskills.SoftSkill;
+import fr.ensicaen.ecole.genielogiciel.model.player.softskills.*;
 import fr.ensicaen.ecole.genielogiciel.presenter.BoardControllerPresenter;
 import fr.ensicaen.ecole.genielogiciel.presenter.PawnPresenter;
 import javafx.scene.layout.AnchorPane;
@@ -27,7 +24,7 @@ public class Player {
     public Player(String name, String schoolingName) {
         _name = name;
         _schoolingName = schoolingName;
-        _softSkill = chooseSoftSkillAtRandom();
+        _softSkill = new SoftSkillRandomFactory().createSoftSkill();
         _softSkillName = _softSkill.getName();
         _hardSkills = new ArrayList<>();
         _currentTileIndex = 0;
@@ -46,14 +43,6 @@ public class Player {
         _hardSkills = new ArrayList<>();
         _currentTileIndex = 0;
         _pawn = new PawnPresenter();
-    }
-
-    private SoftSkill chooseSoftSkillAtRandom() {
-        return switch ((int) (Math.random() * 3)) {
-            case 0 -> new Dabbler();
-            case 1 -> new Rigorous();
-            default -> new Brilliant();
-        };
     }
 
     // WARNING: this method is used by the tableView, do not remove it!

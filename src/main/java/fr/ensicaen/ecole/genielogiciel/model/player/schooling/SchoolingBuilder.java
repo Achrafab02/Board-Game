@@ -1,4 +1,4 @@
-package fr.ensicaen.ecole.genielogiciel.model.schooling;
+package fr.ensicaen.ecole.genielogiciel.model.player.schooling;
 
 public class SchoolingBuilder {
     public static Schooling createSchooling(String schooling) {
