@@ -3,10 +3,7 @@ package fr.ensicaen.ecole.genielogiciel.model.board.tiles;
 import fr.ensicaen.ecole.genielogiciel.model.Point;
 import fr.ensicaen.ecole.genielogiciel.model.board.Action.Action;
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
-import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.ComputerScience;
-import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.Mathematics;
-import fr.ensicaen.ecole.genielogiciel.model.schooling.AST;
-import fr.ensicaen.ecole.genielogiciel.model.schooling.Prepa;
+import fr.ensicaen.ecole.genielogiciel.model.player.schooling.AST;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,8 +1,8 @@
 package fr.ensicaen.ecole.genielogiciel.presenter;
 
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
-import fr.ensicaen.ecole.genielogiciel.model.schooling.Schooling;
-import fr.ensicaen.ecole.genielogiciel.model.schooling.SchoolingBuilder;
+import fr.ensicaen.ecole.genielogiciel.model.player.schooling.Schooling;
+import fr.ensicaen.ecole.genielogiciel.model.player.schooling.SchoolingBuilder;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.SetupView;
 

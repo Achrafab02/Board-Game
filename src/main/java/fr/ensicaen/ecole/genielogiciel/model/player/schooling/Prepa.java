@@ -1,4 +1,4 @@
-package fr.ensicaen.ecole.genielogiciel.model.schooling;
+package fr.ensicaen.ecole.genielogiciel.model.player.schooling;
 
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.HardSkill;
