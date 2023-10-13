@@ -30,19 +30,8 @@ public class LanguagePresenter {
         view.show();
     }
 
-    public void launchFrenchSetup() {
+    public void launchSetup() {
         try {
-            LanguagePresenter.setLanguage("fr");
-            createAndDisplaySetupView();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        _view.close();
-    }
-
-    public void launchEnglishSetup() {
-        try {
-            LanguagePresenter.setLanguage("en");
             createAndDisplaySetupView();
         } catch (IOException e) {
             throw new RuntimeException(e);

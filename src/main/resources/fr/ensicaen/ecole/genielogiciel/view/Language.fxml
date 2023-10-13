@@ -8,11 +8,11 @@
 <?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="244.0" prefWidth="366.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/16" fx:controller="fr.ensicaen.ecole.genielogiciel.view.LanguageView" xmlns:fx="http://javafx.com/fxml/1">
-        <Button id="start_french_setup" layoutX="204.0" layoutY="176.0" mnemonicParsing="false" onAction="#launchFrenchSetup" prefHeight="39.0" prefWidth="124.0" text="Français" textFill="WHITE">
+        <Button id="start_french_setup" layoutX="204.0" layoutY="176.0" mnemonicParsing="false" onAction="#setFrenchLanguageAndLaunchSetup" prefHeight="39.0" prefWidth="124.0" text="Français" textFill="WHITE">
             <font>
                 <Font size="16.0" />
             </font></Button>
-        <Button id="start_english_setup" layoutX="38.0" layoutY="176.0" mnemonicParsing="false" onAction="#launchEnglishSetup" prefHeight="39.0" prefWidth="124.0" text="English" textFill="WHITE">
+        <Button id="start_english_setup" layoutX="38.0" layoutY="176.0" mnemonicParsing="false" onAction="#setEnglishLanguageAndLaunchSetup" prefHeight="39.0" prefWidth="124.0" text="English" textFill="WHITE">
             <font>
                 <Font size="16.0" />
             </font></Button>

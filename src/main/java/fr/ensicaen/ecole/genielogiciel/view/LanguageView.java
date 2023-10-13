@@ -42,13 +42,20 @@ public class LanguageView {
     }
 
     @FXML
-    private void launchFrenchSetup() {
-        _presenter.launchFrenchSetup();
+    private void setFrenchLanguageAndLaunchSetup() {
+        LanguagePresenter.setLanguage("fr");
+        launchSetup();
     }
 
     @FXML
-    private void launchEnglishSetup() {
-        _presenter.launchEnglishSetup();
+    private void setEnglishLanguageAndLaunchSetup() {
+        LanguagePresenter.setLanguage("en");
+        launchSetup();
+    }
+
+    @FXML
+    private void launchSetup() {
+        _presenter.launchSetup();
     }
 
     public void setPresenter(LanguagePresenter presenter) {

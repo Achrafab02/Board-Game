@@ -32,10 +32,10 @@ public final class GamePresenter {
     }
 
     public void initGame() {
-        int i = 0;
+        int id = 0;
         for (Player player : _players) {
-            player.initPawn(_view.getBoard(), i);
-            i++;
+            player.initPawn(_view.getBoard(), id);
+            id++;
         }
     }
 
