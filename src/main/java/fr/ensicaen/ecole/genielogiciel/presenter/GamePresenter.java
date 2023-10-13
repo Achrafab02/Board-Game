@@ -3,6 +3,7 @@ package fr.ensicaen.ecole.genielogiciel.presenter;
 import fr.ensicaen.ecole.genielogiciel.LoginMain;
 import fr.ensicaen.ecole.genielogiciel.model.board.Ranking;
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
+import fr.ensicaen.ecole.genielogiciel.view.DiceModifierView;
 import fr.ensicaen.ecole.genielogiciel.view.DiceView;
 import fr.ensicaen.ecole.genielogiciel.view.GameView;
 import fr.ensicaen.ecole.genielogiciel.view.RankingView;
@@ -16,6 +17,7 @@ public final class GamePresenter {
     private GameView _view;
     private static final ResourceBundle BUNDLE = LoginMain.getMessageBundle();
     private final DicePresenter _dicePresenter;
+    private final DiceModifierPresenter _diceModifierPresenter;
     private final List<Player> _players;
     private BoardControllerPresenter _boardControllerPresenter;
     private final int _numberOfPlayer;
@@ -25,6 +27,7 @@ public final class GamePresenter {
         _players = players;
         _numberOfPlayer = players.size();
         _dicePresenter = new DicePresenter();
+        _diceModifierPresenter = new DiceModifierPresenter();
         _boardControllerPresenter = new BoardControllerPresenter();
         for (Player player : players) {
             player.setBoardController(_boardControllerPresenter);
@@ -41,6 +44,7 @@ public final class GamePresenter {
 
     public void play() {
         Player currentPlayer = _players.get(_currentPlayerId);
+        _diceModifierPresenter.display(currentPlayer.getSoftSkill().getModifierValue());
         int diceRoll = _dicePresenter.rollDice();
         currentPlayer.move(diceRoll);
 
@@ -59,6 +63,7 @@ public final class GamePresenter {
     public void setView(GameView view) {
         _view = view;
         _dicePresenter.setView(new DiceView(view.getDiceBoard()));
+        _diceModifierPresenter.setView(new DiceModifierView(view.getDiceModifier()));
     }
 
     public void launchRanking() {

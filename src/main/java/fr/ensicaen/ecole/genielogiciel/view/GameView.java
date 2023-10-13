@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -22,6 +23,7 @@ public final class GameView {
     public AnchorPane _diceBoard;
     private GamePresenter _gamePresenter;
     private Stage _stage;
+    @FXML private Label _diceModifier;
 
     public static GameView createView() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GameView.class.getResource("Board.fxml"), BUNDLE);
@@ -54,7 +56,11 @@ public final class GameView {
 
     @FXML
     private void rollDice() {
-         _gamePresenter.play();
+        _gamePresenter.play();
+    }
+
+    public Label getDiceModifier() {
+        return _diceModifier;
     }
 
     public AnchorPane getBoard() {

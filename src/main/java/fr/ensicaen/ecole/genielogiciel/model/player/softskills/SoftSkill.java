@@ -4,4 +4,6 @@ public interface SoftSkill {
     int modifyDiceRoll(int roll);
 
     String getName();
+
+    double getModifierValue();
 }

@@ -80,6 +80,10 @@ public class Player {
         return _softSkillName;
     }
 
+    public SoftSkill getSoftSkill() {
+        return _softSkill;
+    }
+
     public int getHardSkillLevel(Class<? extends HardSkill> subject) {
         for (HardSkill skill : _hardSkills) {
             if (skill.getClass() == subject) {

@@ -10,4 +10,8 @@ public class Brilliant implements SoftSkill {
     public String getName() {
         return "brilliant";
     }
+
+    public double getModifierValue() {
+        return BRILLIANT_MODIFIER;
+    }
 }
