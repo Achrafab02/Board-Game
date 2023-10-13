@@ -1,4 +1,4 @@
-package fr.ensicaen.ecole.genielogiciel.model.board.Action;
+package fr.ensicaen.ecole.genielogiciel.model.board.action;
 
 public abstract class ComplexAction implements Action {
     private final Action[] _actions;

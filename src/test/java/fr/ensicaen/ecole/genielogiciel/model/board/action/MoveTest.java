@@ -1,6 +1,6 @@
 package fr.ensicaen.ecole.genielogiciel.model.board.action;
 
-import fr.ensicaen.ecole.genielogiciel.model.board.Action.Move;
+import fr.ensicaen.ecole.genielogiciel.model.board.action.Move;
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 import fr.ensicaen.ecole.genielogiciel.model.player.schooling.AST;
 import org.junit.jupiter.api.Test;

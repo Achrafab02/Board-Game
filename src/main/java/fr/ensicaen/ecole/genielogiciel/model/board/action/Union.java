@@ -1,4 +1,4 @@
-package fr.ensicaen.ecole.genielogiciel.model.board.Action;
+package fr.ensicaen.ecole.genielogiciel.model.board.action;
 
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 

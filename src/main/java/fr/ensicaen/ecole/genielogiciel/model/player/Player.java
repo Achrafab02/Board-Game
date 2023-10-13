@@ -1,6 +1,6 @@
 package fr.ensicaen.ecole.genielogiciel.model.player;
 
-import fr.ensicaen.ecole.genielogiciel.model.board.Action.Action;
+import fr.ensicaen.ecole.genielogiciel.model.board.action.Action;
 import fr.ensicaen.ecole.genielogiciel.model.board.tiles.Tile;
 import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.HardSkill;
 import fr.ensicaen.ecole.genielogiciel.model.player.softskills.*;
