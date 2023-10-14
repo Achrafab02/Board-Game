@@ -11,10 +11,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class TileComputerScienceExamTest {
     @Test
     public void test_tile_computer_science_class_exam_on_ast_player() {
-        String playerName = "ME";
-        String schoolingName = "ast";
         int initialComputerScienceLevel = 4;
-        Player player = new AST().createPlayer(playerName, schoolingName);
+        Player player = new AST().createPlayer("", "");
         Point tilePoint = new Point(0,0);
         int positionIndex = 0;
         TileComputerScienceExam tileComputerScienceExam = new TileComputerScienceExam(positionIndex,tilePoint);
@@ -24,14 +22,13 @@ class TileComputerScienceExamTest {
     }
     @Test
     public void test_tile_math_class_exam_on_ast_player() {
-        String playerName = "ME";
-        String schoolingName = "ast";
-        Player player = new AST().createPlayer(playerName, schoolingName);
+        Player player = new AST().createPlayer("", "");
+        player.setPosition(5);
         Point tilePoint = new Point(0,0);
         int positionIndex = 0;
-        TileMathExam tileMathExam = new TileMathExam(positionIndex,tilePoint);
+        TileMathExam tileMathExam = new TileMathExam(positionIndex, tilePoint);
         Action MoveInfInsufficientSkillLevel = tileMathExam.fetchInstruction(player);
         MoveInfInsufficientSkillLevel.performAction(player);
-        assertEquals(-2,player.getPosition());
+        assertEquals(5-2, player.getPosition());
     }
 }

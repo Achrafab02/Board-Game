@@ -111,7 +111,7 @@ public class Player {
     }
 
     public void moveWithoutTileEffect(int moveCount) {
-        _currentTileIndex += moveCount;
+        _currentTileIndex = Math.max(0, _currentTileIndex + moveCount);
     }
 
     public void move(int diceResult) {
@@ -132,6 +132,10 @@ public class Player {
         Tile firstTile = _boardController.getTile(_currentTileIndex);
         _pawn.initPawn(board, id);
         _pawn.draw(firstTile);
+    }
+
+    public void setPosition(int position) {
+        _currentTileIndex = position;
     }
 
     public int getPosition() {
