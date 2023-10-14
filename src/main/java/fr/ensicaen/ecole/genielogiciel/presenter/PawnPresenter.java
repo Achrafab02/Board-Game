@@ -18,7 +18,7 @@ public class PawnPresenter {
 
     public void draw(Tile finalTile) {
         Point point = finalTile.getCoordinates();
-        _pawnView.updatePosition(point.x, point.y);
+        _pawnView.updatePosition(point.getX(), point.getY());
     }
 
     public void initPawn(AnchorPane board, int id) {
