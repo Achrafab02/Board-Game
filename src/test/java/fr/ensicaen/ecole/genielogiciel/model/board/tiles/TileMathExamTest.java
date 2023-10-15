@@ -2,35 +2,28 @@ package fr.ensicaen.ecole.genielogiciel.model.board.tiles;
 
 import fr.ensicaen.ecole.genielogiciel.model.Point;
 import fr.ensicaen.ecole.genielogiciel.model.board.action.Action;
+import fr.ensicaen.ecole.genielogiciel.model.board.action.MoveIfInsufficientSkillLevel;
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
-import fr.ensicaen.ecole.genielogiciel.model.player.schooling.AST;
-import fr.ensicaen.ecole.genielogiciel.model.player.schooling.Prepa;
+import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.Mathematics;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class TileMathExamTest {
-    @Test
-    public void test_tile_math_exam_effect_on_insufficient_hardskill_level_player() {
-        Player player = new Prepa().createPlayer("", "");
-        player.setPosition(5);
-        Point tilePoint = new Point(0, 0);
-        int positionIndex = 0;
-        TileMathExam tileMathExam = new TileMathExam(positionIndex, tilePoint);
-        Action MoveInfInsufficientSkillLevel = tileMathExam.fetchInstruction(player);
-        MoveInfInsufficientSkillLevel.performAction(player);
-        assertEquals(5 - 2, player.getPosition());
-    }
+public class TileMathExamTest {
 
     @Test
-    public void test_tile_math_exam_effect_on_sufficient_hardskill_level_player() {
-        Player player = new Prepa().createPlayer("", "");
-        player.setPosition(5);
-        Point tilePoint = new Point(0, 0);
-        int positionIndex = 0;
-        TileMathExam tileMathExam = new TileMathExam(positionIndex, tilePoint);
-        Action MoveInfInsufficientSkillLevel = tileMathExam.fetchInstruction(player);
-        MoveInfInsufficientSkillLevel.performAction(player);
-        assertEquals(5, player.getPosition());
+    public void test_fetch_instruction() {
+        int positionIndex = 5;
+        Point coordinates = new Point(2, 3);
+        TileMathExam tile = new TileMathExam(positionIndex, coordinates);
+        Player player = new Player();
+
+        Action instruction = tile.fetchInstruction(player);
+
+        assertTrue(instruction instanceof MoveIfInsufficientSkillLevel);
+        MoveIfInsufficientSkillLevel moveInstruction = (MoveIfInsufficientSkillLevel) instruction;
+        assertEquals(Mathematics.class, moveInstruction.getHardSkillClass());
+        assertEquals(4, moveInstruction.getSkillCap());
+        assertEquals(-2, moveInstruction.getMoveCount());
     }
 }

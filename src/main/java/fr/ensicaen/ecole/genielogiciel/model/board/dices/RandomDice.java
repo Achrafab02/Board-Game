@@ -27,4 +27,5 @@ public class RandomDice implements Rollable {
     public int roll() {
         return _lowerInterval + _randomGenerator.nextInt(_upperInterval - _lowerInterval + 1);
     }
+
 }

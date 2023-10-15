@@ -17,4 +17,12 @@ public class ModifySkillLevel implements Action {
     public void performAction(Player player) {
         player.addToLevelOfHardSkill(_hardSkill, _levelIncrease);
     }
+
+    public Class<? extends HardSkill> getHardSkillClass() {
+        return _hardSkill;
+    }
+
+    public int getLevelIncrease() {
+        return _levelIncrease;
+    }
 }

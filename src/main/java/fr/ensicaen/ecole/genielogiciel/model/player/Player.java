@@ -73,6 +73,10 @@ public class Player {
         return _softSkill;
     }
 
+    public ArrayList<HardSkill> getHardSkills() {
+        return _hardSkills;
+    }
+
     public int getHardSkillLevel(Class<? extends HardSkill> subject) {
         for (HardSkill skill : _hardSkills) {
             if (skill.getClass() == subject) {
@@ -112,6 +116,10 @@ public class Player {
 
     public void moveWithoutTileEffect(int moveCount) {
         _currentTileIndex = Math.max(0, _currentTileIndex + moveCount);
+    }
+
+    public void moveToIndex(int index) {
+        _currentTileIndex = index;
     }
 
     public void move(int diceResult) {

@@ -20,4 +20,16 @@ public class MoveIfInsufficientSkillLevel implements Action {
             player.moveWithoutTileEffect(_moveCount);
         }
     }
+
+    public Class<? extends HardSkill> getHardSkillClass() {
+        return _hardSkill;
+    }
+
+    public int getSkillCap() {
+        return _skillCap;
+    }
+
+    public int getMoveCount() {
+        return _moveCount;
+    }
 }
