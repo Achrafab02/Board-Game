@@ -10,14 +10,15 @@ public class RandomDiceTest {
 
     @Test
     public void test_roll_within_interval() {
-        int lower = 1;
-        int upper = 6;
+        int lower = 10;
+        int upper = 15;
         Random randomGenerator = new Random(123);
         RandomDice dice = new RandomDice(randomGenerator, lower, upper);
 
-        int result = dice.roll();
-
-        assertTrue(result >= lower && result <= upper);
+        for (int i = 0; i < 10; i++) {
+            int result = dice.roll();
+            assertTrue(lower <= result && result <= upper);
+        }
     }
 
     @Test
