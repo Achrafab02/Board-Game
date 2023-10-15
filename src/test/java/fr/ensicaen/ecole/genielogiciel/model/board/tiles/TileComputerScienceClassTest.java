@@ -1,29 +1,29 @@
 package fr.ensicaen.ecole.genielogiciel.model.board.tiles;
 
-import fr.ensicaen.ecole.genielogiciel.model.Point;
-import fr.ensicaen.ecole.genielogiciel.model.board.action.Action;
-import fr.ensicaen.ecole.genielogiciel.model.player.Player;
-import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.ComputerScience;
-import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.Mathematics;
-import fr.ensicaen.ecole.genielogiciel.model.player.schooling.Prepa;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class TileComputerScienceClassTest {
+import fr.ensicaen.ecole.genielogiciel.model.Point;
+import fr.ensicaen.ecole.genielogiciel.model.board.action.Action;
+import fr.ensicaen.ecole.genielogiciel.model.board.action.ModifySkillLevel;
+import fr.ensicaen.ecole.genielogiciel.model.player.Player;
+import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.ComputerScience;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class TileComputerScienceClassTest {
+
     @Test
-    public void test_tile_computer_science_class_level_on_a_prepa_player() {
-        String playerName = "ME";
-        String schoolingName = "prepa";
-        int initialComputerScienceLevel = 0;
-        int initialMathLevel = 4;
-        Player player = new Prepa().createPlayer(playerName, schoolingName);
-        Point tilePoint = new Point(0,0);
-        int positionIndex = 0;
-        TileComputerScienceClass tileMathClass = new TileComputerScienceClass(positionIndex, tilePoint);
-        Action modifySkillLevel = tileMathClass.fetchInstruction(player);
-        modifySkillLevel.performAction(player);
-        assertEquals(initialComputerScienceLevel + 1 ,player.getHardSkillLevel(ComputerScience.class));
-        assertEquals(initialMathLevel,player.getHardSkillLevel(Mathematics.class));
+    public void test_fetch_instruction() {
+        int positionIndex = 5;
+        Point coordinates = new Point(2, 3);
+        TileComputerScienceClass tile = new TileComputerScienceClass(positionIndex, coordinates);
+        Player player = new Player();
+
+        Action instruction = tile.fetchInstruction(player);
+
+        assertTrue(instruction instanceof ModifySkillLevel);
+        ModifySkillLevel modifySkillLevel = (ModifySkillLevel) instruction;
+        assertEquals(ComputerScience.class, modifySkillLevel.getHardSkillClass());
+        assertEquals(1, modifySkillLevel.getLevelIncrease());
     }
 }

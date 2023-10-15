@@ -17,11 +17,11 @@ public class BoardControllerPresenter {
         return _board.getTile(tileIndex);
     }
 
-    private boolean goalOverstepped(int position, int lastTileIndex) {
+    protected boolean goalOverstepped(int position, int lastTileIndex) {
         return (position >= lastTileIndex);
     }
 
-    private int moveBackwards(int position, int lastTileIndex) {
+    protected int moveBackwards(int position, int lastTileIndex) {
         return (lastTileIndex - (position - lastTileIndex));
     }
 

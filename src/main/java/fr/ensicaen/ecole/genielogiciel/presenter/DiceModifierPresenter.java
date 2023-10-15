@@ -3,7 +3,6 @@ package fr.ensicaen.ecole.genielogiciel.presenter;
 import fr.ensicaen.ecole.genielogiciel.view.DiceModifierView;
 
 public class DiceModifierPresenter {
-
     private DiceModifierView _diceModifierView;
 
     public void display(double diceModifier) {
@@ -14,4 +13,7 @@ public class DiceModifierPresenter {
         _diceModifierView = diceModifierView;
     }
 
+    public DiceModifierView getView() {
+        return _diceModifierView;
+    }
 }

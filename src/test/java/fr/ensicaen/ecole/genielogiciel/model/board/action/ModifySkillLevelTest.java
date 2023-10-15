@@ -1,23 +1,22 @@
 package fr.ensicaen.ecole.genielogiciel.model.board.action;
 
-import fr.ensicaen.ecole.genielogiciel.model.board.action.ModifySkillLevel;
+import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.HardSkill;
+import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.Mathematics;
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
-import fr.ensicaen.ecole.genielogiciel.model.player.hardskills.ComputerScience;
-import fr.ensicaen.ecole.genielogiciel.model.player.schooling.AST;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-class ModifySkillLevelTest {
+public class ModifySkillLevelTest {
+
     @Test
-     public void test_modify_skill() {
-        String playerName = "ME";
-        String schoolingName = "ast";
-        Player player = new AST().createPlayer(playerName, schoolingName);
-        System.out.println(" computerScienceLevel " + player.getComputerScienceLevel());
-        ModifySkillLevel modifySkillLevel = new ModifySkillLevel(ComputerScience.class, 6);
+    public void test_perform_action() {
+        Class<? extends HardSkill> skillClass = Mathematics.class;
+        int levelIncrease = 2;
+        ModifySkillLevel modifySkillLevel = new ModifySkillLevel(skillClass, levelIncrease);
+        Player player = mock(Player.class);
+
         modifySkillLevel.performAction(player);
-        assertEquals("10", player.getComputerScienceLevel());
 
-     }
-
+        verify(player).addToLevelOfHardSkill(skillClass, levelIncrease);
+    }
 }

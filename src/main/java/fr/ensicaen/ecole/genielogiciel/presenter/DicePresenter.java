@@ -6,7 +6,7 @@ import fr.ensicaen.ecole.genielogiciel.view.DiceView;
 
 public class DicePresenter {
     private DiceView _diceView;
-    private final Rollable _dice;
+    private Rollable _dice;
 
     public DicePresenter() {
         _dice = new RandomDiceBuilder().withInterval(1, 6).build();
@@ -20,5 +20,9 @@ public class DicePresenter {
 
     public void setView(DiceView diceView) {
         _diceView = diceView;
+    }
+
+    public void setDice(Rollable dice) {
+        _dice = dice;
     }
 }
