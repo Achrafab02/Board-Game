@@ -27,8 +27,5 @@ public final class LoginMain extends Application {
         view.setPresenter(presenter);
         presenter.setView(view);
         view.show();
-
-        view.initView();
-
     }
 }

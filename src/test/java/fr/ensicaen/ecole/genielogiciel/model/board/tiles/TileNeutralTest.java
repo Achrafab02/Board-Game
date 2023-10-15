@@ -1,11 +1,5 @@
 package fr.ensicaen.ecole.genielogiciel.model.board.tiles;
 
-import fr.ensicaen.ecole.genielogiciel.model.board.action.Move;
-import fr.ensicaen.ecole.genielogiciel.model.player.Player;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class TileNeutralTest {
     /*
     @Test

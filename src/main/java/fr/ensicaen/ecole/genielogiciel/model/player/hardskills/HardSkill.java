@@ -1,7 +1,7 @@
 package fr.ensicaen.ecole.genielogiciel.model.player.hardskills;
 
 public abstract class HardSkill {
-    private int _score = 0;
+    private int _score;
 
     public HardSkill(int score) {
         _score = score;

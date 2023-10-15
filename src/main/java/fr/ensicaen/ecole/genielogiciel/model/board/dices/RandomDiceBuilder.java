@@ -23,7 +23,7 @@ public class RandomDiceBuilder {
     }
 
     public RandomDice build() {
-        Random randomGenerator = _optionalSeed.isEmpty() ? new Random() : new Random(_optionalSeed.get());
+        Random randomGenerator = _optionalSeed.map(Random::new).orElseGet(Random::new);
         return new RandomDice(randomGenerator, _lower, _upper);
     }
 }

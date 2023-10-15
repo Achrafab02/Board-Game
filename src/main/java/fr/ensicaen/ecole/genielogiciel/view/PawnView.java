@@ -14,7 +14,7 @@ public class PawnView {
 
     private static final double SPACE_BETWEEN_PAWNS = 40;
 
-    private static float RECTANGLE_SIZE = 20f;
+    private static final float RECTANGLE_SIZE = 20f;
 
     public void initPawn(AnchorPane board, int id) {
         board.getChildren().add(_rectangle);
@@ -48,13 +48,4 @@ public class PawnView {
         _rectangle.setY(y + _offsetY);
     }
 
-    public static Rectangle create(double x, double y, Color color) {
-        Rectangle pawn = new Rectangle();
-        pawn.setX(x);
-        pawn.setY(y);
-        pawn.setWidth(20.0f);
-        pawn.setHeight(20.0f);
-        pawn.setFill(color);
-        return pawn;
-    }
 }

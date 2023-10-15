@@ -19,7 +19,6 @@ public final class GamePresenter {
     private final DicePresenter _dicePresenter;
     private final DiceModifierPresenter _diceModifierPresenter;
     private final List<Player> _players;
-    private BoardControllerPresenter _boardControllerPresenter;
     private final int _numberOfPlayer;
     private int _currentPlayerId = 0;
 
@@ -28,9 +27,9 @@ public final class GamePresenter {
         _numberOfPlayer = players.size();
         _dicePresenter = new DicePresenter();
         _diceModifierPresenter = new DiceModifierPresenter();
-        _boardControllerPresenter = new BoardControllerPresenter();
+        BoardControllerPresenter boardControllerPresenter = new BoardControllerPresenter();
         for (Player player : players) {
-            player.setBoardController(_boardControllerPresenter);
+            player.setBoardController(boardControllerPresenter);
         }
     }
 

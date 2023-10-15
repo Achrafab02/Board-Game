@@ -13,11 +13,10 @@ public class TileWEI extends Tile {
 
     @Override
     public Action fetchInstruction(Player player) {
-        Action action = new Union(
+        return new Union(
                 new Move(-1),
                 new ModifySkillLevel(ComputerScience.class, 1),
                 new ModifySkillLevel(Mathematics.class, 1)
         );
-        return action;
     }
 }

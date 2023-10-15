@@ -25,9 +25,6 @@ public class LanguageView {
         _stage.close();
     }
 
-    public void initView() {
-    }
-
     public static LanguageView createView(Stage primaryStage, String  resourceName) throws IOException {
         FXMLLoader loader = new FXMLLoader(LanguageView.class.getResource(resourceName), BUNDLE);
         Parent root = loader.load();
