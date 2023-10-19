@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Player {
     private final String _name;
     private final SoftSkill _softSkill;
-    private ArrayList<HardSkill> _hardSkills;
+    private ArrayList<HardSkill> _hardSkills;  // FIXME "programmer pour une interface et non pour une implmentation" -> remplacer le type ArrayList par List
     private String _schoolingName;
     private final String _softSkillName;
     private int _currentTileIndex;
@@ -31,6 +31,7 @@ public class Player {
         _pawn = new PawnPresenter();
     }
 
+    // FIXME remplacer ArrayList par List
     public Player(String name, ArrayList<HardSkill> hardSkills, String schoolingName) {
         this(name, schoolingName);
         _hardSkills = hardSkills;

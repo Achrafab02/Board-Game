@@ -7,6 +7,8 @@ import javafx.stage.Stage;
 
 import java.util.ResourceBundle;
 
+// FIXME GitLab Le readme ne sert à rien. IL ne décrit pas le projet ni les auteurs du projet ni les instructions d'utilisation du projet
+// FIXME le dossier .gradle ne doit pas être inclus dans le git
 public final class LoginMain extends Application {
 
     public static void main(String[] args) {

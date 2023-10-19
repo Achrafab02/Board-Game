@@ -1,7 +1,7 @@
 package fr.ensicaen.ecole.genielogiciel.view;
 
 import javafx.scene.image.Image;
-import javafx.scene.layout.*;
+import javafx.scene.layout.*; //FIXME eviter les import *
 
 public class DiceView {
     private final AnchorPane _diceBoard;

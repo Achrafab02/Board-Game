@@ -2,7 +2,7 @@ package fr.ensicaen.ecole.genielogiciel.model.board.action;
 
 import fr.ensicaen.ecole.genielogiciel.model.player.Player;
 
-public class Union extends ComplexAction {
+public class Union extends ComplexAction { // FIXME on aurait bien vu un décorateur ici
     public Union(Action... actions) {
         super(actions);
     }
